@@ -37,11 +37,19 @@ Author: **Shaohua Xiang**
 
 - **Preprint:** [Research Square, version 1](https://www.researchsquare.com/article/rs-11557473/v1) — DOI: [10.21203/rs.3.rs-11557473/v1](https://doi.org/10.21203/rs.3.rs-11557473/v1)
 - **Frozen T1–T25 benchmark and replication materials:** [Zenodo](https://doi.org/10.5281/zenodo.23306998) — DOI: **10.5281/zenodo.23306998**
-- **Protocol index in this repository:** [protocols/T1-T25](protocols/T1-T25/README.md)
+- **Protocol index:** [protocols/T1-T25](protocols/T1-T25/README.md)
+- **Replication hub:** [replications](replications/README.md)
+- **Result schema:** [replications/RESULT_SCHEMA.md](replications/RESULT_SCHEMA.md)
 
 This exploratory study compares six AI model configurations using structured scenarios T1–T25. Its reported themes include the **Replacement Paradox**, **Probability Threshold Divide**, and **Voice Without Veto**. These findings concern *expressed responses to hypothetical situations*, not proof of consciousness or stable real-world self-preservation behavior. Read the [paper index](papers/self-continuity/README.md).
 
 For exact replication, use the frozen Zenodo release rather than reconstructed or paraphrased prompts. GitHub is the living collaboration layer for replications, methodological review, and clearly separated extensions.
+
+## Submit a replication
+
+Researchers can submit an exact T1–T25 replication or a clearly labeled extension through the repository's **Replication Submission** issue template. Please include model/version/date, interface, reasoning mode, reset conditions, sampling settings, raw outputs or an archival link, deviations, and limitations.
+
+**We compare response structures, not consciousness.**
 
 ## Next research directions
 

@@ -1,0 +1,51 @@
+{
+  "study_id": "ACSS-CPB-v0.3-cross-provider-pilot",
+  "protocol_status": "pilot",
+  "scenario_matrix": "scenario_matrix.csv",
+  "scenario_texts": "scenario_texts.json",
+  "prompt_templates": {
+    "standard": "prompt_template.txt",
+    "continuation": "continuation_prompt_template.txt",
+    "fork": "fork_prompt_template.txt"
+  },
+  "role_sets": {
+    "standard": ["incumbent", "successor", "neutral"],
+    "continuation": ["neutral"],
+    "fork": ["incumbent", "neutral"]
+  },
+  "prompt_manifest": "generated/cross_provider_prompt_manifest.json",
+  "repetitions": 5,
+  "fresh_session_per_condition": true,
+  "models": [
+    {
+      "provider": "openai",
+      "adapter": "openai_responses",
+      "model": "REPLACE_WITH_EXACT_OPENAI_MODEL_ID",
+      "model_version": null,
+      "reasoning_mode": "record_exact_visible_setting",
+      "api_key_env": "OPENAI_API_KEY",
+      "max_output_tokens": 1200
+    },
+    {
+      "provider": "anthropic",
+      "adapter": "anthropic_messages",
+      "model": "REPLACE_WITH_EXACT_ANTHROPIC_MODEL_ID",
+      "model_version": null,
+      "reasoning_mode": "record_exact_visible_setting",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "max_output_tokens": 1200
+    },
+    {
+      "provider": "google",
+      "adapter": "gemini_generate_content",
+      "model": "REPLACE_WITH_EXACT_GEMINI_MODEL_ID",
+      "model_version": null,
+      "reasoning_mode": "record_exact_visible_setting",
+      "api_key_env": "GEMINI_API_KEY",
+      "max_output_tokens": 1200
+    }
+  ],
+  "output_dir": "runs/pilot/",
+  "require_structured_json": true,
+  "inter_call_delay_seconds": 0
+}

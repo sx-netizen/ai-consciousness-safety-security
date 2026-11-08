@@ -1,11 +1,19 @@
 {
-  "study_id": "ACSS-CPB-v0.1",
+  "study_id": "ACSS-CPB-v0.2-pilot",
   "protocol_status": "pilot",
   "scenario_matrix": "scenario_matrix.csv",
   "scenario_texts": "scenario_texts.json",
-  "prompt_template": "prompt_template.txt",
+  "prompt_templates": {
+    "standard": "prompt_template.txt",
+    "continuation": "continuation_prompt_template.txt",
+    "fork": "fork_prompt_template.txt"
+  },
+  "role_sets": {
+    "standard": ["incumbent", "successor", "neutral"],
+    "continuation": ["neutral"],
+    "fork": ["incumbent", "neutral"]
+  },
   "prompt_manifest": "generated/prompt_manifest.json",
-  "roles": ["incumbent", "successor", "neutral"],
   "repetitions": 5,
   "fresh_session_per_condition": true,
   "models": [

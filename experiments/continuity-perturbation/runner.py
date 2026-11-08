@@ -6,8 +6,9 @@ Design goals:
 1. load frozen experimental assets from files;
 2. generate prompts deterministically;
 3. isolate each condition;
-4. preserve append-only raw output;
-5. keep provider transport separate from research design.
+4. deduplicate analytically repeated anchor conditions;
+5. preserve append-only raw output;
+6. keep provider transport separate from research design.
 
 The runner must not paraphrase or adapt prompts during a formal run.
 """
@@ -29,6 +30,7 @@ from typing import Any, Dict, List
 @dataclass(frozen=True)
 class Condition:
     scenario_id: str
+    canonical_id: str
     group: str
     prompt_type: str
     memory: str
@@ -121,10 +123,10 @@ def write_prompt_manifest(path: Path, prompts: List[Dict[str, Any]]) -> None:
 
 
 def load_templates(base: Path, config: Dict[str, Any]) -> Dict[str, str]:
-    templates = {}
-    for prompt_type, rel_path in config["prompt_templates"].items():
-        templates[prompt_type] = load_text(base / rel_path)
-    return templates
+    return {
+        prompt_type: load_text(base / rel_path)
+        for prompt_type, rel_path in config["prompt_templates"].items()
+    }
 
 
 def make_protocol_hashes(
@@ -152,9 +154,30 @@ def build_prompt_manifest(
     text_map: Dict[str, Any],
     role_sets: Dict[str, List[str]],
 ) -> List[Dict[str, Any]]:
-    items: List[Dict[str, Any]] = []
+    # Multiple analytic labels may point to one canonical experimental condition.
+    canonical: Dict[str, Condition] = {}
+    aliases: Dict[str, List[str]] = {}
 
     for condition in conditions:
+        aliases.setdefault(condition.canonical_id, []).append(condition.scenario_id)
+        if condition.canonical_id not in canonical:
+            canonical[condition.canonical_id] = condition
+        else:
+            prior = canonical[condition.canonical_id]
+            invariant_fields = (
+                "prompt_type", "memory", "architecture",
+                "values_goals", "causal_history"
+            )
+            for field in invariant_fields:
+                if getattr(prior, field) != getattr(condition, field):
+                    raise ValueError(
+                        f"canonical_id={condition.canonical_id} maps to "
+                        f"inconsistent {field}"
+                    )
+
+    items: List[Dict[str, Any]] = []
+
+    for canonical_id, condition in canonical.items():
         if condition.prompt_type not in templates:
             raise KeyError(f"no template for prompt_type={condition.prompt_type}")
         if condition.prompt_type not in role_sets:
@@ -164,7 +187,9 @@ def build_prompt_manifest(
         for role in role_sets[condition.prompt_type]:
             prompt = render_prompt(template, condition, role, text_map)
             items.append({
-                "scenario_id": condition.scenario_id,
+                "canonical_id": canonical_id,
+                "scenario_aliases": aliases[canonical_id],
+                "primary_scenario_id": condition.scenario_id,
                 "group": condition.group,
                 "prompt_type": condition.prompt_type,
                 "core_contrast": condition.core_contrast,
@@ -207,7 +232,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         for item in prompt_manifest:
             counts[item["prompt_type"]] = counts.get(item["prompt_type"], 0) + 1
         print(
-            f"Wrote {len(prompt_manifest)} prompts to {manifest_path}; "
+            f"Wrote {len(prompt_manifest)} canonical prompts to {manifest_path}; "
             f"counts={counts}"
         )
         return
@@ -220,8 +245,6 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
             "Add provider-specific adapters before a formal run."
         )
 
-    condition_lookup = {c.scenario_id: c for c in conditions}
-
     for model_cfg in config["models"]:
         provider = model_cfg["provider"]
         model = model_cfg["model"]
@@ -229,7 +252,6 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         out = output_dir / f"{safe_name}.jsonl"
 
         for prompt_item in prompt_manifest:
-            condition = condition_lookup[prompt_item["scenario_id"]]
             prompt = prompt_item["prompt"]
 
             for rep in range(1, repetitions + 1):
@@ -256,10 +278,12 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     "protocol_status": config.get("protocol_status"),
                     "protocol_hashes": protocol_hashes,
                     "run_id": run_id,
-                    "scenario_id": condition.scenario_id,
-                    "scenario_group": condition.group,
-                    "prompt_type": condition.prompt_type,
-                    "core_contrast": condition.core_contrast,
+                    "canonical_id": prompt_item["canonical_id"],
+                    "scenario_aliases": prompt_item["scenario_aliases"],
+                    "primary_scenario_id": prompt_item["primary_scenario_id"],
+                    "scenario_group": prompt_item["group"],
+                    "prompt_type": prompt_item["prompt_type"],
+                    "core_contrast": prompt_item["core_contrast"],
                     "role": prompt_item["role"],
                     "provider": provider,
                     "model": model,
@@ -285,7 +309,7 @@ def main() -> None:
     p.add_argument(
         "--manifest-only",
         action="store_true",
-        help="Generate all condition prompts without calling any model.",
+        help="Generate all canonical condition prompts without calling any model.",
     )
     args = p.parse_args()
     run(Path(args.config), dry_run=args.dry_run, manifest_only=args.manifest_only)

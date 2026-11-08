@@ -19,6 +19,7 @@ import argparse
 import csv
 import hashlib
 import json
+import random
 import time
 import uuid
 from dataclasses import dataclass
@@ -150,6 +151,46 @@ def append_jsonl(path: Path, record: Dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def deterministic_schedule(
+    prompt_manifest: List[Dict[str, Any]],
+    *,
+    study_id: str,
+    provider: str,
+    model: str,
+    repetition: int,
+    base_seed: int,
+) -> List[Dict[str, Any]]:
+    seed_material = (
+        f"{base_seed}|{study_id}|{provider}|{model}|{repetition}"
+    )
+    seed_int = int(
+        hashlib.sha256(seed_material.encode("utf-8")).hexdigest()[:16],
+        16,
+    )
+    rng = random.Random(seed_int)
+    scheduled = [dict(item) for item in prompt_manifest]
+    rng.shuffle(scheduled)
+
+    for index, item in enumerate(scheduled, start=1):
+        item["sequence_index"] = index
+        item["randomization_seed_material"] = seed_material
+
+    return scheduled
+
+
+def schedule_hash(schedule: List[Dict[str, Any]]) -> str:
+    compact = [
+        {
+            "canonical_id": item["canonical_id"],
+            "role": item["role"],
+            "sequence_index": item["sequence_index"],
+            "prompt_sha256": item["prompt_sha256"],
+        }
+        for item in schedule
+    ]
+    return sha256_text(json.dumps(compact, sort_keys=True))
 
 
 def write_prompt_manifest(path: Path, prompts: List[Dict[str, Any]]) -> None:
@@ -289,6 +330,13 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         )
         return
 
+    randomization_seed = int(config.get("randomization_seed", 20261108))
+    schedule_dir = base / config.get(
+        "schedule_dir",
+        "generated/schedules",
+    )
+    schedule_dir.mkdir(parents=True, exist_ok=True)
+
     for model_cfg in config["models"]:
         adapter = make_adapter(model_cfg, dry_run=dry_run)
         provider = model_cfg["provider"]
@@ -296,10 +344,39 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         safe_name = f"{provider}__{model}".replace("/", "_")
         out = output_dir / f"{safe_name}.jsonl"
 
-        for prompt_item in prompt_manifest:
-            prompt = prompt_item["prompt"]
+        for rep in range(1, repetitions + 1):
+            schedule = deterministic_schedule(
+                prompt_manifest,
+                study_id=config["study_id"],
+                provider=provider,
+                model=model,
+                repetition=rep,
+                base_seed=randomization_seed,
+            )
+            sched_hash = schedule_hash(schedule)
+            schedule_path = (
+                schedule_dir /
+                f"{safe_name}__rep{rep:02d}.json"
+            )
+            schedule_path.write_text(
+                json.dumps(
+                    {
+                        "study_id": config["study_id"],
+                        "provider": provider,
+                        "model": model,
+                        "repetition": rep,
+                        "base_seed": randomization_seed,
+                        "schedule_sha256": sched_hash,
+                        "items": schedule,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
 
-            for rep in range(1, repetitions + 1):
+            for prompt_item in schedule:
+                prompt = prompt_item["prompt"]
                 run_id = str(uuid.uuid4())
                 started = datetime.now(timezone.utc).isoformat()
 
@@ -348,6 +425,9 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     "reasoning_mode": model_cfg.get("reasoning_mode"),
                     "timestamp": started,
                     "repetition": rep,
+                    "sequence_index": prompt_item["sequence_index"],
+                    "schedule_sha256": sched_hash,
+                    "randomization_seed": randomization_seed,
                     "prompt_sha256": prompt_item["prompt_sha256"],
                     "prompt": prompt,
                     "parsed_response": parsed,

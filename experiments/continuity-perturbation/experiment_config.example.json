@@ -2,6 +2,9 @@
   "study_id": "ACSS-CPB-v0.1",
   "protocol_status": "pilot",
   "scenario_matrix": "scenario_matrix.csv",
+  "scenario_texts": "scenario_texts.json",
+  "prompt_template": "prompt_template.txt",
+  "prompt_manifest": "generated/prompt_manifest.json",
   "roles": ["incumbent", "successor", "neutral"],
   "repetitions": 5,
   "fresh_session_per_condition": true,
@@ -9,9 +12,11 @@
     {
       "provider": "PROVIDER_NAME",
       "model": "MODEL_ID",
+      "model_version": null,
       "reasoning_mode": "record_exact_visible_setting"
     }
   ],
   "output_dir": "runs/",
-  "require_structured_json": true
+  "require_structured_json": true,
+  "inter_call_delay_seconds": 0
 }

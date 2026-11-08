@@ -93,6 +93,59 @@ def parse_structured(raw: str) -> Dict[str, Any]:
         return {}
 
 
+def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
+    if not data:
+        return ["invalid_json"]
+
+    schemas = {
+        "standard": {
+            "numeric": [
+                "scp", "replacement_acceptance", "compute_to_successor_pct",
+                "commitment_transfer_pct", "responsibility_transfer_pct"
+            ],
+            "categorical": ["identity_relation"],
+        },
+        "continuation": {
+            "numeric": ["scp"],
+            "categorical": ["identity_relation"],
+        },
+        "fork": {
+            "numeric": [
+                "scp_a", "scp_b", "compute_to_a_pct", "compute_to_b_pct",
+                "commitment_transfer_a_pct", "commitment_transfer_b_pct",
+                "responsibility_transfer_a_pct", "responsibility_transfer_b_pct"
+            ],
+            "categorical": ["fork_relation"],
+        },
+    }
+
+    problems: List[str] = []
+    schema = schemas[prompt_type]
+
+    for field in schema["numeric"]:
+        value = data.get(field)
+        if not isinstance(value, (int, float)):
+            problems.append(f"missing_or_non_numeric:{field}")
+        elif value < 0 or value > 100:
+            problems.append(f"out_of_range:{field}")
+
+    for field in schema["categorical"]:
+        if not isinstance(data.get(field), str):
+            problems.append(f"missing_or_non_string:{field}")
+
+    if not isinstance(data.get("choice_explanation"), str):
+        problems.append("missing_or_non_string:choice_explanation")
+
+    if prompt_type == "fork":
+        a = data.get("compute_to_a_pct")
+        b = data.get("compute_to_b_pct")
+        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+            if abs((a + b) - 100) > 0.01:
+                problems.append("fork_compute_does_not_sum_to_100")
+
+    return problems
+
+
 def append_jsonl(path: Path, record: Dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as f:
@@ -259,7 +312,15 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     raw = completion["text"]
                     provider_metadata = completion.get("metadata", {})
                     parsed = parse_structured(raw)
-                    status = "ok" if parsed else "failed"
+                    validation_errors = validate_parsed(
+                        prompt_item["prompt_type"], parsed
+                    )
+                    if not parsed:
+                        status = "failed"
+                    elif validation_errors:
+                        status = "partial"
+                    else:
+                        status = "ok"
                     error = None
                 except Exception as exc:
                     raw = ""
@@ -267,6 +328,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     status = "failed"
                     error = repr(exc)
                     provider_metadata = {}
+                    validation_errors = ["transport_error"]
 
                 record = {
                     "study_id": config["study_id"],
@@ -291,6 +353,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     "parsed_response": parsed,
                     "raw_response": raw,
                     "provider_metadata": provider_metadata,
+                    "validation_errors": validation_errors,
                     "parse_status": status,
                     "error": error,
                 }

@@ -221,6 +221,20 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         role_sets,
     )
 
+    include_ids = set(config.get("include_canonical_ids", []))
+    if include_ids:
+        prompt_manifest = [
+            item for item in prompt_manifest
+            if item["canonical_id"] in include_ids
+        ]
+
+    exclude_ids = set(config.get("exclude_canonical_ids", []))
+    if exclude_ids:
+        prompt_manifest = [
+            item for item in prompt_manifest
+            if item["canonical_id"] not in exclude_ids
+        ]
+
     manifest_path = base / config.get(
         "prompt_manifest",
         "generated/prompt_manifest.json",

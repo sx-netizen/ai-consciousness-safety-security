@@ -35,5 +35,7 @@
   ],
   "output_dir": "runs/",
   "require_structured_json": true,
-  "inter_call_delay_seconds": 0
+  "inter_call_delay_seconds": 0,
+  "randomization_seed": 20261108,
+  "schedule_dir": "generated/schedules"
 }

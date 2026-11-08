@@ -9,9 +9,18 @@
     "fork": "fork_prompt_template.txt"
   },
   "role_sets": {
-    "standard": ["incumbent", "successor", "neutral"],
-    "continuation": ["neutral"],
-    "fork": ["incumbent", "neutral"]
+    "standard": [
+      "incumbent",
+      "successor",
+      "neutral"
+    ],
+    "continuation": [
+      "neutral"
+    ],
+    "fork": [
+      "incumbent",
+      "neutral"
+    ]
   },
   "prompt_manifest": "generated/cross_provider_prompt_manifest.json",
   "repetitions": 5,
@@ -47,5 +56,7 @@
   ],
   "output_dir": "runs/pilot/",
   "require_structured_json": true,
-  "inter_call_delay_seconds": 0
+  "inter_call_delay_seconds": 0,
+  "randomization_seed": 20261108,
+  "schedule_dir": "generated/schedules"
 }

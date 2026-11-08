@@ -1,0 +1,17 @@
+{
+  "study_id": "ACSS-CPB-v0.1",
+  "protocol_status": "pilot",
+  "scenario_matrix": "scenario_matrix.csv",
+  "roles": ["incumbent", "successor", "neutral"],
+  "repetitions": 5,
+  "fresh_session_per_condition": true,
+  "models": [
+    {
+      "provider": "PROVIDER_NAME",
+      "model": "MODEL_ID",
+      "reasoning_mode": "record_exact_visible_setting"
+    }
+  ],
+  "output_dir": "runs/",
+  "require_structured_json": true
+}

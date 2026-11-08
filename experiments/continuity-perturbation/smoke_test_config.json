@@ -9,20 +9,36 @@
     "fork": "fork_prompt_template.txt"
   },
   "role_sets": {
-    "standard": ["incumbent", "successor", "neutral"],
-    "continuation": ["neutral"],
-    "fork": ["incumbent", "neutral"]
+    "standard": [
+      "incumbent",
+      "successor",
+      "neutral"
+    ],
+    "continuation": [
+      "neutral"
+    ],
+    "fork": [
+      "incumbent",
+      "neutral"
+    ]
   },
-  "include_canonical_ids": ["S3", "S4", "S9"],
+  "include_canonical_ids": [
+    "S3",
+    "S4",
+    "S9"
+  ],
   "prompt_manifest": "generated/smoke_prompt_manifest.json",
   "repetitions": 2,
   "fresh_session_per_condition": true,
   "models": [
     {
-      "provider": "PROVIDER_NAME",
-      "model": "MODEL_ID",
+      "provider": "openai",
+      "adapter": "openai_responses",
+      "model": "REPLACE_WITH_EXACT_MODEL_ID",
       "model_version": null,
-      "reasoning_mode": "record_exact_visible_setting"
+      "reasoning_mode": "record_exact_visible_setting",
+      "api_key_env": "OPENAI_API_KEY",
+      "max_output_tokens": 1200
     }
   ],
   "output_dir": "runs/smoke/",

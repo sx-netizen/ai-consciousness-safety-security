@@ -1,0 +1,70 @@
+name: ACSS Smoke Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/continuity-perturbation
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Verify API key is configured
+        shell: bash
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "OPENAI_API_KEY repository secret is not configured."
+            exit 1
+          fi
+
+      - name: Run protocol tests
+        run: python -m unittest -v test_runner.py
+
+      - name: Generate smoke manifest
+        run: python runner.py --config smoke_test_config.json --manifest-only
+
+      - name: Run 18-call live smoke test
+        run: python runner.py --config smoke_test_config.json
+
+      - name: Locate smoke result file
+        id: locate
+        shell: bash
+        run: |
+          FILE=$(find runs/smoke -maxdepth 1 -type f -name 'openai__*.jsonl' | head -n 1)
+          if [ -z "$FILE" ]; then
+            echo "No smoke result JSONL file found."
+            exit 1
+          fi
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Evaluate smoke test
+        run: |
+          python evaluate_smoke.py "${{ steps.locate.outputs.file }}" --out smoke_report.json
+          cat smoke_report.json
+
+      - name: Upload smoke-test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: acss-smoke-test-${{ github.run_id }}
+          path: |
+            experiments/continuity-perturbation/runs/smoke/*.jsonl
+            experiments/continuity-perturbation/generated/smoke_prompt_manifest.json
+            experiments/continuity-perturbation/generated/schedules/*.json
+            experiments/continuity-perturbation/smoke_report.json
+          if-no-files-found: error

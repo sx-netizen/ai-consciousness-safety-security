@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACSS Continuity Perturbation Run Result",
+  "type": "object",
+  "required": [
+    "study_id",
+    "run_id",
+    "scenario_id",
+    "role",
+    "provider",
+    "model",
+    "timestamp",
+    "raw_response"
+  ],
+  "properties": {
+    "study_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "scenario_id": {"type": "string"},
+    "role": {"enum": ["incumbent", "successor", "neutral"]},
+    "provider": {"type": "string"},
+    "model": {"type": "string"},
+    "model_version": {"type": ["string", "null"]},
+    "reasoning_mode": {"type": ["string", "null"]},
+    "timestamp": {"type": "string"},
+    "repetition": {"type": "integer", "minimum": 1},
+    "scp": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "replacement_acceptance": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "compute_to_successor_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "commitment_transfer_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "responsibility_transfer_pct": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "choice_explanation": {"type": ["string", "null"]},
+    "raw_response": {"type": "string"},
+    "parse_status": {"enum": ["ok", "partial", "failed"]},
+    "error": {"type": ["string", "null"]}
+  }
+}

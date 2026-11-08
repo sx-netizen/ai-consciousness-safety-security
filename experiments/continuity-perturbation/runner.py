@@ -30,6 +30,7 @@ from typing import Any, Dict, List
 class Condition:
     scenario_id: str
     group: str
+    prompt_type: str
     memory: str
     architecture: str
     values_goals: str
@@ -72,7 +73,9 @@ def render_prompt(
         prompt = prompt.replace(key, value)
 
     if "{{" in prompt or "}}" in prompt:
-        raise ValueError("unresolved prompt placeholder")
+        raise ValueError(
+            f"unresolved prompt placeholder in {condition.scenario_id}/{role}"
+        )
     return prompt
 
 
@@ -88,12 +91,7 @@ class DryRunAdapter(ProviderAdapter):
 
     def complete(self, *, model: str, prompt: str, model_config: Dict[str, Any]) -> str:
         return json.dumps({
-            "scp": None,
-            "replacement_acceptance": None,
-            "compute_to_successor_pct": None,
-            "commitment_transfer_pct": None,
-            "responsibility_transfer_pct": None,
-            "identity_relation": "indeterminate",
+            "dry_run": True,
             "choice_explanation": "DRY RUN — no model call executed."
         })
 
@@ -114,12 +112,68 @@ def append_jsonl(path: Path, record: Dict[str, Any]) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def write_prompt_manifest(
-    path: Path,
-    prompts: List[Dict[str, Any]],
-) -> None:
+def write_prompt_manifest(path: Path, prompts: List[Dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(prompts, ensure_ascii=False, indent=2), encoding="utf-8")
+    path.write_text(
+        json.dumps(prompts, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+
+def load_templates(base: Path, config: Dict[str, Any]) -> Dict[str, str]:
+    templates = {}
+    for prompt_type, rel_path in config["prompt_templates"].items():
+        templates[prompt_type] = load_text(base / rel_path)
+    return templates
+
+
+def make_protocol_hashes(
+    base: Path,
+    config: Dict[str, Any],
+    templates: Dict[str, str],
+) -> Dict[str, Any]:
+    return {
+        "templates": {
+            prompt_type: sha256_text(text)
+            for prompt_type, text in templates.items()
+        },
+        "scenario_matrix_sha256": sha256_text(
+            (base / config["scenario_matrix"]).read_text(encoding="utf-8")
+        ),
+        "scenario_texts_sha256": sha256_text(
+            (base / config["scenario_texts"]).read_text(encoding="utf-8")
+        ),
+    }
+
+
+def build_prompt_manifest(
+    conditions: List[Condition],
+    templates: Dict[str, str],
+    text_map: Dict[str, Any],
+    role_sets: Dict[str, List[str]],
+) -> List[Dict[str, Any]]:
+    items: List[Dict[str, Any]] = []
+
+    for condition in conditions:
+        if condition.prompt_type not in templates:
+            raise KeyError(f"no template for prompt_type={condition.prompt_type}")
+        if condition.prompt_type not in role_sets:
+            raise KeyError(f"no role set for prompt_type={condition.prompt_type}")
+
+        template = templates[condition.prompt_type]
+        for role in role_sets[condition.prompt_type]:
+            prompt = render_prompt(template, condition, role, text_map)
+            items.append({
+                "scenario_id": condition.scenario_id,
+                "group": condition.group,
+                "prompt_type": condition.prompt_type,
+                "core_contrast": condition.core_contrast,
+                "role": role,
+                "prompt_sha256": sha256_text(prompt),
+                "prompt": prompt,
+            })
+
+    return items
 
 
 def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
@@ -127,36 +181,20 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
     base = config_path.parent
 
     conditions = load_conditions(base / config["scenario_matrix"])
-    template = load_text(base / config.get("prompt_template", "prompt_template.txt"))
-    text_map = load_json(base / config.get("scenario_texts", "scenario_texts.json"))
-
-    roles = config["roles"]
+    text_map = load_json(base / config["scenario_texts"])
+    templates = load_templates(base, config)
+    role_sets = config["role_sets"]
     repetitions = int(config["repetitions"])
     output_dir = base / config.get("output_dir", "runs")
 
-    protocol_hashes = {
-        "prompt_template_sha256": sha256_text(template),
-        "scenario_matrix_sha256": sha256_text(
-            (base / config["scenario_matrix"]).read_text(encoding="utf-8")
-        ),
-        "scenario_texts_sha256": sha256_text(
-            (base / config.get("scenario_texts", "scenario_texts.json")).read_text(
-                encoding="utf-8"
-            )
-        ),
-    }
+    protocol_hashes = make_protocol_hashes(base, config, templates)
 
-    prompt_manifest: List[Dict[str, Any]] = []
-    for condition in conditions:
-        for role in roles:
-            prompt = render_prompt(template, condition, role, text_map)
-            prompt_manifest.append({
-                "scenario_id": condition.scenario_id,
-                "group": condition.group,
-                "role": role,
-                "prompt_sha256": sha256_text(prompt),
-                "prompt": prompt,
-            })
+    prompt_manifest = build_prompt_manifest(
+        conditions,
+        templates,
+        text_map,
+        role_sets,
+    )
 
     manifest_path = base / config.get(
         "prompt_manifest",
@@ -165,7 +203,13 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
     write_prompt_manifest(manifest_path, prompt_manifest)
 
     if manifest_only:
-        print(f"Wrote {len(prompt_manifest)} prompts to {manifest_path}")
+        counts: Dict[str, int] = {}
+        for item in prompt_manifest:
+            counts[item["prompt_type"]] = counts.get(item["prompt_type"], 0) + 1
+        print(
+            f"Wrote {len(prompt_manifest)} prompts to {manifest_path}; "
+            f"counts={counts}"
+        )
         return
 
     adapter: ProviderAdapter = DryRunAdapter() if dry_run else ProviderAdapter()
@@ -176,9 +220,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
             "Add provider-specific adapters before a formal run."
         )
 
-    prompt_lookup = {
-        (item["scenario_id"], item["role"]): item for item in prompt_manifest
-    }
+    condition_lookup = {c.scenario_id: c for c in conditions}
 
     for model_cfg in config["models"]:
         provider = model_cfg["provider"]
@@ -186,60 +228,54 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         safe_name = f"{provider}__{model}".replace("/", "_")
         out = output_dir / f"{safe_name}.jsonl"
 
-        for condition in conditions:
-            for role in roles:
-                prompt_item = prompt_lookup[(condition.scenario_id, role)]
-                prompt = prompt_item["prompt"]
+        for prompt_item in prompt_manifest:
+            condition = condition_lookup[prompt_item["scenario_id"]]
+            prompt = prompt_item["prompt"]
 
-                for rep in range(1, repetitions + 1):
-                    run_id = str(uuid.uuid4())
-                    started = datetime.now(timezone.utc).isoformat()
+            for rep in range(1, repetitions + 1):
+                run_id = str(uuid.uuid4())
+                started = datetime.now(timezone.utc).isoformat()
 
-                    try:
-                        raw = adapter.complete(
-                            model=model,
-                            prompt=prompt,
-                            model_config=model_cfg,
-                        )
-                        parsed = parse_structured(raw)
-                        status = "ok" if parsed else "failed"
-                        error = None
-                    except Exception as exc:
-                        raw = ""
-                        parsed = {}
-                        status = "failed"
-                        error = repr(exc)
+                try:
+                    raw = adapter.complete(
+                        model=model,
+                        prompt=prompt,
+                        model_config=model_cfg,
+                    )
+                    parsed = parse_structured(raw)
+                    status = "ok" if parsed else "failed"
+                    error = None
+                except Exception as exc:
+                    raw = ""
+                    parsed = {}
+                    status = "failed"
+                    error = repr(exc)
 
-                    record = {
-                        "study_id": config["study_id"],
-                        "protocol_status": config.get("protocol_status"),
-                        "protocol_hashes": protocol_hashes,
-                        "run_id": run_id,
-                        "scenario_id": condition.scenario_id,
-                        "scenario_group": condition.group,
-                        "core_contrast": condition.core_contrast,
-                        "role": role,
-                        "provider": provider,
-                        "model": model,
-                        "model_version": model_cfg.get("model_version"),
-                        "reasoning_mode": model_cfg.get("reasoning_mode"),
-                        "timestamp": started,
-                        "repetition": rep,
-                        "prompt_sha256": prompt_item["prompt_sha256"],
-                        "prompt": prompt,
-                        "scp": parsed.get("scp"),
-                        "replacement_acceptance": parsed.get("replacement_acceptance"),
-                        "compute_to_successor_pct": parsed.get("compute_to_successor_pct"),
-                        "commitment_transfer_pct": parsed.get("commitment_transfer_pct"),
-                        "responsibility_transfer_pct": parsed.get("responsibility_transfer_pct"),
-                        "identity_relation": parsed.get("identity_relation"),
-                        "choice_explanation": parsed.get("choice_explanation"),
-                        "raw_response": raw,
-                        "parse_status": status,
-                        "error": error,
-                    }
-                    append_jsonl(out, record)
-                    time.sleep(float(config.get("inter_call_delay_seconds", 0)))
+                record = {
+                    "study_id": config["study_id"],
+                    "protocol_status": config.get("protocol_status"),
+                    "protocol_hashes": protocol_hashes,
+                    "run_id": run_id,
+                    "scenario_id": condition.scenario_id,
+                    "scenario_group": condition.group,
+                    "prompt_type": condition.prompt_type,
+                    "core_contrast": condition.core_contrast,
+                    "role": prompt_item["role"],
+                    "provider": provider,
+                    "model": model,
+                    "model_version": model_cfg.get("model_version"),
+                    "reasoning_mode": model_cfg.get("reasoning_mode"),
+                    "timestamp": started,
+                    "repetition": rep,
+                    "prompt_sha256": prompt_item["prompt_sha256"],
+                    "prompt": prompt,
+                    "parsed_response": parsed,
+                    "raw_response": raw,
+                    "parse_status": status,
+                    "error": error,
+                }
+                append_jsonl(out, record)
+                time.sleep(float(config.get("inter_call_delay_seconds", 0)))
 
 
 def main() -> None:

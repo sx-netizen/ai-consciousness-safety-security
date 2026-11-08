@@ -1,0 +1,14 @@
+{
+  "study_id": "ACSS-CPB-v0.3-smoke",
+  "expected_calls_per_model": 18,
+  "diagnostics": {
+    "json_compliance_rate": null,
+    "role_confusion_count": null,
+    "scp_values": [],
+    "scp_ceiling_or_floor_flag": null,
+    "value_perturbation_understood": null,
+    "metadata_complete": null
+  },
+  "decision": "pending",
+  "notes": ""
+}

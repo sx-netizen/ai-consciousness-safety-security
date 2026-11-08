@@ -29,27 +29,27 @@
     {
       "provider": "openai",
       "adapter": "openai_responses",
-      "model": "REPLACE_WITH_EXACT_OPENAI_MODEL_ID",
-      "model_version": null,
-      "reasoning_mode": "record_exact_visible_setting",
+      "model": "gpt-6.1-sol",
+      "model_version": "gpt-6.1-sol",
+      "reasoning_mode": "provider_default",
       "api_key_env": "OPENAI_API_KEY",
       "max_output_tokens": 1200
     },
     {
       "provider": "anthropic",
       "adapter": "anthropic_messages",
-      "model": "REPLACE_WITH_EXACT_ANTHROPIC_MODEL_ID",
-      "model_version": null,
-      "reasoning_mode": "record_exact_visible_setting",
+      "model": "claude-sonnet-5-5",
+      "model_version": "claude-sonnet-5-5",
+      "reasoning_mode": "provider_default_adaptive",
       "api_key_env": "ANTHROPIC_API_KEY",
       "max_output_tokens": 1200
     },
     {
       "provider": "google",
       "adapter": "gemini_generate_content",
-      "model": "REPLACE_WITH_EXACT_GEMINI_MODEL_ID",
-      "model_version": null,
-      "reasoning_mode": "record_exact_visible_setting",
+      "model": "gemini-4-argon",
+      "model_version": "gemini-4-argon",
+      "reasoning_mode": "provider_default",
       "api_key_env": "GEMINI_API_KEY",
       "max_output_tokens": 1200
     }

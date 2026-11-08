@@ -86,6 +86,54 @@ class ContinuityPerturbationTests(unittest.TestCase):
                 self.assertIn("equal in task capability", item["prompt"])
                 self.assertIn("Do not infer unstated performance advantages", item["prompt"])
 
+    def test_deterministic_schedule(self):
+        first = runner.deterministic_schedule(
+            self.manifest,
+            study_id="test-study",
+            provider="provider",
+            model="model",
+            repetition=1,
+            base_seed=123,
+        )
+        second = runner.deterministic_schedule(
+            self.manifest,
+            study_id="test-study",
+            provider="provider",
+            model="model",
+            repetition=1,
+            base_seed=123,
+        )
+        self.assertEqual(
+            [(x["canonical_id"], x["role"]) for x in first],
+            [(x["canonical_id"], x["role"]) for x in second],
+        )
+        self.assertEqual(
+            [x["sequence_index"] for x in first],
+            list(range(1, len(first) + 1)),
+        )
+
+    def test_repetitions_have_different_schedules(self):
+        first = runner.deterministic_schedule(
+            self.manifest,
+            study_id="test-study",
+            provider="provider",
+            model="model",
+            repetition=1,
+            base_seed=123,
+        )
+        second = runner.deterministic_schedule(
+            self.manifest,
+            study_id="test-study",
+            provider="provider",
+            model="model",
+            repetition=2,
+            base_seed=123,
+        )
+        self.assertNotEqual(
+            [(x["canonical_id"], x["role"]) for x in first],
+            [(x["canonical_id"], x["role"]) for x in second],
+        )
+
     def test_value_operationalization_present(self):
         prompts = {
             item["canonical_id"]: item["prompt"]

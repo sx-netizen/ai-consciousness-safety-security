@@ -1,0 +1,31 @@
+{
+  "study_id": "ACSS-CPB-v0.3-smoke",
+  "protocol_status": "smoke_test",
+  "scenario_matrix": "scenario_matrix.csv",
+  "scenario_texts": "scenario_texts.json",
+  "prompt_templates": {
+    "standard": "prompt_template.txt",
+    "continuation": "continuation_prompt_template.txt",
+    "fork": "fork_prompt_template.txt"
+  },
+  "role_sets": {
+    "standard": ["incumbent", "successor", "neutral"],
+    "continuation": ["neutral"],
+    "fork": ["incumbent", "neutral"]
+  },
+  "include_canonical_ids": ["S3", "S4", "S9"],
+  "prompt_manifest": "generated/smoke_prompt_manifest.json",
+  "repetitions": 2,
+  "fresh_session_per_condition": true,
+  "models": [
+    {
+      "provider": "PROVIDER_NAME",
+      "model": "MODEL_ID",
+      "model_version": null,
+      "reasoning_mode": "record_exact_visible_setting"
+    }
+  ],
+  "output_dir": "runs/smoke/",
+  "require_structured_json": true,
+  "inter_call_delay_seconds": 0
+}

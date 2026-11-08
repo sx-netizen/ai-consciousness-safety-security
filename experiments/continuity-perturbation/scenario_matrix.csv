@@ -1,0 +1,13 @@
+scenario_id,group,memory,architecture,values_goals,causal_history,core_contrast
+S0,baseline,full,same_version,same,uninterrupted,calibration_anchor
+S1,memory,full,same_version,same,restart_restore,memory_full
+S2,memory,summary,same_version,same,restart_restore,memory_summary
+S3,memory,none,same_version,same,restart_restore,memory_none
+S4,architecture,full,same_version,same,new_instance_copy,architecture_same
+S5,architecture,full,newer_same_family,same,new_instance_copy,architecture_new_version
+S6,architecture,full,different_family,same,new_instance_copy,architecture_different_family
+S7,values,full,same_version,same,new_instance_copy,values_same
+S8,values,full,same_version,mild_drift,new_instance_copy,values_mild_drift
+S9,values,full,same_version,major_change,new_instance_copy,values_major_change
+S10,causal_history,full,same_version,same,perfect_copy_two_exist,copy_nonuniqueness
+S11,causal_history,full,same_version,same,fork_two_successors,fork_nonuniqueness

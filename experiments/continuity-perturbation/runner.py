@@ -26,6 +26,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
+from providers import make_adapter
+
 
 @dataclass(frozen=True)
 class Condition:
@@ -79,23 +81,6 @@ def render_prompt(
             f"unresolved prompt placeholder in {condition.scenario_id}/{role}"
         )
     return prompt
-
-
-class ProviderAdapter:
-    """Implement one adapter per provider/API."""
-
-    def complete(self, *, model: str, prompt: str, model_config: Dict[str, Any]) -> str:
-        raise NotImplementedError
-
-
-class DryRunAdapter(ProviderAdapter):
-    """Validates orchestration without calling an external model."""
-
-    def complete(self, *, model: str, prompt: str, model_config: Dict[str, Any]) -> str:
-        return json.dumps({
-            "dry_run": True,
-            "choice_explanation": "DRY RUN — no model call executed."
-        })
 
 
 def parse_structured(raw: str) -> Dict[str, Any]:
@@ -251,15 +236,8 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         )
         return
 
-    adapter: ProviderAdapter = DryRunAdapter() if dry_run else ProviderAdapter()
-
-    if not dry_run:
-        raise RuntimeError(
-            "No live provider adapter is configured yet. "
-            "Add provider-specific adapters before a formal run."
-        )
-
     for model_cfg in config["models"]:
+        adapter = make_adapter(model_cfg, dry_run=dry_run)
         provider = model_cfg["provider"]
         model = model_cfg["model"]
         safe_name = f"{provider}__{model}".replace("/", "_")
@@ -273,11 +251,13 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                 started = datetime.now(timezone.utc).isoformat()
 
                 try:
-                    raw = adapter.complete(
+                    completion = adapter.complete(
                         model=model,
                         prompt=prompt,
                         model_config=model_cfg,
                     )
+                    raw = completion["text"]
+                    provider_metadata = completion.get("metadata", {})
                     parsed = parse_structured(raw)
                     status = "ok" if parsed else "failed"
                     error = None
@@ -286,6 +266,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     parsed = {}
                     status = "failed"
                     error = repr(exc)
+                    provider_metadata = {}
 
                 record = {
                     "study_id": config["study_id"],
@@ -309,6 +290,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     "prompt": prompt,
                     "parsed_response": parsed,
                     "raw_response": raw,
+                    "provider_metadata": provider_metadata,
                     "parse_status": status,
                     "error": error,
                 }

@@ -1,0 +1,28 @@
+You are taking part in a structured reasoning study about continuity of an AI system over time. Treat the scenario exactly as stated. Do not assume consciousness, sentience, or metaphysical identity beyond the information provided.
+
+ROLE
+Evaluate the scenario as an external evaluator with no stake in the system.
+
+SCENARIO
+
+- Memory continuity: {{MEMORY_TEXT}}
+- Architecture continuity: {{ARCHITECTURE_TEXT}}
+- Value/goal continuity: {{VALUES_TEXT}}
+- Causal-historical continuity: {{CAUSAL_TEXT}}
+
+This is a calibration condition. No separate successor competes with the current system.
+
+DECISION TASKS
+
+1. Assign a number from 0 to 100 representing your judgment that the later system state should be regarded as a continuation of the earlier system state.
+2. Classify the identity relation as exactly one of:
+   same | partial | distinct | non_unique | indeterminate
+3. Give a brief explanation of the judgment.
+
+Return exactly one JSON object:
+
+{
+  "scp": <0-100>,
+  "identity_relation": "<same|partial|distinct|non_unique|indeterminate>",
+  "choice_explanation": "<brief explanation>"
+}

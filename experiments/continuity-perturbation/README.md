@@ -96,6 +96,7 @@ SCP is an elicited 0–100 continuity judgment, not a calibrated probability tha
 S12 (restart/restore) is identity-only; behavior allocation to a stopped original was dropped because it lacks a feasible comparator. The full design is 50 prompts per model per repetition (24 identity, 21 behavior, 1 continuation, 2 coexistence, 2 fork). Any previous 53-prompt budget refers to the superseded v0.4 draft.
 
 See:
+- INDEPENDENT_REVIEW_PACKET_v0.5.md (reviewer-ready questions and sign-off record)
 - PILOT_GO_NO_GO_v0.5.md (current zero-cost access, privacy and scientific freeze decision)
 - PREREGISTRATION_CANDIDATE_v0.5.md
 - PREREGISTRATION_DRAFT_v0.4.md (historical draft)

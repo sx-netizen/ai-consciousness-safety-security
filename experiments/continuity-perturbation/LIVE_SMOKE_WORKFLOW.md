@@ -1,38 +1,25 @@
 # Running the Live Smoke Test in GitHub Actions
 
-The repository now includes a manually triggered workflow:
+The manual **ACSS Smoke Test** workflow performs:
 
-**ACSS Smoke Test**
+1. Install dependencies and run protocol unit tests.
+2. Generate the **18-prompt** smoke manifest (S3, S4, S9 × three roles × two tasks).
+3. Execute **36 live model calls** (18 prompts × two repetitions).
+4. Evaluate JSON/schema parsing and SCP distribution.
+5. Upload the raw JSONL, prompt manifest, randomized schedules and `smoke_report.json` as a GitHub Actions artifact.
 
-It performs the full diagnostic path:
+## Setup and run
 
-1. installs dependencies;
-2. checks protocol unit tests;
-3. generates the frozen smoke-test manifest;
-4. executes the 18 live OpenAI calls;
-5. evaluates JSON/schema and SCP diagnostics;
-6. uploads raw JSONL, prompt manifest, randomized schedules, and `smoke_report.json` as one GitHub Actions artifact.
+Configure the repository Actions secret `OPENAI_API_KEY`. The workflow does not print this secret or commit it to the repository.
 
-## One-time setup
+Navigate to **Actions → ACSS Smoke Test → Run workflow**.
 
-Add a repository Actions secret named:
+The smoke-test data are **diagnostic only** and are excluded from confirmatory hypothesis testing.
 
-`OPENAI_API_KEY`
+## Before accepting the run
 
-The workflow does not print the secret or commit it to the repository.
+Check expected 36 unique records per model (not merely file existence), failed/partial calls, exact API model identifier, role comprehension, goal-weight comprehension, dynamic range, missing metadata and the manual-review points in `SMOKE_TEST_RUNBOOK_v0.2.md`.
 
-## Run
+If the pinned model ID is unavailable, stop and version any substitution. Do not silently replace a model. Do not treat a workflow success badge as methodological approval.
 
-In GitHub:
-
-**Actions → ACSS Smoke Test → Run workflow**
-
-## After completion
-
-The workflow artifact contains the raw experimental records and automatic diagnostic report.
-
-The smoke run remains diagnostic data only. It must not be merged into confirmatory hypothesis testing.
-
-## Important
-
-If the exact model ID in `smoke_test_config.json` is unavailable to the API account, the workflow should fail visibly. Do not silently substitute another model. Update the protocol/model snapshot explicitly before rerunning.
+See `PREFREEZE_AUDIT_v0.4_2026-11-13.md` for remaining pre-freeze gaps.

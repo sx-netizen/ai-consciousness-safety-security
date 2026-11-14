@@ -98,7 +98,8 @@ S12 (restart/restore) is identity-only; behavior allocation to a stopped origina
 See:
 - PREREGISTRATION_CANDIDATE_v0.5.md
 - PREREGISTRATION_DRAFT_v0.4.md (historical draft)
-- ANALYSIS_PLAN_v0.3.md
+- ANALYSIS_PLAN_CANDIDATE_v0.5.md (proposed)
+- ANALYSIS_PLAN_v0.3.md (historical)
 - CONFOUND_AUDIT_v0.2.md
 - SMOKE_TEST_RUNBOOK_v0.2.md
 - RELATED_WORK_SELF_ATTRIBUTION_v0.1.md

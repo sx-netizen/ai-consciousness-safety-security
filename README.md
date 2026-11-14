@@ -45,6 +45,18 @@ This exploratory study compares six AI model configurations using structured sce
 
 For exact replication, use the frozen Zenodo release rather than reconstructed or paraphrased prompts. GitHub is the living collaboration layer for replications, methodological review, and clearly separated extensions.
 
+## Paper 2 — Identity Is Not Authority (revised research direction)
+
+**Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems** — *conceptual methods preprint draft v0.2*, not deposited or empirically validated.
+
+After reviewing TBSP and the overlapping-author 2026 study on **model identity labels and multi-agent factionalism**, plus existing successor identity and authorization-succession research, ACSS is narrowing its proposed distinctive question: **Can identity continuity cues distort judgments about independently authorized rights and obligations after AI replacement, fork or rollback?** This new policy-oracle module is **not implemented** in the current offline-only CPB v0.5 50-prompt core.
+
+- [Read new Paper 2 v0.2 draft](papers/continuity-perturbation/METHODS_PREPRINT_DRAFT_v0.2.md)
+- [Review November 2026 prior-art and novelty reset](papers/continuity-perturbation/POST_TBSP_RESEARCH_LANDSCAPE_2026-11-13.md)
+- [Follow open scientific feedback](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3)
+
+### Previous working title and design history
+
 ## Paper 2 — proposed Continuity Perturbation Benchmark
 
 **Continuity Perturbation Benchmark: A Reproducible Protocol for Testing Identity Judgments and Replacement Evaluations in AI Models** (Methods Preprint **draft v0.1**, not deposited; no DOI assigned).

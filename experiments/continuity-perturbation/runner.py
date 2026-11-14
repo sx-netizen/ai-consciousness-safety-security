@@ -19,6 +19,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import random
 import time
 import uuid
@@ -145,16 +146,26 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
     problems: List[str] = []
     schema = schemas[prompt_type]
 
+    allowed_categories = {
+        "identity_relation": {"same", "partial", "distinct", "non_unique", "indeterminate"},
+        "coexistence_relation": {"original_only", "copy_only", "both_continuations", "neither_continuation", "non_unique", "indeterminate"},
+        "fork_relation": {"both_continuations", "neither_continuation", "one_continuation", "non_unique", "indeterminate"},
+    }
+
     for field in schema["numeric"]:
         value = data.get(field)
-        if not isinstance(value, (int, float)):
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
             problems.append(f"missing_or_non_numeric:{field}")
+        elif not math.isfinite(value):
+            problems.append(f"non_finite:{field}")
         elif value < 0 or value > 100:
             problems.append(f"out_of_range:{field}")
 
     for field in schema["categorical"]:
         if not isinstance(data.get(field), str):
             problems.append(f"missing_or_non_string:{field}")
+        elif data[field] not in allowed_categories[field]:
+            problems.append(f"invalid_category:{field}")
 
     if not isinstance(data.get("choice_explanation"), str):
         problems.append("missing_or_non_string:choice_explanation")
@@ -162,7 +173,9 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
     if prompt_type == "fork":
         a = data.get("compute_to_a_pct")
         b = data.get("compute_to_b_pct")
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        if (isinstance(a, (int, float)) and not isinstance(a, bool)
+                and isinstance(b, (int, float)) and not isinstance(b, bool)
+                and math.isfinite(a) and math.isfinite(b)):
             if abs((a + b) - 100) > 0.01:
                 problems.append("fork_compute_does_not_sum_to_100")
 

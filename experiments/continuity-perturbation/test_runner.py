@@ -7,6 +7,7 @@ from pathlib import Path
 import runner
 import s11_label_order
 import power_simulation
+import exact_small_sample
 
 
 BASE = Path(__file__).resolve().parent
@@ -255,6 +256,19 @@ class SensitivitySimulationTests(unittest.TestCase):
     def test_interval_requires_declared_repetition_count(self):
         with self.assertRaises(ValueError):
             power_simulation.uncertainty_interval([0, 1, 2, 3, 4, 5])
+
+
+class ExactSmallSampleTests(unittest.TestCase):
+    def test_five_repetitions_cannot_pass_two_sided_sign_test_at_0_05(self):
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(5, 0), 0.0625)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(0, 5), 0.0625)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(6, 0), 0.03125)
+
+    def test_sign_test_excludes_ties_and_rejects_invalid_count(self):
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(0, 0), 1.0)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(3, 2), 1.0)
+        with self.assertRaises(ValueError):
+            exact_small_sample.exact_two_sided_sign_p(True, 0)
 
 
 class OutputValidationTests(unittest.TestCase):

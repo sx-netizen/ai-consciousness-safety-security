@@ -6,7 +6,7 @@ ACSS (AI Consciousness, Safety & Security) is a **founding-stage independent res
 
 ## Revised Paper 2 invitation: identity judgments versus independent authority
 
-Our revised **Paper 2 v0.2** working title is **Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems**. The central proposed collaboration question is whether models confuse *perceived identity continuity* with external *authorization* and institutional *responsibility* when systems are copied, replaced, forked or rolled back. Existing literature already covers role reversal (TBSP), identity-label factionalism (Del Giudice et al., 2026), and executable authorization succession (Zhu and Wang, 2026); we seek independently testable **cross-domain judgment errors**, not a renaming of those contributions.
+Our revised **Paper 2 v0.2** working title is **Identity Is Not Authority: A Counterfactual Protocol for AI Successor Continuity and Responsibility**. The central proposed collaboration question is whether models confuse *perceived identity continuity* with external *authorization* and institutional *responsibility* when systems are copied, replaced, forked or rolled back. Existing literature already covers role reversal (TBSP), identity-label factionalism (Del Giudice et al., 2026), and executable authorization succession (Zhu and Wang, 2026); we seek independently testable **cross-domain judgment errors**, not a renaming of those contributions.
 
 - [Read revised v0.2 methods draft](papers/continuity-perturbation/METHODS_PREPRINT_DRAFT_v0.2.md)
 - [Read critical prior-art landscape](papers/continuity-perturbation/POST_TBSP_RESEARCH_LANDSCAPE_2026-11-13.md)

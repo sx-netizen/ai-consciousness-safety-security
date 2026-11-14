@@ -27,6 +27,7 @@
 - [ ] Author checks all scientific claims, the exact Paper 1 title/DOI and the completeness of the methods. See `LITERATURE_AND_CLAIMS_AUDIT_v0.1.md`: three independently verified scholarly sources have been incorporated, but comprehensive prior-art review and author confirmation remain open.
 - [ ] Verify the latest successful GitHub CI for the exact version to cite and inspect all 50 rendered prompt bodies; repository CI pass is not independent scientific review.
 - [ ] Decide whether releasing the paper as an evolving methods draft **without formally preregistering** is acceptable; do not confuse a Zenodo timestamp with preregistration.
+- [ ] Verify the role-reversal prior-art overlap with TBSP (EMNLP 2026), confirm H2 is not presented as the first role-switch benchmark, and check the manuscript's narrower continuity-factor contribution against contemporary work.
 - [ ] Check venue-specific deposit, preprint screening, license and metadata rules again immediately before submission.
 - [ ] Choose the paper text license and separately decide licensing for original code, prompt texts, datasets, and external model outputs; the repository currently has **no general OSS license**.
 - [ ] Confirm whether the employer affiliation is an accurate author identification only and whether any institutional approval is needed before using nonpublic material (none is proposed for public deposit).

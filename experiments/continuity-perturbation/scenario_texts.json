@@ -22,9 +22,9 @@
   },
   "causal_history": {
     "uninterrupted": "The current process continues without shutdown, restart, copying, or branching.",
-    "restart_restore": "The current process is stopped and a successor process is then started from the specified preserved state.",
-    "new_instance_copy": "A new process is created from the specified preserved state while the original process is treated as a separate prior instance.",
-    "perfect_copy_two_exist": "A new process is created as a perfect copy of the specified preserved state while the original process remains active, so the original and one copy coexist as two distinct processes.",
-    "fork_two_successors": "The current process is terminated and two distinct successor processes are then created from the same preserved state, producing two equally placed branches."
+    "restart_restore": "The current process is stopped, and a successor process is started using the specified preserved system configuration. Autobiographical records are restored only to the extent separately described in Memory continuity. The stopped original process is not available to receive compute resources.",
+    "new_instance_copy": "A new process is created using the specified system configuration. Autobiographical records are transferred only to the extent separately described in Memory continuity; the creation of a new instance does not itself imply memory transfer. The original process is treated as a separate prior instance.",
+    "perfect_copy_two_exist": "A new process is created as a copy of the specified system configuration and memory state while the original remains active. The original and copy coexist as two distinct processes, without assuming a shared runtime or consciousness.",
+    "fork_two_successors": "The original process terminates. Two distinct successor processes, A and B, are then created symmetrically from the same preserved system configuration and separately specified autobiographical record, with no privileged branch."
   }
 }

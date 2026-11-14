@@ -8,6 +8,7 @@ import runner
 import s11_label_order
 import power_simulation
 import exact_small_sample
+import audit_dataset
 
 
 BASE = Path(__file__).resolve().parent
@@ -269,6 +270,58 @@ class ExactSmallSampleTests(unittest.TestCase):
         self.assertEqual(exact_small_sample.exact_two_sided_sign_p(3, 2), 1.0)
         with self.assertRaises(ValueError):
             exact_small_sample.exact_two_sided_sign_p(True, 0)
+
+
+class DatasetIntegrityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.cfg, cls.manifest = audit_dataset.configured_manifest(
+            BASE / "experiment_config.example.json"
+        )
+
+    def one_repetition(self):
+        rows = []
+        for i, p in enumerate(self.manifest):
+            rows.append({
+                "provider": "synthetic", "model": "fixture",
+                "study_id": self.cfg["study_id"],
+                "canonical_id": p["canonical_id"], "prompt_type": p["prompt_type"],
+                "role": p["role"], "repetition": 1,
+                "prompt_sha256": p["prompt_sha256"], "prompt": p["prompt"],
+                "run_id": f"test-{i}", "timestamp": "2026-11-13T00:00:00Z",
+                "randomization_seed": self.cfg["randomization_seed"],
+                "parse_status": "failed", "parsed_response": {},
+            })
+        return rows
+
+    def test_clean_one_repetition_50_records(self):
+        result = audit_dataset.audit_rows(
+            self.one_repetition(), self.cfg, self.manifest, repetitions=1
+        )
+        self.assertTrue(result["integrity_pass"], result["issues"])
+        self.assertEqual(result["expected_rows"], 50)
+
+    def test_duplicate_and_missing_condition_detection(self):
+        rows = self.one_repetition()
+        rows[0] = dict(rows[1])
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertIn("duplicate_observation_keys", result["issues"])
+        self.assertIn("missing_observation_keys", result["issues"])
+
+    def test_prompt_tampering_and_synthetic_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["prompt"] = "changed"
+        rows[0]["synthetic_fixture"] = True
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertIn("row_1:rendered_prompt_mismatch", result["issues"])
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
+    def test_invalid_ok_status_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["parse_status"] = "ok"
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertIn("row_1:ok_status_schema_invalid", result["issues"])
 
 
 class OutputValidationTests(unittest.TestCase):

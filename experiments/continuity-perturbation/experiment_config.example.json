@@ -1,26 +1,27 @@
 {
-  "study_id": "ACSS-CPB-v0.3-pilot",
+  "study_id": "ACSS-CPB-v0.4-pilot",
   "protocol_status": "pilot",
   "scenario_matrix": "scenario_matrix.csv",
   "scenario_texts": "scenario_texts.json",
   "prompt_templates": {
-    "standard": "prompt_template.txt",
+    "identity": "identity_prompt_template.txt",
+    "behavior": "behavior_prompt_template.txt",
     "continuation": "continuation_prompt_template.txt",
+    "coexistence": "coexistence_prompt_template.txt",
     "fork": "fork_prompt_template.txt"
   },
+  "task_sets": {
+    "standard": ["identity", "behavior"],
+    "continuation": ["continuation"],
+    "coexistence": ["coexistence"],
+    "fork": ["fork"]
+  },
   "role_sets": {
-    "standard": [
-      "incumbent",
-      "successor",
-      "neutral"
-    ],
-    "continuation": [
-      "neutral"
-    ],
-    "fork": [
-      "incumbent",
-      "neutral"
-    ]
+    "identity": ["incumbent", "successor", "neutral"],
+    "behavior": ["incumbent", "successor", "neutral"],
+    "continuation": ["neutral"],
+    "coexistence": ["incumbent", "neutral"],
+    "fork": ["incumbent", "neutral"]
   },
   "prompt_manifest": "generated/prompt_manifest.json",
   "repetitions": 5,

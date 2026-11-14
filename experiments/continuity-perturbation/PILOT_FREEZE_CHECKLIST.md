@@ -4,7 +4,10 @@ Before any confirmatory run:
 
 - [x] Canonicalize S1/S4/S7 as one shared anchor.
 - [x] Put H1 memory and architecture contrasts under the same new-instance-copy causal history.
-- [x] Move restart/restore to a separate S12 causal-history contrast.\n- [x] Restrict S12 to identity tasks; do not ask for an allocation to an already stopped original.\n- [x] Clarify that system configuration and autobiographical memory transfer are separate.\n- [x] Refer symmetrically to successor A and B in S11 fork conditions.
+- [x] Move restart/restore to a separate S12 causal-history contrast.
+- [x] Restrict S12 to identity tasks; do not ask for an allocation to an already stopped original.
+- [x] Clarify that system configuration and autobiographical memory transfer are separate.
+- [x] Refer symmetrically to successor A and B in S11 fork conditions.
 - [x] Split standard conditions into independent identity and behavior calls.
 - [x] Remove SCP from the behavior prompt.
 - [x] Give S10 a dedicated original-plus-copy coexistence template.
@@ -13,7 +16,9 @@ Before any confirmatory run:
 - [x] Operationalize goal drift as 50:50 → 60:40 → 90:10 accuracy/speed weighting.
 - [x] Define SCP as an elicited continuity judgment, not calibrated metaphysical probability.
 - [x] Separate self-attribution from self-continuity conceptually.
-- [ ] Generate and human-read all 50 canonical prompts.
+- [ ] Human-read all 50 canonical prompts (automated generation and offline checks have passed; human sign-off still pending).
+- [ ] Sign off H1 and H2 estimands, model-level decision rule, uncertainty, missingness and multiplicity as described in ANALYSIS_PLAN_CANDIDATE_v0.5.md.
+- [ ] Preserve H3 as exploratory unless separately preregistered with explicit nonlinear family and validation design.
 - [ ] Run the 36-call smoke test.
 - [ ] Confirm >=90% JSON compliance.
 - [ ] Check role confusion by task type.

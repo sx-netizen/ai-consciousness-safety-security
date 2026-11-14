@@ -37,3 +37,6 @@ jobs:
 
       - name: Generate smoke prompt manifest
         run: python runner.py --config smoke_test_config.json --manifest-only
+
+      - name: Zero-cost offline synthetic end-to-end smoke test
+        run: python offline_smoke.py

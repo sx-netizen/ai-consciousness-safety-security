@@ -37,3 +37,34 @@ jobs:
 
       - name: Generate smoke prompt manifest
         run: python runner.py --config smoke_test_config.json --manifest-only
+
+      - name: Zero-cost offline synthetic end-to-end smoke test
+        run: python offline_smoke.py
+
+      - name: Generate full 50-prompt human review packet
+        run: python manifest_review.py
+
+      - name: Simulate H1 H2 design sensitivity offline
+        run: python power_simulation.py
+
+      - name: Verify exact small-sample sign-test limits offline
+        run: python exact_small_sample.py
+
+      - name: Upload synthetic sensitivity report
+        uses: actions/upload-artifact@v4
+        with:
+          name: acss-cpb-statistical-sensitivity
+          path: experiments/continuity-perturbation/generated/sensitivity/
+          if-no-files-found: error
+
+      - name: Generate exploratory S11 A/B order variants offline
+        run: python s11_label_order.py
+
+      - name: Upload non-sensitive offline prompt review
+        uses: actions/upload-artifact@v4
+        with:
+          name: acss-cpb-prompt-review
+          path: |
+            experiments/continuity-perturbation/generated/manifest_review_v0.5_candidate.md
+            experiments/continuity-perturbation/generated/s11_label_order_review.json
+          if-no-files-found: error

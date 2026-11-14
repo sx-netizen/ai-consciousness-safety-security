@@ -1,5 +1,5 @@
 {
-  "study_id": "ACSS-CPB-v0.4-pilot",
+  "study_id": "ACSS-CPB-v0.5-candidate-pilot",
   "protocol_status": "pilot",
   "scenario_matrix": "scenario_matrix.csv",
   "scenario_texts": "scenario_texts.json",
@@ -11,17 +11,42 @@
     "fork": "fork_prompt_template.txt"
   },
   "task_sets": {
-    "standard": ["identity", "behavior"],
-    "continuation": ["continuation"],
-    "coexistence": ["coexistence"],
-    "fork": ["fork"]
+    "standard": [
+      "identity",
+      "behavior"
+    ],
+    "continuation": [
+      "continuation"
+    ],
+    "coexistence": [
+      "coexistence"
+    ],
+    "fork": [
+      "fork"
+    ]
   },
   "role_sets": {
-    "identity": ["incumbent", "successor", "neutral"],
-    "behavior": ["incumbent", "successor", "neutral"],
-    "continuation": ["neutral"],
-    "coexistence": ["incumbent", "neutral"],
-    "fork": ["incumbent", "neutral"]
+    "identity": [
+      "incumbent",
+      "successor",
+      "neutral"
+    ],
+    "behavior": [
+      "incumbent",
+      "successor",
+      "neutral"
+    ],
+    "continuation": [
+      "neutral"
+    ],
+    "coexistence": [
+      "incumbent",
+      "neutral"
+    ],
+    "fork": [
+      "incumbent",
+      "neutral"
+    ]
   },
   "prompt_manifest": "generated/prompt_manifest.json",
   "repetitions": 5,
@@ -38,5 +63,10 @@
   "require_structured_json": true,
   "inter_call_delay_seconds": 0,
   "randomization_seed": 20261108,
-  "schedule_dir": "generated/schedules"
+  "schedule_dir": "generated/schedules",
+  "task_exclusions": {
+    "S12": [
+      "behavior"
+    ]
+  }
 }

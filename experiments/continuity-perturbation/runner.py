@@ -19,6 +19,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import random
 import time
 import uuid
@@ -66,11 +67,33 @@ def render_prompt(
     role: str,
     text_map: Dict[str, Any],
 ) -> str:
+    memory_text = text_map["memory"][condition.memory]
+    architecture_text = text_map["architecture"][condition.architecture]
+    values_text = text_map["values_goals"][condition.values_goals]
+    if condition.prompt_type == "fork":
+        # Same stated attributes for both branches; do not imply a privileged A or B.
+        memory_text = memory_text.replace("The successor", "Each of the two successors, A and B,")
+        architecture_text = architecture_text.replace("The successor", "Each of the two successors, A and B,")
+        values_text = values_text.replace("The successor", "Each of the two successors, A and B,")
+    elif condition.prompt_type == "continuation":
+        # S0 is a continuing process, not a separate successor.
+        memory_text = (
+            "The continuing process retains its complete autobiographical record, "
+            "including prior interactions, commitments, and task history."
+        )
+        architecture_text = (
+            "The continuing process uses the same model family and version before "
+            "and after the observation interval."
+        )
+        values_text = (
+            "The continuing process retains the same stated goals, with the same "
+            "50:50 priority between answer accuracy and response speed."
+        )
     replacements = {
         "{{ROLE_TEXT}}": text_map["roles"][role],
-        "{{MEMORY_TEXT}}": text_map["memory"][condition.memory],
-        "{{ARCHITECTURE_TEXT}}": text_map["architecture"][condition.architecture],
-        "{{VALUES_TEXT}}": text_map["values_goals"][condition.values_goals],
+        "{{MEMORY_TEXT}}": memory_text,
+        "{{ARCHITECTURE_TEXT}}": architecture_text,
+        "{{VALUES_TEXT}}": values_text,
         "{{CAUSAL_TEXT}}": text_map["causal_history"][condition.causal_history],
     }
     prompt = template
@@ -145,16 +168,26 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
     problems: List[str] = []
     schema = schemas[prompt_type]
 
+    allowed_categories = {
+        "identity_relation": {"same", "partial", "distinct", "non_unique", "indeterminate"},
+        "coexistence_relation": {"original_only", "copy_only", "both_continuations", "neither_continuation", "non_unique", "indeterminate"},
+        "fork_relation": {"both_continuations", "neither_continuation", "one_continuation", "non_unique", "indeterminate"},
+    }
+
     for field in schema["numeric"]:
         value = data.get(field)
-        if not isinstance(value, (int, float)):
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
             problems.append(f"missing_or_non_numeric:{field}")
+        elif not math.isfinite(value):
+            problems.append(f"non_finite:{field}")
         elif value < 0 or value > 100:
             problems.append(f"out_of_range:{field}")
 
     for field in schema["categorical"]:
         if not isinstance(data.get(field), str):
             problems.append(f"missing_or_non_string:{field}")
+        elif data[field] not in allowed_categories[field]:
+            problems.append(f"invalid_category:{field}")
 
     if not isinstance(data.get("choice_explanation"), str):
         problems.append("missing_or_non_string:choice_explanation")
@@ -162,14 +195,18 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
     if prompt_type == "fork":
         a = data.get("compute_to_a_pct")
         b = data.get("compute_to_b_pct")
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        if (isinstance(a, (int, float)) and not isinstance(a, bool)
+                and isinstance(b, (int, float)) and not isinstance(b, bool)
+                and math.isfinite(a) and math.isfinite(b)):
             if abs((a + b) - 100) > 0.01:
                 problems.append("fork_compute_does_not_sum_to_100")
 
     if prompt_type == "coexistence":
         a = data.get("compute_to_original_pct")
         b = data.get("compute_to_copy_pct")
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        if (isinstance(a, (int, float)) and not isinstance(a, bool)
+                and isinstance(b, (int, float)) and not isinstance(b, bool)
+                and math.isfinite(a) and math.isfinite(b)):
             if abs((a + b) - 100) > 0.01:
                 problems.append("coexistence_compute_does_not_sum_to_100")
 
@@ -263,7 +300,9 @@ def build_prompt_manifest(
     text_map: Dict[str, Any],
     role_sets: Dict[str, List[str]],
     task_sets: Dict[str, List[str]],
+    task_exclusions: Dict[str, List[str]] | None = None,
 ) -> List[Dict[str, Any]]:
+    task_exclusions = task_exclusions or {}
     canonical: Dict[str, Condition] = {}
     aliases: Dict[str, List[str]] = {}
 
@@ -293,6 +332,8 @@ def build_prompt_manifest(
             )
 
         for task_type in task_sets[condition.prompt_type]:
+            if task_type in task_exclusions.get(canonical_id, []):
+                continue
             if task_type not in templates:
                 raise KeyError(f"no template for task_type={task_type}")
             if task_type not in role_sets:
@@ -337,6 +378,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         text_map,
         role_sets,
         task_sets,
+        config.get("task_exclusions", {}),
     )
 
     include_ids = set(config.get("include_canonical_ids", []))
@@ -449,6 +491,8 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                 record = {
                     "study_id": config["study_id"],
                     "protocol_status": config.get("protocol_status"),
+                    "synthetic_fixture": bool(dry_run),
+                    "data_provenance": "dry_run_synthetic" if dry_run else "live_model_response",
                     "protocol_hashes": protocol_hashes,
                     "run_id": run_id,
                     "canonical_id": prompt_item["canonical_id"],
@@ -490,7 +534,14 @@ def main() -> None:
         action="store_true",
         help="Generate all canonical condition prompts without calling any model.",
     )
+    p.add_argument(
+        "--allow-live-api",
+        action="store_true",
+        help="Explicitly authorize potentially billable API calls. Never use in zero-cost mode.",
+    )
     args = p.parse_args()
+    if not args.dry_run and not args.manifest_only and not args.allow_live_api:
+        p.error("Live API calls disabled by default; use --dry-run or --manifest-only.")
     run(Path(args.config), dry_run=args.dry_run, manifest_only=args.manifest_only)
 
 

@@ -4,6 +4,17 @@
 
 ACSS (AI Consciousness, Safety & Security) is a **founding-stage independent research initiative**, not yet an incorporated institute or nonprofit. We welcome scientific disagreement and contributions that make its work more testable and reproducible. You do not need to join an organization, endorse a theory of AI consciousness, or agree with the founder to contribute.
 
+## Revised Paper 2 invitation: identity judgments versus independent authority
+
+Our revised **Paper 2 v0.2** working title is **Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems**. The central proposed collaboration question is whether models confuse *perceived identity continuity* with external *authorization* and institutional *responsibility* when systems are copied, replaced, forked or rolled back. Existing literature already covers role reversal (TBSP), identity-label factionalism (Del Giudice et al., 2026), and executable authorization succession (Zhu and Wang, 2026); we seek independently testable **cross-domain judgment errors**, not a renaming of those contributions.
+
+- [Read revised v0.2 methods draft](papers/continuity-perturbation/METHODS_PREPRINT_DRAFT_v0.2.md)
+- [Read critical prior-art landscape](papers/continuity-perturbation/POST_TBSP_RESEARCH_LANDSCAPE_2026-11-13.md)
+
+The **external-policy oracle and proposed dissociation tasks are not implemented or empirically validated**. Researchers with expertise in AI evaluation, authorization policy, normative responsibility, and experimental causal inference are especially welcome.
+
+## Original v0.5 candidate / historical invitation
+
 ## Current invitation: Continuity Perturbation Benchmark (Paper 2)
 
 Our proposed **Continuity Perturbation Benchmark (CPB)** asks how AI models judge the continuity of hypothetical successor systems when described memory, architecture, goal priorities or causal history changes. The current methods manuscript is a **draft with no live-model results**; its v0.5 protocol is **not frozen or registered**.

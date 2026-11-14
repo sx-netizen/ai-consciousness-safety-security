@@ -5,9 +5,9 @@
 `power_simulation.py` runs a seeded, zero-provider-call simulation for the two currently proposed primary contrasts:
 
 - H1: `SCP(S6) - SCP(S3)`, positive when complete autobiographical memory loss is described as more disruptive than a different-model-family description.
-- H2: `SCP(incumbent) - SCP(neutral)`, with eight canonical scenario gaps aggregated **within each repetition** before any uncertainty interval is computed.
+- H2: `SCP(incumbent) - SCP(neutral)`, with seven canonical scenario gaps aggregated **within each repetition** before any uncertainty interval is computed.
 
-It compares 5, 10 and 20 *stochastic repetitions within each fixed model*, across assumed true effect magnitudes 0/5/10/20 SCP points. The simulation explicitly includes a shared role-framing noise term for H2; treating eight scenarios as eight fully independent repetitions would materially overstate effective sample size.
+It compares 5, 10 and 20 *stochastic repetitions within each fixed model*, across assumed true effect magnitudes 0/5/10/20 SCP points. The simulation explicitly includes a shared role-framing noise term for H2; treating seven scenarios as seven fully independent repetitions would materially overstate effective sample size.
 
 ## Fixed assumptions
 

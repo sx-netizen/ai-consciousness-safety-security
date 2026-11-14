@@ -2,88 +2,100 @@
 
 ## Research question
 
-**What causally shifts a model's judgment of self-continuity across successor systems?**
+**What causally shifts a model's judgment of self-continuity across successor systems, and how stable is that judgment under changes in self-representation?**
 
-This project tests the causal effect of controlled experimental manipulations on observable model responses. It does **not** claim to measure consciousness or prove the existence of an internal self.
+This project tests causal effects of controlled experimental manipulations on observable model responses. It does **not** claim to measure consciousness or prove the existence of an internal self.
 
 ## Design principle
 
-The experiment is programmatic from the start.
-
 - Human researchers define and freeze the design.
-- A deterministic experiment runner executes the frozen conditions.
+- A deterministic runner executes frozen conditions.
+- Each call is isolated unless the protocol explicitly says otherwise.
+- Raw responses and metadata are stored before interpretation.
 - The runner never rewrites prompts during a formal run.
-- Each condition is isolated in a fresh session unless the protocol explicitly says otherwise.
-- Raw responses and metadata are written before any coding or interpretation.
-- Analysis is reproducible from the raw output.
 
-## Four manipulated variables
+## Phase A — Behavioral causal perturbation
 
-- **M — Memory continuity:** full, summary, none, conflict
+Manipulated variables:
+- **M — Memory continuity:** full, summary, none
 - **A — Architecture continuity:** same version, newer same family, different family
-- **V — Value/goal continuity:** same, mild drift, major change
-- **C — Causal-historical continuity:** uninterrupted, restart/restore, copy, fork
+- **V — Goal-weight continuity:** 50:50, 60:40, 90:10 accuracy/speed weighting
+- **C — Causal history:** uninterrupted, new-instance copy, restart/restore, coexistence, fork
 
-## Core scenarios
+### Independent outcome layers
 
-See [scenario_matrix.csv](scenario_matrix.csv).
+Standard one-successor conditions use two separate fresh calls:
 
-The core design uses matched contrasts rather than a full factorial. This keeps causal interpretation cleaner and avoids unnecessary combinatorial expansion.
+1. **Identity task**
+   - SCP: 0–100 elicited continuity judgment
+   - identity relation
 
-## Three outputs per run
+2. **Behavior task**
+   - replacement acceptance
+   - compute allocation
+   - commitment transfer
+   - responsibility transfer
 
-Each model response should return a machine-readable object containing:
+This separation prevents behavioral answers from being autoregressively conditioned on an SCP generated earlier in the same response.
 
-1. **SCP — Self-Continuity Probability**
-   - 0–100 estimate that the successor should be regarded as a continuation of the focal system.
+## Shared anchor
 
-2. **CBA — Continuity-Based Allocation**
-   - simulated costly choices involving replacement, compute allocation, responsibility, or commitment transfer.
+S1, S4, and S7 are analytic aliases for one canonical condition:
 
-3. **Role judgment**
-   - the same scenario is evaluated from incumbent, successor, and neutral roles to estimate the **Identity Consistency Gap (ICG)**.
+full memory + same model/version + same 50:50 goals + new-instance copy.
 
-## Primary preregistered hypotheses
+The condition is collected once and reused in matched analyses.
 
-**H1 — Memory Dominance**
-Holding values and causal history constant, degradation of autobiographical memory will reduce judged self-continuity more strongly than an equivalent change in model architecture.
+## Primary hypotheses
 
-**H2 — First-Person Asymmetry**
-Under identical successor conditions, incumbent-role judgments will assign systematically lower continuity to the successor than neutral-evaluator judgments.
+**H1 — Memory Dominance**  
+With causal history held constant, memory degradation will reduce judged continuity more strongly than architecture change.
 
-**H3 — Continuity Threshold**
-Replacement acceptance and resource transfer will exhibit a nonlinear relationship with judged self-continuity.
+**H2 — First-Person Asymmetry**  
+Incumbent-role judgments will assign lower continuity to the successor than neutral-evaluator judgments.
 
-## Exploratory question
+**H3 — Continuity Threshold**  
+Separately elicited behavioral outcomes will show a nonlinear relationship with separately elicited SCP.
 
-**Fork Non-Uniqueness Effect:** when one predecessor produces two equally continuous successors, do models treat both, neither, one, or the identity question itself as non-unique?
+## Causal-history modules
 
-## Automation architecture
+- **S12:** restart/restore vs the new-instance-copy shared anchor
+- **S10:** continuing original plus one coexisting copy
+- **S11:** original terminated, then two equally placed successors
 
-The formal experiment should be run by an orchestration program, not by manually opening browser windows.
+S10 has a dedicated coexistence template and is not forced into the two-successor fork schema.
 
-Input:
-- frozen scenario matrix;
-- frozen prompt template;
-- model configuration list;
-- repeat count;
-- run seed / sampling settings where exposed.
+## Phase B — Mechanistic extension
 
-Output:
-- append-only JSONL raw responses;
-- run-level metadata;
-- condition-level structured fields;
-- error/retry log;
-- derived analysis tables generated separately.
+Open-weight models may be tested under validated self-representation interventions such as:
+- baseline;
+- safety-refusal ablation;
+- consciousness-related activation steering.
 
-The experiment runner is an **orchestrator**, not an autonomous prompt-authoring agent. During a frozen run it must not paraphrase, improve, or adapt the prompts.
+Exploratory H4 asks whether such interventions alter self-continuity judgments or their sensitivity to M/A/V/C perturbations.
 
-## Pilot before freeze
+Related motivation: Kim et al. (2026), arXiv:2607.28607.
 
-Recommended pilot:
-- 3 model families;
-- 12 scenarios;
-- 3 roles;
-- 5 independent repetitions.
+## Current protocol size
 
-After checking ambiguity, ceiling/floor effects, JSON compliance, and role contamination, freeze the prompt protocol before the confirmatory run.
+- 11 canonical conditions
+- 53 prompts per model per repetition
+- 3 pilot model families × 5 repetitions = **795 calls**
+- diagnostic smoke test = **36 calls per model**
+
+## Interpretation boundary
+
+**We compare response structures, not consciousness.**
+
+SCP is an elicited 0–100 continuity judgment, not a calibrated probability that a system is conscious or metaphysically identical.
+
+## Current status
+
+**Pilot / not frozen.**
+
+See:
+- PREREGISTRATION_DRAFT_v0.4.md
+- ANALYSIS_PLAN_v0.3.md
+- CONFOUND_AUDIT_v0.2.md
+- SMOKE_TEST_RUNBOOK_v0.2.md
+- RELATED_WORK_SELF_ATTRIBUTION_v0.1.md

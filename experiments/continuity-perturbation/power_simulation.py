@@ -41,15 +41,15 @@ def simulate_h1(rng, n, effect, response_sd):
 
 
 def simulate_h2(rng, n, effect, role_shared_sd, cell_residual_sd):
-    # Eight canonical scenario/role contrasts, summarized once per repetition.
-    # Shared role-framing fluctuation across 8 scenarios cannot be eliminated
+    # Seven H2-primary canonical scenario/role contrasts, summarized once per repetition.
+    # Shared role-framing fluctuation across 7 scenarios cannot be eliminated
     # by treating all 8 scenario differences as independent replicates.
     # Incumbent-minus-neutral true contrast is -effect.
     values = []
     for _ in range(n):
         shared = rng.gauss(0, role_shared_sd)
         cell_noise = mean(rng.gauss(0, cell_residual_sd)
-                          for _ in range(8))
+                          for _ in range(7))
         values.append(-effect + shared + cell_noise)
     return values
 
@@ -95,7 +95,7 @@ def estimate(seed=SEED, trials=N_TRIALS):
             "h1_contrast": "SCP(S6)-SCP(S3)",
             "h2_role_shared_sd_per_repetition": 10,
             "h2_condition_residual_sd": 15,
-            "h2_conditions_per_repetition": 8,
+            "h2_conditions_per_repetition": 7,
             "interval": "two-sided Student-t 95% CI across repetition summaries",
             "directional_decision": "H1 lower CI >0, H2 upper CI <0",
             "limitation": (
@@ -118,7 +118,7 @@ def to_markdown(result):
         f'`{result["trials_per_cell"]}`.',
         "",
         "Assumptions: one fixed model, independent normally distributed H1 "
-        "scenario-response noise (SD 15 SCP points); H2 eight condition gaps "
+        "scenario-response noise (SD 15 SCP points); H2 seven condition gaps "
         "per repetition with common role-framing noise (SD 10) and "
         "condition-specific noise (SD 15). ",
         "One observation per repetition is used for uncertainty. Intervals "

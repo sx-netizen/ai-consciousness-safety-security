@@ -47,6 +47,9 @@ jobs:
       - name: Simulate H1 H2 design sensitivity offline
         run: python power_simulation.py
 
+      - name: Verify exact small-sample sign-test limits offline
+        run: python exact_small_sample.py
+
       - name: Upload synthetic sensitivity report
         uses: actions/upload-artifact@v4
         with:

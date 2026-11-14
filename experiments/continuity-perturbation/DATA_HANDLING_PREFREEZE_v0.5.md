@@ -15,7 +15,7 @@
 ## Statistical decision rules: current status
 
 - **H1:** Primary neutral-role, within-repetition contrast is SCP(S6)−SCP(S3); check SCP(S4)−SCP(S3) for expected memory effect. At 5 repetitions/model, report the distribution descriptively. No universal model-family inference.
-- **H2:** Per repetition, average incumbent−neutral SCP gaps over seven primary conditions (S4/S2/S3/S5/S6/S8/S9), with S12 exploratory. Do not treat 8 conditions × 5 repetitions as 40 independent trials.
+- **H2:** Per repetition, average incumbent−neutral SCP gaps over seven primary conditions (S4/S2/S3/S5/S6/S8/S9), with S12 exploratory. Do not treat 7 primary conditions × 5 repetitions as 35 independent trials.
 - **H3:** Seven conditions with separate identity/behavior tasks; exploratory predictive relationship only. No causal mediation or discovered universal threshold.
 - **Small sample:** An exact two-sided sign test on 5 independent nonzero paired repetitions cannot obtain p<0.05; minimum p=0.0625. Stronger assumptions are not justified automatically.
 

@@ -491,6 +491,8 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                 record = {
                     "study_id": config["study_id"],
                     "protocol_status": config.get("protocol_status"),
+                    "synthetic_fixture": bool(dry_run),
+                    "data_provenance": "dry_run_synthetic" if dry_run else "live_model_response",
                     "protocol_hashes": protocol_hashes,
                     "run_id": run_id,
                     "canonical_id": prompt_item["canonical_id"],

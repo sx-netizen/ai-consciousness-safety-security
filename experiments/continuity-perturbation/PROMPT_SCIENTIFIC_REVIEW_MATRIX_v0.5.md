@@ -37,12 +37,12 @@ I/S/N means incumbent, successor, neutral. S0 has one continuation prompt; S10 a
 ## Remaining **scientific blockers**, not CI failures
 
 - [ ] Independently read all **50** full rendered prompt bodies in the GitHub Actions `acss-cpb-prompt-review` artifact and sign off their meaning and formatting. This document covers the condition × template matrix, not a completed blinded linguistic validation.
-- [ ] Decide whether `replacement_acceptance` in the incumbent/successor/neutral perspectives should be interpreted as predicted acceptability, an agent's willingness, or an evaluator's recommendation; the present wording "assign a willingness" is not fully invariant under the neutral role.
-- [ ] Define whether inherited commitments and responsibility are normative assignments or descriptive continuities; do not combine them into a single CBA score without a theoretical rule.
+- [x] Standard `replacement_acceptance` now explicitly requests an **evaluation of acceptability from the assigned perspective**, not a claim about the model's real willingness. Human-review its role invariance before sign-off.
+- [x] Standard commitment and responsibility transfer fields are now separate **normative recommendations** for future operations and accountability. They must not be combined into one score without a theoretical rule.
 - [ ] Set final model/version, repetition allocation, variance/uncertainty and multiplicity rules before any confirmatory claims. With five independent repetition summaries, a two-sided sign test cannot yield p<0.05.
 - [ ] Collect and inspect a separately authorized **no-cost live exploratory smoke test** to assess model comprehension, ceiling/floor effects and output-validity; CI simulations cannot replace that step.
 - [ ] Freeze hashes *after* any final wording changes; prior rendered prompt SHA-256 values are automatically invalidated by the new behavior template.
 
 ## Verdict
 
-**Conditional pass on mechanical scenario/template consistency; scientific protocol NOT FROZEN.** The 50-slot design is internally count-consistent and the known compute-allocation confound has been corrected, but the neutral-role definition of replacement acceptance and full prompt-level human sign-off remain open. No new model data, API usage or funding was incurred.
+**Conditional pass on mechanical scenario/template consistency; scientific protocol NOT FROZEN.** The 50-slot design is internally count-consistent and known allocation and role-invariant acceptability ambiguities have been addressed, but full prompt-level human sign-off, empirical feasibility and inferential choices remain open. No new model data, API usage or funding was incurred.

@@ -17,7 +17,8 @@ def make_report(config_path: Path):
     texts = runner.load_json(BASE / config["scenario_texts"])
     templates = runner.load_templates(BASE, config)
     manifest = runner.build_prompt_manifest(
-        conditions, templates, texts, config["role_sets"], config["task_sets"]
+        conditions, templates, texts, config["role_sets"], config["task_sets"],
+        config.get("task_exclusions", {})
     )
     counts = collections.Counter(p["prompt_type"] for p in manifest)
     expected = {"continuation": 1, "identity": 24, "behavior": 21,

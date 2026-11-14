@@ -72,7 +72,7 @@ def main():
     assert len(rows) == 36
     with tempfile.TemporaryDirectory() as directory:
         f = Path(directory) / "synthetic_smoke.jsonl"
-        f.write_text("".join(json.dumps(r) + "\\n" for r in rows), encoding="utf-8")
+        f.write_text("".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8")
         completed = subprocess.run(
             [sys.executable, str(BASE / "evaluate_smoke.py"), str(f)],
             capture_output=True, text=True, check=True

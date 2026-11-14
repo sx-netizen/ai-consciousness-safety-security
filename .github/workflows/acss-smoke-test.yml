@@ -5,6 +5,8 @@ on:
 
 jobs:
   smoke:
+    # Disabled under the ACSS zero-cost research policy. Do not run billable APIs.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     defaults:
       run:

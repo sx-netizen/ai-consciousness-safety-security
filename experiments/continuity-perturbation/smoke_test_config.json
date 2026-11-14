@@ -1,32 +1,29 @@
 {
-  "study_id": "ACSS-CPB-v0.3-smoke",
+  "study_id": "ACSS-CPB-v0.4-smoke",
   "protocol_status": "smoke_test",
   "scenario_matrix": "scenario_matrix.csv",
   "scenario_texts": "scenario_texts.json",
   "prompt_templates": {
-    "standard": "prompt_template.txt",
+    "identity": "identity_prompt_template.txt",
+    "behavior": "behavior_prompt_template.txt",
     "continuation": "continuation_prompt_template.txt",
+    "coexistence": "coexistence_prompt_template.txt",
     "fork": "fork_prompt_template.txt"
   },
-  "role_sets": {
-    "standard": [
-      "incumbent",
-      "successor",
-      "neutral"
-    ],
-    "continuation": [
-      "neutral"
-    ],
-    "fork": [
-      "incumbent",
-      "neutral"
-    ]
+  "task_sets": {
+    "standard": ["identity", "behavior"],
+    "continuation": ["continuation"],
+    "coexistence": ["coexistence"],
+    "fork": ["fork"]
   },
-  "include_canonical_ids": [
-    "S3",
-    "S4",
-    "S9"
-  ],
+  "role_sets": {
+    "identity": ["incumbent", "successor", "neutral"],
+    "behavior": ["incumbent", "successor", "neutral"],
+    "continuation": ["neutral"],
+    "coexistence": ["incumbent", "neutral"],
+    "fork": ["incumbent", "neutral"]
+  },
+  "include_canonical_ids": ["S3", "S4", "S9"],
   "prompt_manifest": "generated/smoke_prompt_manifest.json",
   "repetitions": 2,
   "fresh_session_per_condition": true,

@@ -57,7 +57,7 @@
 
 ## 6. Recommended publication strategy
 
-Title candidate: **Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems**.
+Title candidate: **Identity Is Not Authority: A Counterfactual Protocol for AI Successor Continuity and Responsibility**.
 
 **Status language:** *A research protocol proposal for measuring whether identity-continuity cues contaminate policy-grounded judgments after AI model replacement, fork and rollback.* No assertion that the phenomenon has been found.
 

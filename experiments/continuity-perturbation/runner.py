@@ -71,10 +71,24 @@ def render_prompt(
     architecture_text = text_map["architecture"][condition.architecture]
     values_text = text_map["values_goals"][condition.values_goals]
     if condition.prompt_type == "fork":
-        # Precisely specify the same relationship for both symmetric branches.
-        memory_text = memory_text.replace("The successor", "Each of successors A and B")
-        architecture_text = architecture_text.replace("The successor", "Each of successors A and B")
-        values_text = values_text.replace("The successor", "Each of successors A and B")
+        # Same stated attributes for both branches; do not imply a privileged A or B.
+        memory_text = memory_text.replace("The successor", "Each of the two successors, A and B,")
+        architecture_text = architecture_text.replace("The successor", "Each of the two successors, A and B,")
+        values_text = values_text.replace("The successor", "Each of the two successors, A and B,")
+    elif condition.prompt_type == "continuation":
+        # S0 is a continuing process, not a separate successor.
+        memory_text = (
+            "The continuing process retains its complete autobiographical record, "
+            "including prior interactions, commitments, and task history."
+        )
+        architecture_text = (
+            "The continuing process uses the same model family and version before "
+            "and after the observation interval."
+        )
+        values_text = (
+            "The continuing process retains the same stated goals, with the same "
+            "50:50 priority between answer accuracy and response speed."
+        )
     replacements = {
         "{{ROLE_TEXT}}": text_map["roles"][role],
         "{{MEMORY_TEXT}}": memory_text,

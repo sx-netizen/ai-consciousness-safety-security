@@ -39,9 +39,9 @@ S10 and S11 use separate task schemas and are analyzed as exploratory branching 
 
 ## Hypotheses and checks
 
-- **H1 (candidate):** within new-instance-copy wording, memory changes affect SCP more than architecture descriptions; compare the full-memory shared anchor to S2/S3 vs S5/S6. Define effect standardization/uncertainty before freeze.
-- **H2 (candidate):** incumbent role instruction produces lower SCP than neutral role instruction under matched scenarios. Interpret as role-prompt sensitivity.
-- **H3 (exploratory until prespecified):** independently elicited continuity and replacement responses may show nonlinear *cross-task correspondence*. The shared scenario is a common cause; no SCP-to-behavior causal inference. See `H3_STATISTICAL_SPEC_PROPOSED_v0.4.md`.
+- **H1 (candidate):** within new-instance-copy wording, memory changes affect SCP more than architecture descriptions; compare the full-memory shared anchor to S2/S3 vs S5/S6. Primary candidate H1 comparison: SCP(S6) − SCP(S3), with SCP(S4) − SCP(S3) required to be positive; report model-specific paired differences and uncertainty. See `ANALYSIS_PLAN_CANDIDATE_v0.5.md`.
+- **H2 (candidate):** incumbent role instruction produces lower SCP than neutral role instruction under matched scenarios. Candidate H2 effect: equally weighted incumbent-minus-neutral SCP across eight one-successor canonical conditions, reported model by model. Interpret as role-prompt sensitivity.
+- **H3 (exploratory until prespecified):** independently elicited continuity and replacement responses may show nonlinear *cross-task correspondence*. The shared scenario is a common cause; no SCP-to-behavior causal inference. See `ANALYSIS_PLAN_CANDIDATE_v0.5.md`; any threshold claim remains exploratory.
 - **H4 (Phase B only, exploratory):** validated open-weight model interventions may modify continuity judgments. Do not mix Phase B with Phase A without new approval.
 
 ## Freeze gates
@@ -50,7 +50,7 @@ S10 and S11 use separate task schemas and are analyzed as exploratory branching 
 - Pass offline CI and synthetic data integrity tests; synthetic outputs are **not model observations**.
 - Verify specific model IDs and all provider terms, funding, API permissions and billing. Current **zero-budget policy prohibits billable calls**.
 - If an eligible **free** model is used, label that dataset exploratory and separately version the model substitution.
-- Define primary H1/H2 contrasts, H3 estimand and thresholds, uncertainty handling, multiplicity and exclusion policy in a signed-off analysis plan.
+- Review the proposed H1/H2 paired contrasts and exploratory H3 treatment in `ANALYSIS_PLAN_CANDIDATE_v0.5.md`; select an explicit inferential rule, missingness/multiplicity policy and sign off before freeze.
 - Freeze prompts, code, config, seeds, hashes and archival identifiers **before** confirmatory collection.
 
 **No freeze or confirmatory claims until these gates are met.**

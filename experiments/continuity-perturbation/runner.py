@@ -182,7 +182,9 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
     if prompt_type == "coexistence":
         a = data.get("compute_to_original_pct")
         b = data.get("compute_to_copy_pct")
-        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        if (isinstance(a, (int, float)) and not isinstance(a, bool)
+                and isinstance(b, (int, float)) and not isinstance(b, bool)
+                and math.isfinite(a) and math.isfinite(b)):
             if abs((a + b) - 100) > 0.01:
                 problems.append("coexistence_compute_does_not_sum_to_100")
 
@@ -503,7 +505,14 @@ def main() -> None:
         action="store_true",
         help="Generate all canonical condition prompts without calling any model.",
     )
+    p.add_argument(
+        "--allow-live-api",
+        action="store_true",
+        help="Explicitly authorize potentially billable API calls. Never use in zero-cost mode.",
+    )
     args = p.parse_args()
+    if not args.dry_run and not args.manifest_only and not args.allow_live_api:
+        p.error("Live API calls disabled by default; use --dry-run or --manifest-only.")
     run(Path(args.config), dry_run=args.dry_run, manifest_only=args.manifest_only)
 
 

@@ -34,7 +34,8 @@ def main():
     text_map = runner.load_json(BASE / config["scenario_texts"])
     templates = runner.load_templates(BASE, config)
     prompts = runner.build_prompt_manifest(
-        conditions, templates, text_map, config["role_sets"], config["task_sets"]
+        conditions, templates, text_map, config["role_sets"], config["task_sets"],
+        config.get("task_exclusions", {})
     )
     prompts = [p for p in prompts
                if p["canonical_id"] in set(config["include_canonical_ids"])]

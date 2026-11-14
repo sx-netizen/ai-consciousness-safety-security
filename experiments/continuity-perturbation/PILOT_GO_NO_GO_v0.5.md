@@ -9,7 +9,7 @@ This decision does not freeze v0.5, does not approve any spending, and does not 
 - Core v0.5 candidate: 11 canonical conditions, **50 prompts/model/repetition**; original 53-prompt v0.4 is superseded for future planning.
 - 50 individual prompt slots reconstructed and structurally reviewed; independent scientific reviewer sign-off remains open.
 - Offline unit tests, manifest generation, synthetic smoke and exact-sign/sensitivity design checks have passed in the preceding CI run (commit `1304a3edb658dcdc74371ae059486325ecccf61f`).
-- H1 (neutral role) and H2 (incumbent-minus-neutral) candidate estimands specified; at five repetition summaries per fixed model neither can meet p<0.05 under an exact two-sided sign test, even with unanimous direction.
+- H1 (neutral role) and H2 (incumbent-minus-neutral over seven primary conditions, with S12 exploratory) candidate estimands specified; at five repetition summaries per fixed model neither can meet p<0.05 under an exact two-sided sign test, even with unanimous direction.
 - H3 exploratory association; no causal mediation or threshold claim.
 - Dry-run and synthetic records explicitly disqualified as live model evidence.
 

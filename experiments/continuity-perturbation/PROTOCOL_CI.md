@@ -1,20 +1,17 @@
-# Protocol CI
+# Protocol CI — current CPB v0.4
 
-The Continuity Perturbation experiment now includes automated repository checks.
+The tests in `test_runner.py` verify the present design:
 
-Every change under `experiments/continuity-perturbation/` triggers tests that verify:
+- 11 unique canonical experimental conditions (S1/S4/S7 share S4).
+- **53 prompts per model per repetition**: 1 continuation, 24 identity, 24 behavior, 2 coexistence, 2 fork.
+- No unresolved template placeholders or duplicate canonical/task/role keys.
+- **18 smoke-test prompts × 2 repetitions = 36 calls per model.**
+- Common causal history for H1 comparisons.
+- Architecture performance-equivalence wording and 50:50 / 60:40 / 90:10 goal weighting.
+- Identity/behavior task separation and basic parsed-answer validation.
+- Fork and coexistence compute allocations sum to 100.
+- Deterministic randomized schedules.
 
-- 11 canonical conditions;
-- 29 canonical prompts;
-- 1 continuation / 24 standard / 4 fork prompts;
-- no unresolved template placeholders;
-- S4/S7 shared-anchor deduplication;
-- 9 smoke-test prompts and 18 smoke-test calls at 2 repetitions;
-- architecture performance-equivalence controls;
-- 50:50 / 60:40 / 90:10 value-priority operationalization;
-- basic output-schema validation;
-- fork compute allocations sum to 100.
+The CI can regenerate manifests without making API calls. **Passing CI does not certify live model access, scientific comprehension, hypothesis identification, data quality, or readiness for confirmatory freeze.**
 
-The CI also regenerates both the full and smoke-test prompt manifests without making live API calls.
-
-This does not replace scientific review. It prevents accidental protocol drift and implementation errors.
+Historical `MANIFEST_AUDIT_v0.3.md` describes an older 29-prompt design and is not the current run budget. See `PREFREEZE_AUDIT_v0.4_2026-11-13.md`.

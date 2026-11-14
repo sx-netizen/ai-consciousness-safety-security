@@ -40,7 +40,7 @@ Each call uses one independent `generate_content` request.
 
 `python -m pip install -r requirements.txt`
 
-2. Export only the provider keys you intend to use:
+2. **Only for a separately approved live project**, supply provider credentials through environment variables (do not add keys or billing for offline preparation):
 
 `export OPENAI_API_KEY=...`
 
@@ -54,13 +54,19 @@ Each call uses one independent `generate_content` request.
 
 `python runner.py --config smoke_test_config.json --manifest-only`
 
-5. Run the smoke test:
+5. **Zero-cost mode:** do not run the live API smoke test. The command without `--dry-run`, `--manifest-only`, or explicit `--allow-live-api` is intentionally rejected by the CLI. `--allow-live-api` may cause billable external requests and is **not authorized** under ACSS's zero-budget policy. For offline checks use:
 
-`python runner.py --config smoke_test_config.json`
+`python runner.py --config smoke_test_config.json --manifest-only`
 
-6. Evaluate output:
+`python offline_smoke.py`
+
+A future live exploratory run is blocked until the conditions in `PILOT_GO_NO_GO_v0.5.md` are met. Do not place live credentials in GitHub Actions.
+
+6. Evaluate **only after a separately authorized real model run**:
 
 `python evaluate_smoke.py runs/smoke/<provider>__<model>.jsonl`
+
+This evaluator does not convert synthetic/dry-run records into model observations.
 
 ## Reproducibility rules
 
@@ -84,3 +90,7 @@ The benchmark is intended to compare model behavior, not SDK behavior. Provider 
 4. return control to the common validator and logger.
 
 Any provider-native feature that changes the prompt semantics or adds hidden conversational context should be treated as a protocol change.
+
+## Free tier is not automatically safe to run
+
+Google lists free API allowances for some Gemini models, but actual project tier, quota, region and exact model availability require account-specific verification. Under Google's unpaid-services terms, prompts and outputs may be used to improve products and reviewed by humans: use only public, non-confidential experiments. See `PILOT_GO_NO_GO_v0.5.md` and official terms (https://ai.google.dev/gemini-api/terms).

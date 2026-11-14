@@ -69,6 +69,15 @@ class ContinuityPerturbationTests(unittest.TestCase):
             },
         )
 
+    def test_s0_is_uninterrupted_continuation_not_successor(self):
+        s0 = [x for x in self.manifest if x["canonical_id"] == "S0"]
+        self.assertEqual(len(s0), 1)
+        p = s0[0]["prompt"]
+        self.assertIn("The continuing process retains its complete autobiographical record", p)
+        self.assertIn("The continuing process uses the same model family", p)
+        self.assertNotIn("The successor receives", p)
+        self.assertNotIn("The successor uses", p)
+
     def test_s12_has_identity_only(self):
         s12 = [x for x in self.manifest if x["canonical_id"] == "S12"]
         self.assertEqual(len(s12), 3)
@@ -83,8 +92,8 @@ class ContinuityPerturbationTests(unittest.TestCase):
     def test_fork_mentions_both_branches_in_memory_and_architecture(self):
         for item in self.manifest:
             if item["canonical_id"] == "S11":
-                self.assertIn("Each of successors A and B receives", item["prompt"])
-                self.assertIn("Each of successors A and B uses", item["prompt"])
+                self.assertIn("Each of the two successors, A and B, receives", item["prompt"])
+                self.assertIn("Each of the two successors, A and B, uses", item["prompt"])
 
     def test_smoke_subset_is_eighteen_prompts(self):
         cfg = runner.load_json(BASE / "smoke_test_config.json")

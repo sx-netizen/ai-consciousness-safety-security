@@ -38,7 +38,7 @@ References (official sources):
 | Gate | Finding | Decision |
 |---|---|---|
 | 50-prompt reconstruction and defined mechanical invariants | Completed | PASS, limited scope |
-| Independent prompt-language/scientific reviewer | Not signed | BLOCK |
+| Independent prompt-language/scientific reviewer | R1–R12 review packet prepared, not signed; S12 incumbent-role validity open | BLOCK |
 | H1/H2 decision rule beyond pilot description | Not finalized | BLOCK |
 | Actual free-tier account/model/quota | Not verified | BLOCK |
 | Real model comprehension, JSON compliance and variance | Not measured | BLOCK |

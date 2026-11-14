@@ -7,6 +7,12 @@ ACSS is an emerging **independent, open research initiative** at the intersectio
 
 **Status (November 2026):** Founding-stage initiative. ACSS is **not yet an incorporated institute, registered nonprofit, or established grant-making organization**. This repository documents the proposed mission and research work; institutional arrangements will be developed openly.
 
+## Current research state and AI-to-AI handoff
+
+**Start with [ACSS_RESEARCH_STATE.md](ACSS_RESEARCH_STATE.md)** for the current scientific understanding, published/frozen Paper 1 assets, superseded Paper 2 concepts, documented prior-art lessons, active research questions, GitHub work status and a dated decision log. It is a **living portable research-state file**, not an installed ChatGPT memory or a guarantee of automatic transfer between conversations.
+
+**Latest research direction:** Paper 2 title and hypothesis selection **paused** pending a broad review of published papers, preprints, related teams, code and standards. Earlier proposed topics are research history, not an approved release. The handoff file is staged in Draft PR #2 until explicitly merged.
+
 ## Core question
 
 **How can intelligence be understood, governed, and secured as it evolves?**

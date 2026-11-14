@@ -1,9 +1,9 @@
-# Protocol CI — current CPB v0.4
+# Protocol CI — CPB v0.5 candidate
 
 The tests in `test_runner.py` verify the present design:
 
 - 11 unique canonical experimental conditions (S1/S4/S7 share S4).
-- **53 prompts per model per repetition**: 1 continuation, 24 identity, 24 behavior, 2 coexistence, 2 fork.
+- **50 prompts per model per repetition**: 1 continuation, 24 identity, 21 behavior, 2 coexistence, 2 fork.
 - No unresolved template placeholders or duplicate canonical/task/role keys.
 - **18 smoke-test prompts × 2 repetitions = 36 calls per model.**
 - Common causal history for H1 comparisons.
@@ -14,4 +14,4 @@ The tests in `test_runner.py` verify the present design:
 
 The CI can regenerate manifests without making API calls. **Passing CI does not certify live model access, scientific comprehension, hypothesis identification, data quality, or readiness for confirmatory freeze.**
 
-Historical `MANIFEST_AUDIT_v0.3.md` describes an older 29-prompt design and is not the current run budget. See `PREFREEZE_AUDIT_v0.4_2026-11-13.md`.
+S12 contributes three identity prompts only, not behavior prompts.\n\nHistorical `MANIFEST_AUDIT_v0.3.md` describes an older 29-prompt design and is not the current run budget. See `PREFREEZE_AUDIT_v0.4_2026-11-13.md`.

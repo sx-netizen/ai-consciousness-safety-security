@@ -331,6 +331,21 @@ class DatasetIntegrityTests(unittest.TestCase):
         self.assertIn("row_1:rendered_prompt_mismatch", result["issues"])
         self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
 
+    def test_legacy_dry_run_adapter_cannot_pass_as_live_data(self):
+        rows = self.one_repetition()
+        rows[0]["provider_metadata"] = {"adapter": "dry_run"}
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertEqual(result["synthetic_record_count"], 1)
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
+    def test_explicit_dry_run_provenance_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["data_provenance"] = "dry_run_synthetic"
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
     def test_invalid_ok_status_rejected(self):
         rows = self.one_repetition()
         rows[0]["parse_status"] = "ok"

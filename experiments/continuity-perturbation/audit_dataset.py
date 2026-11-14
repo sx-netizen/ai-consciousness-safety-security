@@ -56,7 +56,17 @@ def audit_rows(rows, cfg, manifest, repetitions=None):
         rep = row.get("repetition")
         keys.append((*model, rep, *key))
         run_ids.append(row.get("run_id"))
-        if row.get("synthetic_fixture") or row.get("protocol_status") == "synthetic_fixture":
+        metadata = row.get("provider_metadata")
+        adapter_name = metadata.get("adapter") if isinstance(metadata, dict) else None
+        parsed = row.get("parsed_response")
+        parsed_dry = parsed.get("dry_run") if isinstance(parsed, dict) else None
+        if (
+            row.get("synthetic_fixture") is True
+            or row.get("data_provenance") == "dry_run_synthetic"
+            or row.get("protocol_status") in {"synthetic_fixture", "dry_run"}
+            or adapter_name == "dry_run"
+            or parsed_dry is True
+        ):
             synthetic += 1
         if not isinstance(rep, int) or isinstance(rep, bool) or not (1 <= rep <= reps):
             issues.append(f"row_{i}:invalid_repetition")

@@ -1,4 +1,4 @@
-# Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems
+# Identity Is Not Authority: A Counterfactual Protocol for AI Successor Continuity and Responsibility
 
 **Conceptual Methods Preprint — Draft v0.2 · NOT PUBLICLY DEPOSITED; NO LIVE-MODEL RESULTS**  
 **Author:** Shaohua Xiang  

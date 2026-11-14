@@ -114,8 +114,8 @@ def to_markdown(result):
         "",
         "**This is simulated design sensitivity, NOT actual model results.**",
         "",
-        f'Seed: \`{result["seed"]}\`; Monte Carlo draws per cell: '
-        f'\`{result["trials_per_cell"]}\`.',
+        f'Seed: `{result["seed"]}`; Monte Carlo draws per cell: '
+        f'`{result["trials_per_cell"]}`.',
         "",
         "Assumptions: one fixed model, independent normally distributed H1 "
         "scenario-response noise (SD 15 SCP points); H2 eight condition gaps "

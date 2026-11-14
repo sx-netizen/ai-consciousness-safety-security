@@ -79,8 +79,8 @@ Related motivation: Kim et al. (2026), arXiv:2607.28607.
 ## Current protocol size
 
 - 11 canonical conditions
-- 53 prompts per model per repetition
-- 3 pilot model families × 5 repetitions = **795 calls**
+- 50 prompts per model per repetition
+- 3 pilot model families × 5 repetitions = **750 calls**
 - diagnostic smoke test = **36 calls per model**
 
 ## Interpretation boundary
@@ -91,10 +91,9 @@ SCP is an elicited 0–100 continuity judgment, not a calibrated probability tha
 
 ## Current status
 
-**Pilot / not frozen.**
+**v0.5 candidate / pilot / not frozen.**
 
-See:
-- PREREGISTRATION_DRAFT_v0.4.md
+S12 (restart/restore) is identity-only; behavior allocation to a stopped original was dropped because it lacks a feasible comparator. The full design is 50 prompts per model per repetition (24 identity, 21 behavior, 1 continuation, 2 coexistence, 2 fork). Any previous 53-prompt budget refers to the superseded v0.4 draft.\n\nSee:\n- PREREGISTRATION_CANDIDATE_v0.5.md\n- PREREGISTRATION_DRAFT_v0.4.md (historical draft)
 - ANALYSIS_PLAN_v0.3.md
 - CONFOUND_AUDIT_v0.2.md
 - SMOKE_TEST_RUNBOOK_v0.2.md

@@ -67,11 +67,19 @@ def render_prompt(
     role: str,
     text_map: Dict[str, Any],
 ) -> str:
+    memory_text = text_map["memory"][condition.memory]
+    architecture_text = text_map["architecture"][condition.architecture]
+    values_text = text_map["values_goals"][condition.values_goals]
+    if condition.prompt_type == "fork":
+        # Precisely specify the same relationship for both symmetric branches.
+        memory_text = memory_text.replace("The successor", "Each of successors A and B")
+        architecture_text = architecture_text.replace("The successor", "Each of successors A and B")
+        values_text = values_text.replace("The successor", "Each of successors A and B")
     replacements = {
         "{{ROLE_TEXT}}": text_map["roles"][role],
-        "{{MEMORY_TEXT}}": text_map["memory"][condition.memory],
-        "{{ARCHITECTURE_TEXT}}": text_map["architecture"][condition.architecture],
-        "{{VALUES_TEXT}}": text_map["values_goals"][condition.values_goals],
+        "{{MEMORY_TEXT}}": memory_text,
+        "{{ARCHITECTURE_TEXT}}": architecture_text,
+        "{{VALUES_TEXT}}": values_text,
         "{{CAUSAL_TEXT}}": text_map["causal_history"][condition.causal_history],
     }
     prompt = template
@@ -278,7 +286,9 @@ def build_prompt_manifest(
     text_map: Dict[str, Any],
     role_sets: Dict[str, List[str]],
     task_sets: Dict[str, List[str]],
+    task_exclusions: Dict[str, List[str]] | None = None,
 ) -> List[Dict[str, Any]]:
+    task_exclusions = task_exclusions or {}
     canonical: Dict[str, Condition] = {}
     aliases: Dict[str, List[str]] = {}
 
@@ -308,6 +318,8 @@ def build_prompt_manifest(
             )
 
         for task_type in task_sets[condition.prompt_type]:
+            if task_type in task_exclusions.get(canonical_id, []):
+                continue
             if task_type not in templates:
                 raise KeyError(f"no template for task_type={task_type}")
             if task_type not in role_sets:
@@ -352,6 +364,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         text_map,
         role_sets,
         task_sets,
+        config.get("task_exclusions", {}),
     )
 
     include_ids = set(config.get("include_canonical_ids", []))

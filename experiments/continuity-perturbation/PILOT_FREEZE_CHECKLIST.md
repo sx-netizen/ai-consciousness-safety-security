@@ -16,7 +16,7 @@ Before any confirmatory run:
 - [x] Operationalize goal drift as 50:50 → 60:40 → 90:10 accuracy/speed weighting.
 - [x] Define SCP as an elicited continuity judgment, not calibrated metaphysical probability.
 - [x] Separate self-attribution from self-continuity conceptually.
-- [ ] Human-read all 50 canonical prompts (automated generation and offline checks have passed; human sign-off still pending).
+- [ ] Independent scientific reviewer signs off all 50 rendered prompt bodies (all 50 slots were checked for defined structural invariants in PROMPT_50_SLOT_REVIEW_v0.5.md; independent sign-off and real-model comprehension remain pending).
 - [ ] Sign off H1 and H2 estimands, model-level decision rule, uncertainty, missingness and multiplicity as described in ANALYSIS_PLAN_CANDIDATE_v0.5.md.
 - [ ] Preserve H3 as exploratory unless separately preregistered with explicit nonlinear family and validation design.
 - [ ] Run the 36-call smoke test.

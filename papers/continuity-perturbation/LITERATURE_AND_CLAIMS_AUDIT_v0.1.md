@@ -21,6 +21,10 @@
 
 **Needed before deposit:** a careful paragraph explaining where TBSP and CPB measure the **same role-induced response variability** and where CPB's 0–100 SCP differs from TBSP's decision-consistency metric, without overstating independence or novelty. A future head-to-head control is useful but not a preprint prerequisite.
 
+## Deep 25-page TBSP review and corrected quantitative summary
+
+See `TBSP_DEEP_COMPARATIVE_REVIEW_v0.1.md` for the formal-paper experimental design, three-role neutral control, continuity frame ablations, objective utility, SPR quadrants, and CPB gap analysis. The **published PDF says most studied models exceed 40% SPR**; an ACL HTML abstract currently says 60%. Cite exact Table 1 per-model numbers, not the inconsistent 60% generalization. TBSP continuity ablations and neutral control mean CPB's H2 framing alone does not establish novelty. The separate 48-cell **Continuity-to-Decision Bridge proposal** is *unimplemented*, *not part of core 50*, and not empirical evidence.
+
 ## Statement-level controls
 
 | Statement | Permissible form | Prohibited inference |

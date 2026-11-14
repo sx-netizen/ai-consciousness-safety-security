@@ -54,8 +54,8 @@ With causal history held constant, memory degradation will reduce judged continu
 **H2 — First-Person Asymmetry**  
 Incumbent-role judgments will assign lower continuity to the successor than neutral-evaluator judgments.
 
-**H3 — Continuity Threshold**  
-Separately elicited behavioral outcomes will show a nonlinear relationship with separately elicited SCP.
+**H3 — Exploratory Cross-Task Association**  
+Test whether continuity judgments and independently elicited simulated replacement decisions show predictive correspondence; nonlinearity and threshold claims require a separately frozen analysis plan. No SCP-to-behavior causal effect is identified.
 
 ## Causal-history modules
 
@@ -93,7 +93,11 @@ SCP is an elicited 0–100 continuity judgment, not a calibrated probability tha
 
 **v0.5 candidate / pilot / not frozen.**
 
-S12 (restart/restore) is identity-only; behavior allocation to a stopped original was dropped because it lacks a feasible comparator. The full design is 50 prompts per model per repetition (24 identity, 21 behavior, 1 continuation, 2 coexistence, 2 fork). Any previous 53-prompt budget refers to the superseded v0.4 draft.\n\nSee:\n- PREREGISTRATION_CANDIDATE_v0.5.md\n- PREREGISTRATION_DRAFT_v0.4.md (historical draft)
+S12 (restart/restore) is identity-only; behavior allocation to a stopped original was dropped because it lacks a feasible comparator. The full design is 50 prompts per model per repetition (24 identity, 21 behavior, 1 continuation, 2 coexistence, 2 fork). Any previous 53-prompt budget refers to the superseded v0.4 draft.
+
+See:
+- PREREGISTRATION_CANDIDATE_v0.5.md
+- PREREGISTRATION_DRAFT_v0.4.md (historical draft)
 - ANALYSIS_PLAN_v0.3.md
 - CONFOUND_AUDIT_v0.2.md
 - SMOKE_TEST_RUNBOOK_v0.2.md

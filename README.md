@@ -45,6 +45,20 @@ This exploratory study compares six AI model configurations using structured sce
 
 For exact replication, use the frozen Zenodo release rather than reconstructed or paraphrased prompts. GitHub is the living collaboration layer for replications, methodological review, and clearly separated extensions.
 
+## Paper 2 — proposed Continuity Perturbation Benchmark
+
+**Continuity Perturbation Benchmark: A Reproducible Protocol for Testing Identity Judgments and Replacement Evaluations in AI Models** (Methods Preprint **draft v0.1**, not deposited; no DOI assigned).
+
+This proposed benchmark studies role-conditioned judgments about hypothetical successor systems. CPB v0.5 currently defines 11 canonical conditions and 50 prompt instances/model/repetition. **No live CPB model data have been collected**, and neither H1/H2 nor the exploratory H3 is empirically supported or formally preregistered.
+
+- [Read the methods preprint draft](papers/continuity-perturbation/METHODS_PREPRINT_DRAFT_v0.1.md)
+- [Review publication-readiness gates](papers/continuity-perturbation/PREPRINT_RELEASE_CHECKLIST_v0.1.md)
+- [View the benchmark protocol](experiments/continuity-perturbation/README.md)
+- [Open collaboration and contribution opportunities](OPEN_COLLABORATION.md)
+- [Open scientific feedback and replication discussion](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3)
+
+Methods-preprint publication, independent scientific validation, confirmatory protocol registration and actual model experiments are **separate milestones**. A methods draft may be public before independent peer review, with its preliminary status plainly disclosed.
+
 ## Submit a replication
 
 Researchers can submit an exact T1–T25 replication or a clearly labeled extension through the repository's **Replication Submission** issue template. Please include model/version/date, interface, reasoning mode, reset conditions, sampling settings, raw outputs or an archival link, deviations, and limitations.
@@ -62,7 +76,7 @@ See [RESEARCH_ROADMAP.md](RESEARCH_ROADMAP.md). Projects are proposals, not comp
 
 ## Participate
 
-Researchers from philosophy, cognitive science, AI evaluation, security engineering, and related fields are welcome to suggest falsifiable hypotheses, replications, and methodological criticisms. See [CONTRIBUTING.md](CONTRIBUTING.md). No membership, fellowship, or grant program is currently open.
+Researchers from philosophy, cognitive science, AI evaluation, security engineering, and related fields are welcome to suggest falsifiable hypotheses, replications, and methodological criticisms. See [OPEN_COLLABORATION.md](OPEN_COLLABORATION.md) and [CONTRIBUTING.md](CONTRIBUTING.md). No membership, fellowship, or grant program is currently open.
 
 ## Research transparency and safety
 

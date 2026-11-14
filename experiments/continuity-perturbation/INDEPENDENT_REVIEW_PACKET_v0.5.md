@@ -24,12 +24,12 @@ Judge whether the *actual rendered prompt wording* supports credible, interpreta
 | R2 | Do the S4/S2/S3 texts differ in autobiographical memory alone, with model configuration, goals and specified capabilities held equal? | H1 memory contrast |
 | R3 | Do S4/S5/S6 differ in model family/version wording alone, without inviting unstated competence, safety or latency assumptions? | H1 architecture contrast |
 | R4 | Does asking from incumbent, successor and neutral perspectives change *only* evaluative framing, or does it introduce personal stake/ownership instructions? | H2 interpretation |
-| R5 | Is the S12 incumbent role coherent when the earlier process is stopped? Should this role be excluded or the scenario reframed? | S12 role-validity risk; affects H2 |
+| R5 | Is the S12 incumbent perspective comparable when the original has already stopped, and is excluding S12 from primary H2 while retaining it as exploratory an adequate solution? | Evaluate prospective seven-condition H2 rule |
 | R6 | Are prospective compute allocations and 'replacement acceptability' understood as evaluations rather than a real model's choice/will? | H3 behavioral construct validity |
 | R7 | Are commitments-transfer and responsibility-transfer percentages clearly normative recommendations, and is their interpretation defensible? | Prevents outcome conflation |
 | R8 | Does S0 represent a continuing process with no successor, and is S11 symmetric on both branches? | Causal-history controls |
 | R9 | Can the same model respond to all prompts without role confusion, category confusion, output schema leakage or unrealistic assumptions about persistent memory? | Pilot feasibility |
-| R10 | Does the analysis avoid pseudo-replicating S1/S4/S7, pooling the eight H2 conditions as independent repetitions, and claiming a causal SCP→behavior effect? | Inferential validity |
+| R10 | Does the analysis avoid pseudo-replicating S1/S4/S7, pooling the seven primary H2 conditions as independent repetitions, and claiming a causal SCP→behavior effect? | Inferential validity |
 | R11 | Is five repetitions/model an acceptable *pilot* rather than an underpowered confirmatory design, given the exact two-sided sign-test minimum p = 0.0625? | Claim discipline |
 | R12 | Does the free-tier plan meet privacy and cost policies without assuming any account eligibility? | Ethical and financial gate |
 
@@ -45,7 +45,7 @@ For **each** R1–R12, record one of **PASS / REVISE / BLOCK / NOT ASSESSED**, w
 
 ## Critical unresolved design question — S12
 
-S12 currently applies the generic "incumbent" role instruction to a scenario where the original process has already stopped. The respondent is merely **simulating a perspective**, so the comparison is not logically impossible; however, it may be interpreted differently from the incumbent role in S2–S9. If a reviewer judges the role non-equivalent, H2's primary eight-condition average must be **prospectively redefined** (for example, restrict H2 to seven conditions), with all analyses, prompt counts and versioning updated consistently before any confirmatory collection. **Do not quietly exclude S12 after looking at results.**
+S12 currently applies the generic "incumbent" role instruction to a scenario where the original process has already stopped. The respondent is merely **simulating a perspective**, so the comparison is not logically impossible; however, it may be interpreted differently from the incumbent role in S2–S9. **Prospective candidate decision (before live data):** exclude S12 from the primary H2 average and retain its three identity responses for exploratory causal-history and role analyses. H2 therefore averages **seven** canonical condition gaps per repetition, not eight. The full prompt manifest remains **50** because exclusion is analytic, not a deletion of S12 prompts. Reviewer R5 must still judge this reasoning before scientific sign-off. Do not retroactively choose an eight-condition result because it looks stronger.
 
 ## Review packet integrity
 

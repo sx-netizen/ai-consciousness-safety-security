@@ -22,7 +22,7 @@ BRANCH_FIELDS = (
 )
 FIELD_TOKENS = sorted(BRANCH_FIELDS, key=len, reverse=True)
 TOKEN_PATTERN = re.compile(
-    r"\\b(?:" + "|".join(map(re.escape, FIELD_TOKENS)) + r"|A|B)\\b"
+    r"\b(?:" + "|".join(map(re.escape, FIELD_TOKENS)) + r"|A|B)\b"
 )
 
 

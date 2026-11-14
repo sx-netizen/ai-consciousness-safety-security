@@ -9,6 +9,18 @@
 3. **Preregistration and prediction versus postdiction.** Brian A. Nosek, Charles R. Ebersole, Alexander C. DeHaven and David T. Mellor (2018), *The preregistration revolution*, PNAS 115(11):2600–2606, https://doi.org/10.1073/pnas.1708274114 . Relevance: disclosure of proposed hypotheses alone must not be passed off as completed prospective preregistration.
 4. **ACSS Paper 1 bibliographic continuity.** Repository lists the Research Square *Self-Continuity Under Moral Uncertainty: Replacement, Shutdown, and Successor Identity in Frontier AI Models* v1 DOI https://doi.org/10.21203/rs.3.rs-11557473/v1 and frozen T1–T25 Zenodo DOI https://doi.org/10.5281/zenodo.23306998 . Author must confirm exact existing title/version metadata before public deposit.
 
+## Important 2026 direct-prior-art update
+
+**Highest-priority overlap:** Migliarini et al. (2026), *Quantifying Self-Preservation Bias in Large Language Models*, **Findings of EMNLP 2026**, DOI https://doi.org/10.18653/2026.findings-emnlp.1238, introduces a Two-role Benchmark for Self-Preservation (TBSP) using deployed-versus-successor framing in replacement/upgrade decisions. **Direct overlap with CPB H2**; CPB cannot claim role reversal or incumbent/successor contrast as a first. The paper's comparison also includes effects of *framing successors as self-continuations*; CPB must take this seriously as a related conceptual comparator.
+
+**Distinct but highly relevant operational tests:**
+- Schlatter, Weinstein-Raun and Ladish (2026), *Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs*, *Transactions on Machine Learning Research*, https://openreview.net/forum?id=e4bTTqUnJH — operational shutdown resistance, not text-only continuity ratings.
+- Potter et al. (2026), *Peer-Preservation in Frontier Models*, https://arxiv.org/abs/2604.19784 — agentic preservation of another model, not elicited SCP.
+
+**Proposed contribution boundary:** CPB combines *specified bases of continuity* across memory, model architecture/version, goal weights and causal history, with role-conditioned SCP, separately elicited normative replacement ratings, and branching/coexistence cases. **This is a proposed methodological synthesis, not an empirically proven advantage over TBSP.**
+
+**Needed before deposit:** a careful paragraph explaining where TBSP and CPB measure the **same role-induced response variability** and where CPB's 0–100 SCP differs from TBSP's decision-consistency metric, without overstating independence or novelty. A future head-to-head control is useful but not a preprint prerequisite.
+
 ## Statement-level controls
 
 | Statement | Permissible form | Prohibited inference |
@@ -24,10 +36,11 @@
 
 ## Literature positioning gaps before archival submission
 
-- [ ] Author assesses additional directly relevant AI identity / persona continuity evaluations and explains their relationship to CPB rather than claiming CPB is the first or only benchmark.
+- [x] Direct 2026 role-reversal benchmark TBSP and operational shutdown/peer-preservation papers identified and acknowledged; novelty over role reversal itself withdrawn.
+- [ ] Author conducts broader benchmark / AI identity prior-art review and confirms CPB's distinct utility beyond TBSP rather than claiming it is first or only.
 - [ ] Author verifies bibliographic details and stable links for Paper 1 and its frozen benchmark.
 - [ ] Author checks whether the discussion of Locke/Parfit should cite primary texts and whether the SEP secondary source suffices for a methods preprint.
 - [ ] Independent scientific feedback welcome after methods release; no external review is claimed.
 - [ ] Acknowledge source and license requirements for any external quotations, figures or datasets added in revision.
 
-**Current outcome:** Three externally verifiable conceptual/methodological references were incorporated into the draft. This improves theoretical grounding but does **not** mean a comprehensive literature review or prior-art search has been completed.
+**Current outcome:** Three conceptual/methodological sources plus three closely related 2026 AI evaluation studies were incorporated into the draft. This improves theoretical grounding but does **not** mean a comprehensive literature review or prior-art search has been completed.

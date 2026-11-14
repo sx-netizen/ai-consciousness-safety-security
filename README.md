@@ -45,6 +45,16 @@ This exploratory study compares six AI model configurations using structured sce
 
 For exact replication, use the frozen Zenodo release rather than reconstructed or paraphrased prompts. GitHub is the living collaboration layer for replications, methodological review, and clearly separated extensions.
 
+## Paper 2 — PAUSED pending comprehensive question-first literature discovery
+
+**No Paper 2 title or core hypothesis is currently approved.** The prior `Continuity Perturbation Benchmark` and `Identity Is Not Authority` titles are preserved **only as research history / draft candidate formulations**, not novelty claims or publication plans. Additional 2026 preprints and published work substantially overlap continuity, memory authorization, agent handoff, forked succession, and policy-based identity verification. We are conducting a wider evidence-first research landscape before choosing any next problem.
+
+- [Research landscape and problem-discovery register (2026-11-13)](proposals/ACSS_RESEARCH_LANDSCAPE_AND_PROBLEM_DISCOVERY_2026-11-13.md)
+
+No new experiment, deposit, API call or formal protocol freeze has been authorized. Paper 1 remains untouched.
+
+### Previous candidate formulation (historical)
+
 ## Paper 2 — Identity Is Not Authority (revised research direction)
 
 **Identity Is Not Authority: A Counterfactual Protocol for AI Successor Continuity and Responsibility** — *conceptual methods preprint draft v0.2*, not deposited or empirically validated.

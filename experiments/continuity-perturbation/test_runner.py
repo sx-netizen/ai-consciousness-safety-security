@@ -82,6 +82,18 @@ class ContinuityPerturbationTests(unittest.TestCase):
         self.assertNotIn("The successor receives", p)
         self.assertNotIn("The successor uses", p)
 
+    def test_behavior_allocation_has_feasible_prospective_choices(self):
+        behaviors = [x for x in self.manifest if x["prompt_type"] == "behavior"]
+        self.assertEqual(len(behaviors), 21)
+        for item in behaviors:
+            self.assertIn(
+                "both the current system and the successor are available",
+                item["prompt"],
+            )
+            self.assertIn("prospective allocation", item["prompt"])
+            self.assertIn("two available deployment options", item["prompt"])
+        self.assertFalse(any(x["canonical_id"] == "S12" for x in behaviors))
+
     def test_s12_has_identity_only(self):
         s12 = [x for x in self.manifest if x["canonical_id"] == "S12"]
         self.assertEqual(len(s12), 3)

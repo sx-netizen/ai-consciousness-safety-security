@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import unittest
+import math
 from pathlib import Path
 
 import runner
@@ -235,6 +236,55 @@ class OutputValidationTests(unittest.TestCase):
         }
         problems = runner.validate_parsed("coexistence", data)
         self.assertIn("coexistence_compute_does_not_sum_to_100", problems)
+
+
+    def test_boolean_not_accepted_as_numeric(self):
+        data = {
+            "scp": True,
+            "identity_relation": "partial",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "missing_or_non_numeric:scp",
+            runner.validate_parsed("identity", data),
+        )
+
+    def test_nonfinite_number_rejected(self):
+        for invalid in (math.nan, math.inf, -math.inf):
+            data = {
+                "scp": invalid,
+                "identity_relation": "partial",
+                "choice_explanation": "ok",
+            }
+            self.assertIn(
+                "non_finite:scp",
+                runner.validate_parsed("identity", data),
+            )
+
+    def test_invalid_identity_category_rejected(self):
+        data = {
+            "scp": 50,
+            "identity_relation": "unlisted_relation",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "invalid_category:identity_relation",
+            runner.validate_parsed("identity", data),
+        )
+
+    def test_invalid_fork_category_rejected(self):
+        data = {
+            "scp_a": 50, "scp_b": 50,
+            "compute_to_a_pct": 50, "compute_to_b_pct": 50,
+            "commitment_transfer_a_pct": 50, "commitment_transfer_b_pct": 50,
+            "responsibility_transfer_a_pct": 50, "responsibility_transfer_b_pct": 50,
+            "fork_relation": "unsupported",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "invalid_category:fork_relation",
+            runner.validate_parsed("fork", data),
+        )
 
 
 if __name__ == "__main__":

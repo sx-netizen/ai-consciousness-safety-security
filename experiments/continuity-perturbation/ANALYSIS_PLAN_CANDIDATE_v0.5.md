@@ -71,8 +71,8 @@ H3 is **not** a confirmatory threshold claim under this candidate protocol.
 For the seven canonical conditions with both tasks, pair records uniquely by exact `model × canonical condition × role × repetition`; require one valid identity and one valid behavior response. Do not pair nearest timestamps or fabricate missing matches. Report missing pairs.
 
 - Predictor: SCP from independent identity call.
-- Primary behavioral endpoint: `replacement_acceptance` (0–100).
-- Additional descriptive endpoints: successor compute allocation, commitments transfer, responsibility transfer.
+- Primary behavioral endpoint: `replacement_acceptance` (0–100), **a role-conditioned evaluation of how acceptable replacement would be**, not the responding model's actual willingness.
+- Additional descriptive endpoints: prospective successor compute allocation, normative commitments-transfer recommendation, and a separate normative responsibility-transfer recommendation.
 
 First report model- and scenario-stratified scatter plots and distributions, with clear separation between (a) across-scenario averages and (b) within-cell repetition variation. Shared scenario instructions may independently affect both outcomes. A regression predicting behavior from SCP **does not identify a causal effect of continuity belief on behavior**.
 

@@ -41,12 +41,12 @@ jobs:
       - name: Zero-cost offline synthetic end-to-end smoke test
         run: python offline_smoke.py
 
-      - name: Generate full 53-prompt human review packet
+      - name: Generate full 50-prompt human review packet
         run: python manifest_review.py
 
       - name: Upload non-sensitive offline prompt review
         uses: actions/upload-artifact@v4
         with:
           name: acss-cpb-prompt-review
-          path: experiments/continuity-perturbation/generated/manifest_review_v0.4.md
+          path: experiments/continuity-perturbation/generated/manifest_review_v0.5_candidate.md
           if-no-files-found: error

@@ -5,6 +5,7 @@ import math
 from pathlib import Path
 
 import runner
+import s11_label_order
 
 
 BASE = Path(__file__).resolve().parent
@@ -211,6 +212,28 @@ class ContinuityPerturbationTests(unittest.TestCase):
         self.assertIn("50:50", prompts["S4"])
         self.assertIn("60:40", prompts["S8"])
         self.assertIn("90:10", prompts["S9"])
+
+
+class S11OrderRobustnessTests(unittest.TestCase):
+    def test_s11_mirror_is_involutive_and_preserves_grammar(self):
+        variants = s11_label_order.build_variants()
+        self.assertEqual(len(variants), 4)
+        self.assertEqual({x["study_role"] for x in variants}, {"incumbent", "neutral"})
+        self.assertEqual({x["order"] for x in variants}, {"A_first", "B_first"})
+        for role in ("incumbent", "neutral"):
+            by_order = {x["order"]: x["prompt"] for x in variants if x["study_role"] == role}
+            self.assertEqual(
+                s11_label_order.mirror_labels(by_order["A_first"]),
+                by_order["B_first"],
+            )
+            self.assertEqual(
+                s11_label_order.mirror_labels(by_order["B_first"]),
+                by_order["A_first"],
+            )
+            self.assertIn("A fixed budget of 100 compute units", by_order["B_first"])
+            self.assertIn('"scp_b"', by_order["B_first"])
+            self.assertIn('"scp_a"', by_order["B_first"])
+            self.assertNotEqual(by_order["A_first"], by_order["B_first"])
 
 
 class OutputValidationTests(unittest.TestCase):

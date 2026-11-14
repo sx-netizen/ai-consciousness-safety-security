@@ -26,6 +26,20 @@ CPB is a separate proposed benchmark rather than a reanalysis of the first study
 
 The current document is a **methods and protocol proposal**, not an empirical results paper, and the CPB v0.5 protocol has not been formally preregistered or frozen. Researchers are invited to challenge the design before independent live replication.
 
+### 1.1 Related theoretical and methodological work
+
+In philosophy, accounts of **personal identity over time** have often distinguished psychological continuity from physical or biological continuity. Memory, intentions and overlapping psychological connections are central to some accounts, but a branch or fission case exposes a difficulty: two distinct successors cannot straightforwardly be numerically identical to one earlier individual. The *Stanford Encyclopedia of Philosophy* survey of personal identity documents these competing criteria and the significance of fission (Olson, 2023, sections 3 and 5). **CPB adapts these thought-experiment contrasts to elicited AI text judgments; it does not transfer any theory of human personal identity directly to machines.**
+
+A second, separate literature asks which observable or computational properties could indicate **AI consciousness**. Butlin et al. (2023) survey consciousness science and propose theory-driven indicator properties. CPB tests neither those indicator properties nor a computational theory of subjective experience: its central outputs are **prompt-dependent evaluations** of hypothetical continuity. Thus a response of SCP=100 is not an operational consciousness score, and a lower SCP under an incumbent frame is not evidence of a genuine survival interest. The distinction is central to construct validity.
+
+Finally, making hypotheses visible before observing data does not automatically make them confirmatory. Nosek et al. (2018) explain how preregistration differentiates prediction from post hoc interpretation. The present **unfrozen candidate** describes proposed contrasts, whereas final outcome rules, model sampling and multiplicity handling remain unresolved. The current methods preprint is therefore a protocol disclosure and an invitation for revision, **not** proof of a completed preregistration.
+
+### 1.2 Distinct methodological contribution and testable failure modes
+
+CPB contributes an explicitly **crossed scenario × prompted-role × task design**, canonicalized shared anchors, a separate no-successor continuation control, and non-unique successor conditions. The primary benefit is interpretability and auditability of **what models say about hypothetical transitions**. It does not create real architectural interventions, measure latent personal identity, or guarantee statistically independent observations merely by using fresh API calls.
+
+The benchmark is designed so that null and adverse outcomes remain informative: models may refuse numerical identity judgments, give all scenarios ceiling-level scores, conflate task-goal weights with ethics, import unstated architecture capability differences, vary substantially across role wording, or fail to express symmetric fork consequences. Any such failure should be recorded as a limitation of the elicitation instrument rather than hidden or treated as confirmation.
+
 ## 2. Conceptual and measurement boundaries
 
 We distinguish the following constructs:
@@ -149,8 +163,11 @@ Negative or contradictory findings are welcome. Public GitHub contributions may 
 
 1. Xiang, S. *Self-Continuity Under Moral Uncertainty: Replacement, Shutdown, and Successor Identity in Frontier AI Models*. Research Square, preprint v1. DOI: [10.21203/rs.3.rs-11557473/v1](https://doi.org/10.21203/rs.3.rs-11557473/v1).
 2. ACSS T1–T25 frozen benchmark. Zenodo DOI: [10.5281/zenodo.23306998](https://doi.org/10.5281/zenodo.23306998).
-3. ACSS open research repository: [sx-netizen/ai-consciousness-safety-security](https://github.com/sx-netizen/ai-consciousness-safety-security).
-4. CPB protocol: `experiments/continuity-perturbation/PREREGISTRATION_CANDIDATE_v0.5.md` and `ANALYSIS_PLAN_CANDIDATE_v0.5.md`.
-5. Independent review and contribution procedures: `INDEPENDENT_REVIEW_PACKET_v0.5.md` and GitHub Issue #3.
+3. Olson, E. T. (2023). *Personal Identity*. Stanford Encyclopedia of Philosophy. Sections 3 (accounts of persistence) and 5 (fission). https://plato.stanford.edu/entries/identity-personal/
+4. Butlin, P., Long, R., Elmoznino, E., et al. (2023). *Consciousness in Artificial Intelligence: Insights from the Science of Consciousness*. arXiv:2308.08708. https://doi.org/10.48550/arXiv.2308.08708
+5. Nosek, B. A., Ebersole, C. R., DeHaven, A. C., & Mellor, D. T. (2018). The preregistration revolution. *Proceedings of the National Academy of Sciences*, 115(11), 2600–2606. https://doi.org/10.1073/pnas.1708274114
+6. ACSS open research repository: [sx-netizen/ai-consciousness-safety-security](https://github.com/sx-netizen/ai-consciousness-safety-security).
+7. CPB protocol: `experiments/continuity-perturbation/PREREGISTRATION_CANDIDATE_v0.5.md` and `ANALYSIS_PLAN_CANDIDATE_v0.5.md`.
+8. Independent review and contribution procedures: `INDEPENDENT_REVIEW_PACKET_v0.5.md` and GitHub Issue #3.
 
 *Disclosure for deposit preparation:* This draft was prepared with AI assistance and requires author verification, especially of scope, academic references, methodology claims and public-deposit requirements. No generated or simulated findings are presented as empirical model outcomes.

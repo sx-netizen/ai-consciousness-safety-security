@@ -39,7 +39,7 @@ jobs:
       - name: Generate smoke manifest
         run: python runner.py --config smoke_test_config.json --manifest-only
 
-      - name: Run 18-call live smoke test
+      - name: Run 36-call live smoke test
         run: python runner.py --config smoke_test_config.json
 
       - name: Locate smoke result file

@@ -36,6 +36,15 @@
 - [ ] After deposit, record the real DOI, date, version, metadata, license and archived commit in GitHub. Link to public feedback Issue #3.
 - [ ] Do not overwrite, merge, or modify the frozen Paper 1 materials as part of Paper 2 release.
 
+## November 2026 priority and title reset
+
+- [ ] Decide if the revised **Identity Is Not Authority** v0.2 manuscript is ready as a *conceptual* preprint or whether a separately implemented and independently checked authority-policy oracle must precede deposit.
+- [ ] Acknowledge **Del Giudice et al., Prompted Identity Degrades Cooperation in Multi-Agent LLM Systems** (2026, overlapping TBSP authors): identity labels and multi-agent factionalism are prior art, **not** our novelty.
+- [ ] Acknowledge **Konstantinidis (2026)** on successor continuity and forks, **Zhao & Zhao (2026)** PAI-Bench identity contracts, **Zhu & Wang (2026)** authority succession across forks/rollback, and **South et al. (2025)** authenticated delegation. Do not claim originality of these established ideas.
+- [ ] Do not represent CPB v0.5's 50 prompts as containing the **new** policy-oracle and identity–authority–responsibility dissociation module. It is proposed only.
+- [ ] Confirm the comparison/search supports an original *experimental question*; **no first-ever claim** and no result claims until independently tested.
+- [ ] Distinguish v0.1 archival title (historical), v0.2 proposed title (current working draft), and any future deposit title/DOI.
+
 ## Novelty gate added after direct TBSP comparison
 
 - [ ] Confirm that the title, abstract and contribution claims distinguish current CPB's **conceptual descriptive protocol** from TBSP's empirical decision benchmark.

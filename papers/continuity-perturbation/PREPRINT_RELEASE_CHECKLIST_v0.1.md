@@ -36,6 +36,13 @@
 - [ ] After deposit, record the real DOI, date, version, metadata, license and archived commit in GitHub. Link to public feedback Issue #3.
 - [ ] Do not overwrite, merge, or modify the frozen Paper 1 materials as part of Paper 2 release.
 
+## Novelty gate added after direct TBSP comparison
+
+- [ ] Confirm that the title, abstract and contribution claims distinguish current CPB's **conceptual descriptive protocol** from TBSP's empirical decision benchmark.
+- [ ] Decide whether to deposit v0.1 as a **research proposal** before the stronger independent factorial bridge exists, or to build and validate that extension first. Do not call unimplemented Bridge prompts a completed benchmark.
+- [ ] Read `TBSP_DEEP_COMPARATIVE_REVIEW_v0.1.md` and the separate `CONTINUITY_DECISION_BRIDGE_PROPOSAL_v0.1.md`; decide if the proposed memory × architecture × decision experiment constitutes a sufficiently falsifiable increment.
+- [ ] Correct prior TBSP prevalence shorthand: published PDF reports majority SPR **above 40%**, not majority above 60%.
+
 ## Publication versus experiment authorization
 
 **A methods preprint may be publicly deposited before recruiting independent reviewers**, provided it is accurately labeled as a proposal with no live-model results and the release gates above are satisfied.

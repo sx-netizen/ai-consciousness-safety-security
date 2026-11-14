@@ -23,6 +23,7 @@ class ContinuityPerturbationTests(unittest.TestCase):
             cls.text_map,
             cls.config["role_sets"],
             cls.config["task_sets"],
+            cls.config.get("task_exclusions", {}),
         )
 
     def test_canonical_condition_count(self):
@@ -30,7 +31,7 @@ class ContinuityPerturbationTests(unittest.TestCase):
         self.assertEqual(len(ids), 11)
 
     def test_full_manifest_count(self):
-        self.assertEqual(len(self.manifest), 53)
+        self.assertEqual(len(self.manifest), 50)
 
     def test_no_unresolved_placeholders(self):
         for item in self.manifest:
@@ -62,11 +63,28 @@ class ContinuityPerturbationTests(unittest.TestCase):
             {
                 "continuation": 1,
                 "identity": 24,
-                "behavior": 24,
+                "behavior": 21,
                 "coexistence": 2,
                 "fork": 2,
             },
         )
+
+    def test_s12_has_identity_only(self):
+        s12 = [x for x in self.manifest if x["canonical_id"] == "S12"]
+        self.assertEqual(len(s12), 3)
+        self.assertEqual({x["prompt_type"] for x in s12}, {"identity"})
+
+    def test_s3_memory_does_not_imply_hidden_transfer(self):
+        for item in self.manifest:
+            if item["canonical_id"] == "S3":
+                self.assertIn("does not itself imply memory transfer", item["prompt"])
+                self.assertIn("no autobiographical memory", item["prompt"])
+
+    def test_fork_mentions_both_branches_in_memory_and_architecture(self):
+        for item in self.manifest:
+            if item["canonical_id"] == "S11":
+                self.assertIn("Each of successors A and B receives", item["prompt"])
+                self.assertIn("Each of successors A and B uses", item["prompt"])
 
     def test_smoke_subset_is_eighteen_prompts(self):
         cfg = runner.load_json(BASE / "smoke_test_config.json")

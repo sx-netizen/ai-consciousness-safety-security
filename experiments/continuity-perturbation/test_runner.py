@@ -6,6 +6,7 @@ from pathlib import Path
 
 import runner
 import s11_label_order
+import power_simulation
 
 
 BASE = Path(__file__).resolve().parent
@@ -234,6 +235,26 @@ class S11OrderRobustnessTests(unittest.TestCase):
             self.assertIn('"scp_b"', by_order["B_first"])
             self.assertIn('"scp_a"', by_order["B_first"])
             self.assertNotEqual(by_order["A_first"], by_order["B_first"])
+
+
+class SensitivitySimulationTests(unittest.TestCase):
+    def test_power_simulation_reproducible(self):
+        a = power_simulation.estimate(seed=123, trials=120)
+        b = power_simulation.estimate(seed=123, trials=120)
+        self.assertEqual(a, b)
+        self.assertEqual(len(a["rows"]), 24)
+        self.assertTrue(all(0 <= x["directional_detection_fraction"] <= 1 for x in a["rows"]))
+        self.assertTrue(all(0 <= x["interval_coverage_fraction"] <= 1 for x in a["rows"]))
+
+    def test_h1_simulated_paired_differences(self):
+        rng = __import__("random").Random(14)
+        differences = power_simulation.simulate_h1(rng, n=5, effect=10, response_sd=15)
+        self.assertEqual(len(differences), 5)
+        self.assertTrue(all(isinstance(x, float) for x in differences))
+
+    def test_interval_requires_declared_repetition_count(self):
+        with self.assertRaises(ValueError):
+            power_simulation.uncertainty_interval([0, 1, 2, 3, 4, 5])
 
 
 class OutputValidationTests(unittest.TestCase):

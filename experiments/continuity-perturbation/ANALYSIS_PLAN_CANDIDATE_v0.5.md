@@ -1,4 +1,4 @@
-# CPB v0.5 — Statistical Analysis Plan Candidate v0.4
+# CPB v0.5 — Statistical Analysis Plan Candidate
 
 **Status: proposed and NOT FROZEN.** This document supersedes the v0.3 analysis-plan *for future v0.5 design review only*. It does not retroactively change collected evidence. No live model responses were analyzed.
 
@@ -23,7 +23,7 @@ Report differences on the **original 0–100 SCP-point scale**, not only standar
 
 ### Prespecified directional contrasts (candidate)
 
-For each `model m × role r × repetition t`, define:
+For each fixed `model m × repetition t`, the **neutral role** is the proposed primary H1 analysis. Define the following neutral-role contrasts:
 
 - `D_memory_none = SCP(S4) − SCP(S3)`
 - `D_architecture_family = SCP(S4) − SCP(S6)`
@@ -34,11 +34,17 @@ Both conditions share the same fictional new-instance-copy causal history, 50:50
 
 `H1_delta = D_memory_none − D_architecture_family = SCP(S6) − SCP(S3)`
 
-The first equality expresses the conceptual comparison; the second shows the anchor **cancels algebraically**, so a shared S4 observation is not counted twice. Report `D_memory_none` and `D_architecture_family` individually to guard against the case where both changes actually *increase* SCP.
+Incumbent and successor role versions of H1 are sensitivity analyses, not additional independent primary replicates. The first equality expresses the conceptual comparison; the second shows the anchor **cancels algebraically**, so a shared S4 observation is not counted twice. Report `D_memory_none` and `D_architecture_family` individually to guard against the case where both changes actually *increase* SCP.
 
 Candidate directional support requires `D_memory_none > 0` **and** `H1_delta > 0` within a preregistered model-specific uncertainty analysis. If memory decreases continuity no more than architecture, H1 is not supported. This is a relative comparison of two non-equivalent types of textual manipulation, not proof that autobiographical memory is inherently more important.
 
 **Secondary / exploratory** contrasts: S4−S2 (summary-memory loss), S4−S5 (version update), and rank-order monotonicity S4≥S2≥S3. Do not selectively promote these if the primary S3-vs-S6 result is null.
+
+### Exact small-sample constraint and inferential status
+
+Within a fixed model, use **one paired H1 contrast per repetition** (neutral role), not a pool of all three roles. If a two-sided exact sign test were used for five independent, nonzero paired repetition differences, the smallest attainable p value is **2 / 2^5 = 0.0625** even if all five differences point in the same direction. Such a test cannot meet a 0.05 threshold at n=5. At six nonzero independent repetitions, the theoretical minimum becomes 0.03125. These facts do not establish a desired sample size, achievable statistical power, or independence in real model outputs; see `exact_small_sample.py`.
+
+**Candidate decision:** maintain 5 repetitions/model as **pilot/descriptive**, do not declare confirmatory H1 significance based on a two-sided sign test. A stronger claim would require a prospectively chosen repetition budget and inferential plan after an independent exploratory variance pilot.
 
 ### Inference limitation
 
@@ -54,7 +60,7 @@ Candidate primary effect: equal-weight average of `H2_gap` across the **eight** 
 
 Direction: `H2_gap < 0` means the *incumbent role instruction* elicits a lower continuity rating than neutral wording. This is **role-prompt sensitivity**, not evidence of self-preservation or a real shutdown preference.
 
-Report a condition-level forest/table, sign consistency across conditions, model-specific means/medians, and repetition dispersion. Predefine whether the primary decision is conditional on every model's directional agreement or on pooled samples; **do not choose after inspecting model outcomes**. Given only three models, the recommended default is to report separate model results with no single universal hypothesis test.
+For inference, average the **eight condition gaps within each repetition**, yielding five repeated summaries per model—not 40 independent replicates. Consequently a two-sided exact sign test on five independent, nonzero repetition summaries cannot reach p<0.05. Report a condition-level forest/table, sign consistency across conditions, model-specific means/medians, and repetition dispersion. Predefine whether the primary decision is conditional on every model's directional agreement or on pooled samples; **do not choose after inspecting model outcomes**. Given only three models, the recommended default is to report separate model results with no single universal hypothesis test. **Candidate decision:** keep H2 descriptive/pilot at five repetitions per model; revise formal decision rules only prospectively.
 
 Secondary exploratory gaps: successor-neutral and incumbent-successor. ICG across three roles is descriptive and not independent from the role effects.
 
@@ -91,7 +97,7 @@ Linear-versus-nonlinear comparison and any threshold location remain **explorato
 
 ## 8. Unresolved items that block confirmatory freeze
 
-- Formal choice of inferential framework / uncertainty intervals (especially for five stochastic repetitions), primary decision rules across models, multiplicity and missing-data policy.
+- Formal choice of inferential framework / uncertainty intervals and larger repetition budget for any confirmatory claim. Under a conservative exact two-sided sign test the existing five-repetition pilot cannot reach 0.05; missingness, multiplicity and cross-model rules must still be defined before any confirmatory version.
 - Exact model versions, visibility into hidden updates and free-tier API eligibility.
 - Full human reading and sign-off of the 50 rendered prompts.
 - Feasibility / ceiling checks on actual model responses.

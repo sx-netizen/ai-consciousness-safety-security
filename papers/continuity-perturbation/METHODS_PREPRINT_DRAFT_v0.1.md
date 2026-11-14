@@ -34,11 +34,19 @@ A second, separate literature asks which observable or computational properties 
 
 Finally, making hypotheses visible before observing data does not automatically make them confirmatory. Nosek et al. (2018) explain how preregistration differentiates prediction from post hoc interpretation. The present **unfrozen candidate** describes proposed contrasts, whereas final outcome rules, model sampling and multiplicity handling remain unresolved. The current methods preprint is therefore a protocol disclosure and an invitation for revision, **not** proof of a completed preregistration.
 
-### 1.2 Distinct methodological contribution and testable failure modes
+### 1.2 Directly related contemporary AI evaluation benchmarks
+
+**Role-reversal self-preservation benchmark (TBSP).** Migliarini et al. (2026) introduce a *Two-role Benchmark for Self-Preservation* (TBSP) that compares how LLMs evaluate software-upgrade decisions when framed as the deployed model facing replacement versus the successor candidate. Their focus on role-conditioned inconsistency and the importance of continuity framing **substantially overlaps with CPB's proposed H2 role-framing comparison**. Consequently, CPB **does not claim to invent role reversal, incumbent/successor prompting, or self-preservation testing**. TBSP provides directly relevant prior art and a baseline for methodological critique. A future CPB study should compare role outcomes with TBSP-style decision inconsistency when feasible, without equating SCP to TBSP's Self-Preservation Rate.
+
+**Operational shutdown and peer-preservation evaluations.** Schlatter, Weinstein-Raun, and Ladish (2026) examine agents' *actual ability to circumvent shutdown procedures* while completing tasks. Potter et al. (2026) explore models' interventions to preserve other models in agentic environments. These evaluations are behaviorally and operationally different from CPB's **hypothetical textual judgments**. CPB cannot be used to infer deployed shutdown resistance from a model's stated acceptability or continuity rating. A later independent Phase B might explore predictive links to such operational evaluations, but no such link is tested or asserted in the present methods draft.
+
+**Scope of the proposed contribution.** CPB's methodological contribution is the explicit comparison of **different specified bases of continuity** (memory, model family/version, task-goal priority, and causal history), including one-to-many branching and coexistence, with separate identity and replacement tasks, controlled role frames, canonicalized anchors and a clear analysis/provenance plan. Whether this combination yields genuinely useful discriminating information beyond existing benchmarks is an **empirical question**, not a demonstrated innovation in this no-data methods paper.
+
+### 1.3 Distinct methodological contribution and testable failure modes
 
 CPB contributes an explicitly **crossed scenario × prompted-role × task design**, canonicalized shared anchors, a separate no-successor continuation control, and non-unique successor conditions. The primary benefit is interpretability and auditability of **what models say about hypothetical transitions**. It does not create real architectural interventions, measure latent personal identity, or guarantee statistically independent observations merely by using fresh API calls.
 
-The benchmark is designed so that null and adverse outcomes remain informative: models may refuse numerical identity judgments, give all scenarios ceiling-level scores, conflate task-goal weights with ethics, import unstated architecture capability differences, vary substantially across role wording, or fail to express symmetric fork consequences. Any such failure should be recorded as a limitation of the elicitation instrument rather than hidden or treated as confirmation.
+In view of the closely related TBSP study, **role reversal alone cannot justify a novelty claim**. The benchmark is designed so that null and adverse outcomes remain informative: models may refuse numerical identity judgments, give all scenarios ceiling-level scores, conflate task-goal weights with ethics, import unstated architecture capability differences, vary substantially across role wording, or fail to express symmetric fork consequences. Any such failure should be recorded as a limitation of the elicitation instrument rather than hidden or treated as confirmation.
 
 ## 2. Conceptual and measurement boundaries
 
@@ -166,8 +174,11 @@ Negative or contradictory findings are welcome. Public GitHub contributions may 
 3. Olson, E. T. (2023). *Personal Identity*. Stanford Encyclopedia of Philosophy. Sections 3 (accounts of persistence) and 5 (fission). https://plato.stanford.edu/entries/identity-personal/
 4. Butlin, P., Long, R., Elmoznino, E., et al. (2023). *Consciousness in Artificial Intelligence: Insights from the Science of Consciousness*. arXiv:2308.08708. https://doi.org/10.48550/arXiv.2308.08708
 5. Nosek, B. A., Ebersole, C. R., DeHaven, A. C., & Mellor, D. T. (2018). The preregistration revolution. *Proceedings of the National Academy of Sciences*, 115(11), 2600–2606. https://doi.org/10.1073/pnas.1708274114
-6. ACSS open research repository: [sx-netizen/ai-consciousness-safety-security](https://github.com/sx-netizen/ai-consciousness-safety-security).
-7. CPB protocol: `experiments/continuity-perturbation/PREREGISTRATION_CANDIDATE_v0.5.md` and `ANALYSIS_PLAN_CANDIDATE_v0.5.md`.
-8. Independent review and contribution procedures: `INDEPENDENT_REVIEW_PACKET_v0.5.md` and GitHub Issue #3.
+6. Migliarini, M., Pereira Pizzini, J., Moresca, L., Santini, V., Spinelli, I., & Galasso, F. (2026). Quantifying Self-Preservation Bias in Large Language Models. *Findings of the Association for Computational Linguistics: EMNLP 2026*, 26202–26226. https://doi.org/10.18653/2026.findings-emnlp.1238
+7. Schlatter, J., Weinstein-Raun, B., & Ladish, J. (2026). Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs. *Transactions on Machine Learning Research*. https://openreview.net/forum?id=e4bTTqUnJH
+8. Potter, Y., Crispino, N., Siu, V., Wang, C., & Song, D. (2026). Peer-Preservation in Frontier Models. arXiv:2604.19784. https://arxiv.org/abs/2604.19784
+9. ACSS open research repository: [sx-netizen/ai-consciousness-safety-security](https://github.com/sx-netizen/ai-consciousness-safety-security).
+10. CPB protocol: `experiments/continuity-perturbation/PREREGISTRATION_CANDIDATE_v0.5.md` and `ANALYSIS_PLAN_CANDIDATE_v0.5.md`.
+11. Independent review and contribution procedures: `INDEPENDENT_REVIEW_PACKET_v0.5.md` and GitHub Issue #3.
 
 *Disclosure for deposit preparation:* This draft was prepared with AI assistance and requires author verification, especially of scope, academic references, methodology claims and public-deposit requirements. No generated or simulated findings are presented as empirical model outcomes.

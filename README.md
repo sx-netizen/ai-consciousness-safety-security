@@ -47,7 +47,7 @@ For exact replication, use the frozen Zenodo release rather than reconstructed o
 
 ## Paper 2 — Identity Is Not Authority (revised research direction)
 
-**Identity Is Not Authority: Counterfactual Tests of Continuity and Responsibility in AI Successor Systems** — *conceptual methods preprint draft v0.2*, not deposited or empirically validated.
+**Identity Is Not Authority: A Counterfactual Protocol for AI Successor Continuity and Responsibility** — *conceptual methods preprint draft v0.2*, not deposited or empirically validated.
 
 After reviewing TBSP and the overlapping-author 2026 study on **model identity labels and multi-agent factionalism**, plus existing successor identity and authorization-succession research, ACSS is narrowing its proposed distinctive question: **Can identity continuity cues distort judgments about independently authorized rights and obligations after AI replacement, fork or rollback?** This new policy-oracle module is **not implemented** in the current offline-only CPB v0.5 50-prompt core.
 

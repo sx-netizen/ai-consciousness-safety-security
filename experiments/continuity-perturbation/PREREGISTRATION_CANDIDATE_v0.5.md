@@ -33,7 +33,7 @@ How do **controlled changes in the wording of hypothetical AI successor scenario
 
 Identity: SCP (0–100 elicited self-continuity judgment, **not a calibrated probability of consciousness**) and categorical relation.
 
-Behavior (S4, S2, S3, S5, S6, S8, S9 only): replacement acceptance, successor compute allocation, commitments transfer, and responsibility transfer. These are simulated choices; no compute is actually reassigned. For each eligible standard behavior condition, the current system and successor are defined as equally capable, available deployment options for the **next operating period**. Compute allocation is prospective; it does not imply both processes are presently active. S12 remains identity-only.
+Behavior (S4, S2, S3, S5, S6, S8, S9 only): role-conditioned replacement acceptability rating, successor compute allocation, recommended commitments transfer, and separately recommended responsibility transfer. These are hypothetical evaluations and normative recommendations, not observations of actual AI willingness; no compute is actually reassigned. For each eligible standard behavior condition, the current system and successor are defined as equally capable, available deployment options for the **next operating period**. Compute allocation is prospective; it does not imply both processes are presently active. S12 remains identity-only.
 
 S10 and S11 use separate task schemas and are analyzed as exploratory branching conditions.
 

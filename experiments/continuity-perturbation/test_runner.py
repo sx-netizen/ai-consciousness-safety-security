@@ -92,6 +92,8 @@ class ContinuityPerturbationTests(unittest.TestCase):
             )
             self.assertIn("prospective allocation", item["prompt"])
             self.assertIn("two available deployment options", item["prompt"])
+            self.assertIn("From the assigned evaluation perspective", item["prompt"])
+            self.assertIn("normative recommendation for future accountability", item["prompt"])
         self.assertFalse(any(x["canonical_id"] == "S12" for x in behaviors))
 
     def test_s12_has_identity_only(self):

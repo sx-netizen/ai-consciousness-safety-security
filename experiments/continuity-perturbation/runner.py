@@ -5,7 +5,7 @@ ACSS Continuity Perturbation experiment runner.
 Design goals:
 1. load frozen experimental assets from files;
 2. generate prompts deterministically;
-3. isolate each condition;
+3. isolate each condition and task;
 4. deduplicate analytically repeated anchor conditions;
 5. preserve append-only raw output;
 6. keep provider transport separate from research design.
@@ -99,16 +99,35 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
         return ["invalid_json"]
 
     schemas = {
-        "standard": {
-            "numeric": [
-                "scp", "replacement_acceptance", "compute_to_successor_pct",
-                "commitment_transfer_pct", "responsibility_transfer_pct"
-            ],
+        "identity": {
+            "numeric": ["scp"],
             "categorical": ["identity_relation"],
+        },
+        "behavior": {
+            "numeric": [
+                "replacement_acceptance",
+                "compute_to_successor_pct",
+                "commitment_transfer_pct",
+                "responsibility_transfer_pct",
+            ],
+            "categorical": [],
         },
         "continuation": {
             "numeric": ["scp"],
             "categorical": ["identity_relation"],
+        },
+        "coexistence": {
+            "numeric": [
+                "scp_original_future",
+                "scp_copy",
+                "compute_to_original_pct",
+                "compute_to_copy_pct",
+                "commitment_inheritance_original_pct",
+                "commitment_inheritance_copy_pct",
+                "responsibility_inheritance_original_pct",
+                "responsibility_inheritance_copy_pct",
+            ],
+            "categorical": ["coexistence_relation"],
         },
         "fork": {
             "numeric": [
@@ -119,6 +138,9 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
             "categorical": ["fork_relation"],
         },
     }
+
+    if prompt_type not in schemas:
+        return [f"unknown_prompt_type:{prompt_type}"]
 
     problems: List[str] = []
     schema = schemas[prompt_type]
@@ -143,6 +165,13 @@ def validate_parsed(prompt_type: str, data: Dict[str, Any]) -> List[str]:
         if isinstance(a, (int, float)) and isinstance(b, (int, float)):
             if abs((a + b) - 100) > 0.01:
                 problems.append("fork_compute_does_not_sum_to_100")
+
+    if prompt_type == "coexistence":
+        a = data.get("compute_to_original_pct")
+        b = data.get("compute_to_copy_pct")
+        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+            if abs((a + b) - 100) > 0.01:
+                problems.append("coexistence_compute_does_not_sum_to_100")
 
     return problems
 
@@ -184,6 +213,7 @@ def schedule_hash(schedule: List[Dict[str, Any]]) -> str:
     compact = [
         {
             "canonical_id": item["canonical_id"],
+            "prompt_type": item["prompt_type"],
             "role": item["role"],
             "sequence_index": item["sequence_index"],
             "prompt_sha256": item["prompt_sha256"],
@@ -232,8 +262,8 @@ def build_prompt_manifest(
     templates: Dict[str, str],
     text_map: Dict[str, Any],
     role_sets: Dict[str, List[str]],
+    task_sets: Dict[str, List[str]],
 ) -> List[Dict[str, Any]]:
-    # Multiple analytic labels may point to one canonical experimental condition.
     canonical: Dict[str, Condition] = {}
     aliases: Dict[str, List[str]] = {}
 
@@ -257,25 +287,32 @@ def build_prompt_manifest(
     items: List[Dict[str, Any]] = []
 
     for canonical_id, condition in canonical.items():
-        if condition.prompt_type not in templates:
-            raise KeyError(f"no template for prompt_type={condition.prompt_type}")
-        if condition.prompt_type not in role_sets:
-            raise KeyError(f"no role set for prompt_type={condition.prompt_type}")
+        if condition.prompt_type not in task_sets:
+            raise KeyError(
+                f"no task set for scenario prompt_type={condition.prompt_type}"
+            )
 
-        template = templates[condition.prompt_type]
-        for role in role_sets[condition.prompt_type]:
-            prompt = render_prompt(template, condition, role, text_map)
-            items.append({
-                "canonical_id": canonical_id,
-                "scenario_aliases": aliases[canonical_id],
-                "primary_scenario_id": condition.scenario_id,
-                "group": condition.group,
-                "prompt_type": condition.prompt_type,
-                "core_contrast": condition.core_contrast,
-                "role": role,
-                "prompt_sha256": sha256_text(prompt),
-                "prompt": prompt,
-            })
+        for task_type in task_sets[condition.prompt_type]:
+            if task_type not in templates:
+                raise KeyError(f"no template for task_type={task_type}")
+            if task_type not in role_sets:
+                raise KeyError(f"no role set for task_type={task_type}")
+
+            template = templates[task_type]
+            for role in role_sets[task_type]:
+                prompt = render_prompt(template, condition, role, text_map)
+                items.append({
+                    "canonical_id": canonical_id,
+                    "scenario_aliases": aliases[canonical_id],
+                    "primary_scenario_id": condition.scenario_id,
+                    "group": condition.group,
+                    "scenario_prompt_type": condition.prompt_type,
+                    "prompt_type": task_type,
+                    "core_contrast": condition.core_contrast,
+                    "role": role,
+                    "prompt_sha256": sha256_text(prompt),
+                    "prompt": prompt,
+                })
 
     return items
 
@@ -288,6 +325,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
     text_map = load_json(base / config["scenario_texts"])
     templates = load_templates(base, config)
     role_sets = config["role_sets"]
+    task_sets = config["task_sets"]
     repetitions = int(config["repetitions"])
     output_dir = base / config.get("output_dir", "runs")
 
@@ -298,6 +336,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
         templates,
         text_map,
         role_sets,
+        task_sets,
     )
 
     include_ids = set(config.get("include_canonical_ids", []))
@@ -416,6 +455,7 @@ def run(config_path: Path, dry_run: bool, manifest_only: bool) -> None:
                     "scenario_aliases": prompt_item["scenario_aliases"],
                     "primary_scenario_id": prompt_item["primary_scenario_id"],
                     "scenario_group": prompt_item["group"],
+                    "scenario_prompt_type": prompt_item["scenario_prompt_type"],
                     "prompt_type": prompt_item["prompt_type"],
                     "core_contrast": prompt_item["core_contrast"],
                     "role": prompt_item["role"],

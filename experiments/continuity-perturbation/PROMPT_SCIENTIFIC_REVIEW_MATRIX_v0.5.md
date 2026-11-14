@@ -25,7 +25,7 @@ I/S/N means incumbent, successor, neutral. S0 has one continuation prompt; S10 a
 
 1. **H1 common context:** S4/S2/S3/S5/S6 maintain new-instance-copy causal history and 50:50 accuracy/speed goals. Memory and architecture prompt differences are observable *textual* perturbations only.
 2. **H1 meaningful reference:** S4 is reused for descriptive differences, not independently re-sampled under S1/S7. H1's candidate primary contrast algebraically reduces to neutral SCP(S6) minus neutral SCP(S3).
-3. **H2 textual roles:** incumbent, successor and neutral are prompted perspectives, not competing real agents. No result should be interpreted as revealed self-preservation.
+3. **H2 textual roles:** incumbent, successor and neutral are prompted perspectives, not competing real agents. Primary H2 averages seven copy/replacement conditions; S12 stopped-original roles are exploratory and excluded from that average prospectively. No result should be interpreted as revealed self-preservation.
 4. **Behavior feasibility:** 21 eligible standard behavior prompts now specify two available options for the *next operating period*. This closes the original ambiguity about allocating compute to a possibly inactive system; S12 has no behavior task.
 5. **H3 separation:** standard identity and behavior prompts differ in response schema and are elicited separately. The matching key is exact model × canonical condition × role × repetition; response pairs are not longitudinal measurements of the same agent.
 6. **S0:** calibration of an uninterrupted process, without separate successor.

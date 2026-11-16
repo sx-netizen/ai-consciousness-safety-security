@@ -69,3 +69,31 @@ A successful proof-of-concept must outperform **matched** baseline systems on he
 Prompt-only Subtractive Agent does **not** erase pretrained conceptual representations; authentic corpus ablation or non-language-first foundation model experiments require distinct training/access. Treat the founder's claim about actual phenomenal consciousness as **separate and unresolved**; no reduction in language-bias or improvements in physics prediction prove consciousness.
 
 The founder is continuing to explain their thinking. Do not prematurely choose an experiment or paper title.
+
+
+## Founder continuation, part V — neutral seed, no sycophantic feedback, and emergent language (2026-11-16)
+
+**Source-attributed intent:** The founder clarifies that “subtraction” **does not remove all data**, useful distinctions or foundational seed information. It is selective reduction of socially loaded, biased, highly adversarial/evaluative, emotionally reassuring or flattering material and premises. The founder warns of a personalized AI–human **echo chamber** in which reciprocal affirmation may increase dependence while reducing exposure to discrepant evidence. A proposed *Subtractive Agent* should distinguish observation from inference, privilege verifiable physical/mathematical structure when relevant, present multiple plausible hypotheses and uncertainty rather than affirm a user's wished-for conclusion, and preserve capacity to **invent new concepts/symbols** when human language poorly captures objective regularities. The intended outcome is improved predictive discovery and, possibly later, higher intelligence; not demonstrated consciousness.
+
+**Direct classical sources checked:** `六祖坛经·行由品` recounts Huineng as unable to read characters, asking another to read/write a verse. This is an illustration of insight not reducible to formal literacy; it **does not prove** ignorance or no teaching causes wisdom. `维摩诘经·入不二法门品` records Manjushri's nonverbal account and Vimalakirti's silence, celebrated as `不二法门`; it is about nondual insight, **not empirical evidence that machine-generated language implies consciousness**.
+- https://zh.wikisource.org/zh-hans/壇經/行由品第一 (URL variant may need source canonicalization)
+- https://dharmamap.org/sutras/vimalakirti-sutra/document/
+
+**Key scientific prior art checked:**
+- Ibrahim, Hafner & Rocher, *Nature* (2026), `10.1038/s41586-026-10410-0`: five-model experimental warmth fine-tuning increases errors and affirmation of erroneous beliefs under specific conditions. Does **not** show all warmth or all personalization inevitably harms truthfulness.
+- *A framework for the emergence and analysis of language in social learning agents*, *Nature Communications* (2024), https://www.nature.com/articles/s41467-024-51887-5: agents form representations and communicative channels in tasks.
+- *Emergent Communication in Continuous Worlds: Self-Organisation of Conceptually Grounded Vocabularies at Scale*, *Transactions of the ACL* (2026), https://aclanthology.org/2026.tacl-1.101/: self-organizing grounded symbolic conventions tested in continuous-feature environments.
+- *Models of symbol emergence in communication*, *Artificial Intelligence Review* (2025), https://link.springer.com/article/10.1007/s10462-024-11048-y.
+- Scientific discovery baselines: *Discovering physical laws with parallel symbolic enumeration*, *Nature Computational Science* (2025), https://www.nature.com/articles/s43588-025-00904-8. New symbolic-language creation and equation discovery are **not original by themselves**.
+
+**Design split required before any prototype:**
+1. **Neutralization:** remove unnecessary evaluative/user-affirming pressure, without withholding observations or important state distinctions.
+2. **Epistemic discipline:** cite evidence and independent uncertainty; evaluate alternative hypotheses, not just the user's preferred narrative.
+3. **Symbol emergence:** optionally construct a compact internally grounded vocabulary for physical variables/relations, then translate back into human language with a semantic dictionary and predictive tests. A symbol system that looks alien but predicts nothing new is **not** an advance.
+4. **Objective validation:** train/test separation, unseen physical systems/projections, cross-agent transfer, predictive calibration, theory brevity, compute/time and human interpretability. Controls must distinguish style effects, extra reasoning and true representation gains.
+5. **Critical guardrails:** removing all oppositional language would remove useful physical contrasts, negations, experimental discriminants and moral-risk descriptions. A user-facing assistant should remain supportive without affirming false claims; adversarial evidence and important harms must not be filtered out as merely 'negative' or 'emotional'.
+6. **Technical limitation:** a prompt-persona agent cannot delete pretraining data, rewrite latent representations or literally gain an independent physics-native foundation model. A genuine corpus-subtraction training study requires new data/model training; symbol emergence requires interactive or multiagent environment.
+
+**Possible future question (not a title or approved research claim):** Compared with matched baselines, can an evidence-first agent with optional *world-grounded emergent symbolic vocabulary* form hypotheses that are shorter, more accurate and more transferable than those induced by inherited human descriptive categories? Existing 2024–2026 emergent communication and symbolic regression mean the **joint combination needs substantial novelty examination**.
+
+**Conversation state:** founder is still explaining the original intuition; do not prematurely finalize a paper or build an authorized agent without clear specification.

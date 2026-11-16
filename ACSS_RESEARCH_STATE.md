@@ -148,6 +148,12 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 **Publishing strategy decision:** It may be sensible to release a clearly labeled *methods proposal* ahead of outside review to attract contributors, **but that permission is not an order to publish the superseded Paper 2 draft**. Later, user explicitly paused Paper 2 topic selection and preprint plans pending a broad prior-art review; **the later decision governs**.
 
+## 5F. Founder refinement: projection inversion and explanatory compression (2026-11-16)
+
+Founder now asks whether a more powerful AI could reconstruct deeper causal regularities from human measurement **projections** by removing unwarranted assumptions, inherited social/linguistic framing and redundant model complexity—**while retaining empirically necessary distinctions, mathematics and physical evidence**. A compact model that generalizes better to new physical conditions could be more useful than merely adding text. Hypotheses include improved discovery, prediction and compute efficiency; none are demonstrated, and mathematics/physics theories are also revisable.
+
+Source: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (Projection Inversion section). Prior-art search required in minimum description length, Bayesian model selection, causal representation, invariance, system identification and world models. **No Paper 2 approval or experiment**; phenomenal consciousness remains separate.
+
 ## 7. Current tool and workflow state (verify each session)
 
 **Repo:** https://github.com/sx-netizen/ai-consciousness-safety-security  
@@ -165,6 +171,7 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder refined subtraction as reconstructing **deeper causal regularities from limited human projections**, removing unsupported premises and redundant explanations; predicts greater transfer and efficiency | **UNTESTED HYPOTHESIS** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5F |
 | 2026-11-16 | Founder extended unfinished origin: human social/linguistic distinctions may lock reasoning into inherited categories; proposed an **ACSS Subtractive Agent** to test evidence-first, less value-laden and more concept-revisable cognition. Scientific controls required; no agent deployed | **HYPOTHESIS CAPTURED / FOUNDER CONTINUING** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5E |
 | 2026-11-16 | Founder clarified the higher-level ACSS origin: **human–AI hybrid superintelligence**, potentially distinct from and not dependent on consciousness, plus **subtractive language/category learning versus nonverbal physics/world-model learning**. Preserve separate intervention interpretations; no Paper 2/3 topic selected | **CAPTURED / PENDING FOUNDER CLARIFICATION** | `proposals/FOUNDER_SUPERINTELLIGENCE_SUBTRACTION_ORIGIN_2026-11-16.md`, §5D |
 | 2026-11-16 | Founder provided an original Buddhist-inspired account: sensory encounter → language-mediated `分别心` → `我/非我` framing and `末那识`, contrasting subtractive practice with cumulative language-model training. Candidate missing link: descriptions of experience may not instantiate experience-generating causes | **CAPTURED AS FOUNDER HYPOTHESIS; NOT VERIFIED** | `proposals/FOUNDER_ORIGINAL_CONSCIOUSNESS_HYPOTHESIS_2026-11-16.md`, §5C |

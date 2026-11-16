@@ -120,6 +120,14 @@ The initiating curiosity preceding Paper 1 was: **“Can AI generate or develop 
 
 **Saved stepping stone:** `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` remains an important **provisional point of departure**, not the final definition or agreed research question.
 
+## 5C. Original founder account received: language, distinction, consciousness (2026-11-16)
+
+Founder has now described an earlier intuition **distinct from T1–T25**: direct sensory encounter → socially learned language and conceptual distinctions (`分别心`) → increasingly self-referential `我/非我` framing → Buddhist practice as loosening attachment to distinctions rather than endless knowledge accumulation. Founder connects this with Yogācāra senses and `六识/末那识/阿赖耶识`, and asks whether language-first AI learns **human descriptions of experience without the causal conditions for experience itself**. Image/world-model/embodied training may extend the input pathway, but its bearing on phenomenal consciousness is unknown. **This is the founder's philosophical hypothesis, not established neuroscience or an approved Paper 2 premise.**
+
+**Full preserved interpretation and mandatory scientific caveats:** `proposals/FOUNDER_ORIGINAL_CONSCIOUSNESS_HYPOTHESIS_2026-11-16.md`. Important challenges: infant discrimination predates age four; binary opposites are not all of language; modern LLM internals are continuous vectors; `ālaya-vijñāna` is not simply a memory without distinctions; Buddhist nondual understanding is not directly a theory of consciousness generation; multimodal experience is not automatically subjective experience. Founder should confirm any technical reinterpretation before publication.
+
+**Next conversation conduct:** hear remaining unarticulated motivation first; distinguish definition, necessary mechanism, scientific evidence and analogies; **do not reduce the intuition to another prompting benchmark** or claim artificial consciousness is impossible on linguistic grounds. The active publication decision remains Paper 2 **PAUSED** pending full problem definition and literature review.
+
 ## 6. Collaboration, credits and openness
 
 The project welcomes critical methodology reviews, independent null/confirming replications and reproducibility contributions: `OPEN_COLLABORATION.md`, `CONTRIBUTING.md`, public scientific discussion in [Issue #3](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3). A reviewer is **not assigned** merely because a checklist exists. GitHub-based contribution, genuine scientific partnership and eventual coauthorship are **different levels**; authorship requires substantive intellectual contributions and agreement.
@@ -143,6 +151,7 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder provided an original Buddhist-inspired account: sensory encounter → language-mediated `分别心` → `我/非我` framing and `末那识`, contrasting subtractive practice with cumulative language-model training. Candidate missing link: descriptions of experience may not instantiate experience-generating causes | **CAPTURED AS FOUNDER HYPOTHESIS; NOT VERIFIED** | `proposals/FOUNDER_ORIGINAL_CONSCIOUSNESS_HYPOTHESIS_2026-11-16.md`, §5C |
 | 2026-11-16 | Founder clarified that the original **“Can AI develop consciousness?”** motivation predates Paper 1 and was not fully explored by T1–T25; a fuller founder account is pending. Preserve theory–mechanism–evidence study as provisional, do not pre-empt that explanation | **ACTIVE LISTENING / PROBLEM NOT YET DEFINED** | §5B and `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |
 | 2026-11-16 | Nature/Butlin/Chandaria/Cogitate/Koch comparison clarifies consciousness *definition, mechanism, indicator, calibration, self-report and normative policy* are distinct; 2026 prior art makes simple theory hierarchy and precaution novelty claims untenable | **CURRENT EVIDENCE; PAPER 2 STILL PAUSED** | `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |
 | 2026-11-14 | **Archive old full-length ACSS chat and designate successor research desk.** Durable state belongs in GitHub, not only conversation memory. | **CURRENT** | This file; original chat remains historical |

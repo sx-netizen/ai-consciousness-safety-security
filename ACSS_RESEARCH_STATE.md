@@ -2,6 +2,7 @@
 
 **Status:** ACTIVE living research handoff  
 **Snapshot date:** 2026-11-14 (America/Vancouver)  
+**Last research audit:** 2026-11-16; evidence-first subtractive intelligence review in `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_RESEARCH_AUDIT_AND_LANDSCAPE_2026-11-16.md`.  
 **Maintainer:** ACSS research project; updates require explicit, dated Git commits  
 **Canonical path:** `ACSS_RESEARCH_STATE.md`  
 **Working branch at creation:** `audit/cpb-v04-preflight-20261113` (Draft PR #2). **Not yet merged into `main`.**  
@@ -177,10 +178,19 @@ A detailed **five-arm, one-base-model pilot** has been prepared to distinguish b
 
 **Implementation conduct:** Prefer existing GitHub source files over recollected chat descriptions. Do not treat the `analysis` area, screenshots or obsolete drafts as current. Work on an isolated branch/Draft PR; before main merges, public repository changes with external visibility, deposits, emails or model calls, obtain suitable explicit approval. When changing a model experiment, version, log and test the design rather than silently rewriting a frozen one.
 
+## 5I. Audited research program — five-agent novelty gate (2026-11-16)
+
+**NEW, highest-priority read for proposed subtraction work:** `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_RESEARCH_AUDIT_AND_LANDSCAPE_2026-11-16.md`. It cross-checks the founder's successive hypotheses with GitHub, maps published experiments, distinguishes already-solved issues from unverified gaps, and proposes strict test/falsification/compute gates. **Closest substantive rivals** now include Nov 2026 *AI-Newton* (46 mechanics experiments, symbolic theory-base subtraction and general-law discovery), *CoSR* (Nov 2026 progressive symbolic physical laws), and Wang/Buehler's 2026 *Self-revising discovery systems* (formal verified conceptual-schema revision). **Novelty is not certified.** The narrow candidate test is whether L1→L2→L3→A4, with *equal evidence and compute* and strong ablation controls, yields better held-out causal generalization/efficiency beyond these precedents.
+
+**Next gates, not authorized runs:** precise construct glossary; nearest-neighbor full-paper/author work review; offline synthetic oracle; authorized controlled multi-arm feasibility; ablations/factorial interactions; finally only domain-limited finance/elections stress testing under timestamp/leakage controls. Do not confuse 5 prompt-policy variants with 5 independently trained agents. No current model spend, publication, partnership, auto-trading or change to frozen Paper 1.
+
+## 7. Current tool and workflow state (verify each session)
+
 ## 8. Living decision and learning log (append-only entries, newest first)
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Full discussion + GitHub audit identified documentation sprawl, prompt-only/causal inference confounds and strong prior art (AI-Newton, CoSR, Wang/Buehler, plus L1 and L2 studies). New question-first report defines scope, uncertainty, five-agent feasibility design and novelty gates | **SCOPING AUDIT COMPLETED; NOVELTY UNRESOLVED; NO RUNS** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_RESEARCH_AUDIT_AND_LANDSCAPE_2026-11-16.md`, §5I |
 | 2026-11-16 | Founder specified **three progressive subtractions** (social noise → observer projection → physics/math grounding), with a **five-agent A0–A4 pilot design** now documented to test whether successive layers actually improve held-out accuracy/generalization without extra compute | **DESIGNED / NOT EXECUTED / NOVELTY OPEN** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_FIVE_AGENT_PILOT_v0.1.md`, §5H |
 | 2026-11-16 | Founder clarified subtractive Agent should **retain a neutral factual seed**, avoid reciprocally reinforcing user false beliefs, and potentially create **world-grounded new concepts/symbols** if inherited language is limiting; primary Buddhist texts and 2024–26 AI prior art checked | **HYPOTHESIS, NOT IMPLEMENTED** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5G |
 | 2026-11-16 | Founder refined subtraction as reconstructing **deeper causal regularities from limited human projections**, removing unsupported premises and redundant explanations; predicts greater transfer and efficiency | **UNTESTED HYPOTHESIS** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5F |

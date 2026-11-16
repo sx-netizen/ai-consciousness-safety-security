@@ -106,6 +106,20 @@ Most important newly surfaced prior art: Chandaria et al. (2026, **including Ani
 
 Read `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` for source links, unresolved distinctions and unapproved search leads. This **does not reopen Paper 2** or settle its title; it strengthens the broader research landscape and explains why a causal/theory-discriminating experiment would be needed before making consciousness claims.
 
+## 5B. Founder-origin question — reopen before selecting any Paper 2 direction (2026-11-16)
+
+**HOLD OPEN — founder's own explanation is pending. Do not infer or invent it.**
+
+The initiating curiosity preceding Paper 1 was: **“Can AI generate or develop consciousness?”** The T1–T25 engineering decomposition was an informative and independently valuable **branch** into hypothetical continuity, replacement, shutdown and moral uncertainty; it did **not necessarily capture the founder's originally intended deeper direction**. The October 2026 *Nature* article by Seth, Block & Tononi about intelligence, physical causation and consciousness appears closer to *one aspect* of that original intuition, but the founder has **not yet articulated which aspect or the full original reasoning**.
+
+**Current protocol for the next research conversation:**
+1. Invite the founder's complete account in their own words, without substituting previous Paper 1 themes or proposing a Paper 2 prematurely.
+2. Keep distinct **(a) what the founder personally originally conjectured, (b) scientific definition of the target property, (c) plausible causal mechanisms, (d) existing published/preprint evidence, and (e) independently testable implications**.
+3. Record the account as the founder's stated motivation, **not an established scientific conclusion**; confirm the interpretation before treating it as a research premise.
+4. Only afterward compare that precise question against the current consciousness-theory research map and adjacent prior art. Welcome the possibility that it leads in an unexpected direction or does not produce Paper 2 at all.
+
+**Saved stepping stone:** `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` remains an important **provisional point of departure**, not the final definition or agreed research question.
+
 ## 6. Collaboration, credits and openness
 
 The project welcomes critical methodology reviews, independent null/confirming replications and reproducibility contributions: `OPEN_COLLABORATION.md`, `CONTRIBUTING.md`, public scientific discussion in [Issue #3](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3). A reviewer is **not assigned** merely because a checklist exists. GitHub-based contribution, genuine scientific partnership and eventual coauthorship are **different levels**; authorship requires substantive intellectual contributions and agreement.
@@ -129,6 +143,7 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder clarified that the original **“Can AI develop consciousness?”** motivation predates Paper 1 and was not fully explored by T1–T25; a fuller founder account is pending. Preserve theory–mechanism–evidence study as provisional, do not pre-empt that explanation | **ACTIVE LISTENING / PROBLEM NOT YET DEFINED** | §5B and `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |
 | 2026-11-16 | Nature/Butlin/Chandaria/Cogitate/Koch comparison clarifies consciousness *definition, mechanism, indicator, calibration, self-report and normative policy* are distinct; 2026 prior art makes simple theory hierarchy and precaution novelty claims untenable | **CURRENT EVIDENCE; PAPER 2 STILL PAUSED** | `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |
 | 2026-11-14 | **Archive old full-length ACSS chat and designate successor research desk.** Durable state belongs in GitHub, not only conversation memory. | **CURRENT** | This file; original chat remains historical |
 | 2026-11-13/14 | **Pause Paper 2** until broad review of papers, preprints, code, public ongoing programs, team clusters; avoid duplicative work | **CURRENT** | `proposals/ACSS_RESEARCH_LANDSCAPE_AND_PROBLEM_DISCOVERY_2026-11-13.md` |

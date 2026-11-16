@@ -154,6 +154,10 @@ Founder now asks whether a more powerful AI could reconstruct deeper causal regu
 
 Source: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (Projection Inversion section). Prior-art search required in minimum description length, Bayesian model selection, causal representation, invariance, system identification and world models. **No Paper 2 approval or experiment**; phenomenal consciousness remains separate.
 
+## 5G. Founder clarification: neutral seed, anti-echo-chamber, world-grounded emergent symbols (2026-11-16)
+
+Subtraction **retains essential seed data** and factual contrasts while reducing inherited unsupported evaluative framings and social/affective sycophancy. The founder raises a reciprocal human/AI affirmation loop that may lead to informational echo chambers, and asks whether an evidence-first Agent could eventually **develop a new symbolic language from observed physical relations**, overcoming limitations of existing human labels. Distinguish nondual philosophical inspiration from explicit machine-learning hypotheses. Prior art: *Nature* 2026 warmth–accuracy experiments; *Nature Communications* 2024 emergent language; *TACL* 2026 emergent grounded vocabularies; 2025 symbolic physical-law discovery. **Emergent communication and concise symbolic models are not new per se**. Any potential originality requires a measurable generalization/discovery effect beyond these baselines. Full source links and proposed separated controls: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (part V). No agent deployment or Paper 2 commitment.
+
 ## 7. Current tool and workflow state (verify each session)
 
 **Repo:** https://github.com/sx-netizen/ai-consciousness-safety-security  
@@ -171,6 +175,7 @@ Source: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (Projecti
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder clarified subtractive Agent should **retain a neutral factual seed**, avoid reciprocally reinforcing user false beliefs, and potentially create **world-grounded new concepts/symbols** if inherited language is limiting; primary Buddhist texts and 2024–26 AI prior art checked | **HYPOTHESIS, NOT IMPLEMENTED** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5G |
 | 2026-11-16 | Founder refined subtraction as reconstructing **deeper causal regularities from limited human projections**, removing unsupported premises and redundant explanations; predicts greater transfer and efficiency | **UNTESTED HYPOTHESIS** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5F |
 | 2026-11-16 | Founder extended unfinished origin: human social/linguistic distinctions may lock reasoning into inherited categories; proposed an **ACSS Subtractive Agent** to test evidence-first, less value-laden and more concept-revisable cognition. Scientific controls required; no agent deployed | **HYPOTHESIS CAPTURED / FOUNDER CONTINUING** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5E |
 | 2026-11-16 | Founder clarified the higher-level ACSS origin: **human–AI hybrid superintelligence**, potentially distinct from and not dependent on consciousness, plus **subtractive language/category learning versus nonverbal physics/world-model learning**. Preserve separate intervention interpretations; no Paper 2/3 topic selected | **CAPTURED / PENDING FOUNDER CLARIFICATION** | `proposals/FOUNDER_SUPERINTELLIGENCE_SUBTRACTION_ORIGIN_2026-11-16.md`, §5D |

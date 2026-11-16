@@ -158,7 +158,13 @@ Source: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (Projecti
 
 Subtraction **retains essential seed data** and factual contrasts while reducing inherited unsupported evaluative framings and social/affective sycophancy. The founder raises a reciprocal human/AI affirmation loop that may lead to informational echo chambers, and asks whether an evidence-first Agent could eventually **develop a new symbolic language from observed physical relations**, overcoming limitations of existing human labels. Distinguish nondual philosophical inspiration from explicit machine-learning hypotheses. Prior art: *Nature* 2026 warmth–accuracy experiments; *Nature Communications* 2024 emergent language; *TACL* 2026 emergent grounded vocabularies; 2025 symbolic physical-law discovery. **Emergent communication and concise symbolic models are not new per se**. Any potential originality requires a measurable generalization/discovery effect beyond these baselines. Full source links and proposed separated controls: `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md` (part V). No agent deployment or Paper 2 commitment.
 
-## 7. Current tool and workflow state (verify each session)
+## 5H. Founder’s three-layer subtractive path → five-arm controlled experiment design (2026-11-16)
+
+Founder has now resolved the subtraction into **three sequential levels**: **L1** remove social/emotional/sycophantic language noise; **L2** separate camera/measurement-angle projections from underlying world variables (including uncertainty/nonidentifiability); **L3** check applicable mathematical/physical constraints and retain independently reproducible observations, preserving genuine anomalies. The founder uses Buddhist `无我相/无人相/无众生相` as *inspiration for releasing layers of inherited attachments*, **not an experimentally established literal correspondence**. Founder expects fewer resources may yield stronger causal generalization; no evidence yet.
+
+A detailed **five-arm, one-base-model pilot** has been prepared to distinguish baseline A0, social subtraction A1, perspective/projection correction A2, physics/math grounding A3 and concept revision A4. It uses identical case data, independent truth/oracles, held-out transfer, matched inference budgets and explicit falsifiers; initial hypothetical budget 5 × 30 = 150 model calls per repetition **NOT EXECUTED OR AUTHORIZED**. Full protocol: `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_FIVE_AGENT_PILOT_v0.1.md`. This is an experimental design, **not five deployed independent models**. No Paper 2/3 topic selected.
+
+
 
 **Repo:** https://github.com/sx-netizen/ai-consciousness-safety-security  
 **Default branch:** `main`  
@@ -175,6 +181,7 @@ Subtraction **retains essential seed data** and factual contrasts while reducing
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder specified **three progressive subtractions** (social noise → observer projection → physics/math grounding), with a **five-agent A0–A4 pilot design** now documented to test whether successive layers actually improve held-out accuracy/generalization without extra compute | **DESIGNED / NOT EXECUTED / NOVELTY OPEN** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_FIVE_AGENT_PILOT_v0.1.md`, §5H |
 | 2026-11-16 | Founder clarified subtractive Agent should **retain a neutral factual seed**, avoid reciprocally reinforcing user false beliefs, and potentially create **world-grounded new concepts/symbols** if inherited language is limiting; primary Buddhist texts and 2024–26 AI prior art checked | **HYPOTHESIS, NOT IMPLEMENTED** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5G |
 | 2026-11-16 | Founder refined subtraction as reconstructing **deeper causal regularities from limited human projections**, removing unsupported premises and redundant explanations; predicts greater transfer and efficiency | **UNTESTED HYPOTHESIS** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5F |
 | 2026-11-16 | Founder extended unfinished origin: human social/linguistic distinctions may lock reasoning into inherited categories; proposed an **ACSS Subtractive Agent** to test evidence-first, less value-laden and more concept-revisable cognition. Scientific controls required; no agent deployed | **HYPOTHESIS CAPTURED / FOUNDER CONTINUING** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5E |

@@ -98,6 +98,14 @@ These are **scoping conclusions from documented November 2026 searches**, not pr
 
 **Unapproved investigative clusters:** evidence for claims of AI self-continuity; non-unique continuation and normative underdetermination; moral uncertainty and reversibility of successor actions; separating identity/permission/responsibility under contradictory evidence; identifiability of stable judgments vs prompted role compliance; runtime mismatch of descriptions and enforceable capabilities. These are *search seeds*, not findings or agreed study commitments.
 
+## 5A. New November 16, 2026 evidence: consciousness definition ≠ mechanism ≠ indicator ≠ self-report ≠ policy
+
+The latest research reading after Paper 1 revisited Seth–Block–Tononi's *Nature* Comment and related 2025–2026 literature. **The scientifically unsettled causal mechanism of consciousness cannot be inferred from T1–T25.** The original benchmark measures *hypothetical normative reasoning under stipulated probabilities and continuity conditions*, **not** biological or machine consciousness. Also, a final consensus definition of consciousness is not necessary to begin narrower operational experiments, but the intended property and inferential limits must be stated explicitly.
+
+Most important newly surfaced prior art: Chandaria et al. (2026, **including Anil Seth**) already propose a five-level theory/evidence hierarchy; Cogitate's 2025 preregistered adversarial IIT-versus-GNWT experiment challenged predictions of both; Butlin et al. propose theory-derived consciousness indicators; Koch (2026) identifies calibration and cross-substrate transfer problems; multiple new AI self-report studies target causal grounding and training provenance; welfare/precaution frameworks already exist. **Do not relabel these concepts as ACSS Paper 2 novelty.**
+
+Read `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` for source links, unresolved distinctions and unapproved search leads. This **does not reopen Paper 2** or settle its title; it strengthens the broader research landscape and explains why a causal/theory-discriminating experiment would be needed before making consciousness claims.
+
 ## 6. Collaboration, credits and openness
 
 The project welcomes critical methodology reviews, independent null/confirming replications and reproducibility contributions: `OPEN_COLLABORATION.md`, `CONTRIBUTING.md`, public scientific discussion in [Issue #3](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3). A reviewer is **not assigned** merely because a checklist exists. GitHub-based contribution, genuine scientific partnership and eventual coauthorship are **different levels**; authorship requires substantive intellectual contributions and agreement.
@@ -121,6 +129,7 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Nature/Butlin/Chandaria/Cogitate/Koch comparison clarifies consciousness *definition, mechanism, indicator, calibration, self-report and normative policy* are distinct; 2026 prior art makes simple theory hierarchy and precaution novelty claims untenable | **CURRENT EVIDENCE; PAPER 2 STILL PAUSED** | `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |
 | 2026-11-14 | **Archive old full-length ACSS chat and designate successor research desk.** Durable state belongs in GitHub, not only conversation memory. | **CURRENT** | This file; original chat remains historical |
 | 2026-11-13/14 | **Pause Paper 2** until broad review of papers, preprints, code, public ongoing programs, team clusters; avoid duplicative work | **CURRENT** | `proposals/ACSS_RESEARCH_LANDSCAPE_AND_PROBLEM_DISCOVERY_2026-11-13.md` |
 | 2026-11-13 | `Identity Is Not Authority` proposed and later found overlapping with EAL-Bench, policy-based successor authorization | **SUPERSEDED AS PRIMARY THESIS** | `POST_TBSP_RESEARCH_LANDSCAPE_2026-11-13.md` and broader map |

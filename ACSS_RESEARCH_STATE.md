@@ -186,10 +186,19 @@ A detailed **five-arm, one-base-model pilot** has been prepared to distinguish b
 
 ## 7. Current tool and workflow state (verify each session)
 
+## 5J. Portfolio decision gates, public disclosure and local Mac model path (2026-11-16)
+
+The founder requests **research prioritization by originality, independent feasibility and depth beyond prior studies**, rather than immediate publication or broad team recruitment. Public-safe strategy has been recorded in `proposals/ACSS_SUBTRACTIVE_RESEARCH_PORTFOLIO_AND_DISCLOSURE_TRIAGE_2026-11-16.md`: `P0` research question glossary and independent test oracle; `P1` objective L1/L2 studies and equal-budget interaction of three subtractions; `P2` harder physics discovery/concept revision against AI-Newton, CoSR, Wang/Buehler; `P3` expensive training and downstream finance/election evaluation; consciousness/hybrid superintelligence remains a long-horizon distinct claim. These are **proposed priorities** awaiting founder discussion, not approved original Paper 2 results.
+
+**Disclosure rules:** Public GitHub, including Draft PRs, is **public**. Only put non-confidential problem statements, verified prior art, sanitized synthetic tests, falsifiers and independently checked outcomes there. Keep sensitive experimental concepts if disclosure-sensitive, personal investment ledger/strategies, Bloombase assets/customer records, private correspondence and licensed nonpublic data outside public GitHub.
+
+**Local feasibility:** one **Ollama** local open-weight Qwen/DeepSeek model can run *serially in five prompt-policy variants* on a suitably equipped Apple Silicon Mac; no need for five separate models or five subscriptions. `Qwen3 4B` is a low-memory starter; 8B/9B may suit 16GB+; DeepSeek-R1 7B is a distilled checkpoint; Kimi K2's 1T total model is not suitable for standard laptop RAM. Exact user Mac chip/unified memory/storage was **not established**, so recommendation remains conditional. See `proposals/ACSS_LOCAL_OPEN_MODEL_MAC_FEASIBILITY_2026-11-16.md`. **No installation, model calls or new costs have occurred.**
+
 ## 8. Living decision and learning log (append-only entries, newest first)
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder requested independent low-resource prioritization, what is public/private and actual Mac feasibility. Public-safe portfolio/disclosure triage and conditional Ollama/Qwen/DeepSeek local setup completed; exact hardware unknown. | **PROPOSAL RECORDED / NO INSTALL OR RUNS** | `proposals/ACSS_SUBTRACTIVE_RESEARCH_PORTFOLIO_AND_DISCLOSURE_TRIAGE_2026-11-16.md`; `proposals/ACSS_LOCAL_OPEN_MODEL_MAC_FEASIBILITY_2026-11-16.md`; §5J |
 | 2026-11-16 | Full discussion + GitHub audit identified documentation sprawl, prompt-only/causal inference confounds and strong prior art (AI-Newton, CoSR, Wang/Buehler, plus L1 and L2 studies). New question-first report defines scope, uncertainty, five-agent feasibility design and novelty gates | **SCOPING AUDIT COMPLETED; NOVELTY UNRESOLVED; NO RUNS** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_RESEARCH_AUDIT_AND_LANDSCAPE_2026-11-16.md`, §5I |
 | 2026-11-16 | Founder specified **three progressive subtractions** (social noise → observer projection → physics/math grounding), with a **five-agent A0–A4 pilot design** now documented to test whether successive layers actually improve held-out accuracy/generalization without extra compute | **DESIGNED / NOT EXECUTED / NOVELTY OPEN** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_FIVE_AGENT_PILOT_v0.1.md`, §5H |
 | 2026-11-16 | Founder clarified subtractive Agent should **retain a neutral factual seed**, avoid reciprocally reinforcing user false beliefs, and potentially create **world-grounded new concepts/symbols** if inherited language is limiting; primary Buddhist texts and 2024–26 AI prior art checked | **HYPOTHESIS, NOT IMPLEMENTED** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5G |

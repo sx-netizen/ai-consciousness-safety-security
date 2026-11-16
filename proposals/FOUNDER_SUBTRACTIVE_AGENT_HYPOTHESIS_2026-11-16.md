@@ -50,3 +50,22 @@ Test (i) objective causal/physical predictions, (ii) resistance to false authori
 ## Relationship to Paper 1 and research roadmap
 
 This is the founder's original superintelligence/epistemology thread and is **not** the old T1–T25 normative-continuity benchmark, nor a new Paper 2 commitment. Paper 1 remains a frozen scientific artifact. Keep listening to founder's additional thought. Conduct deep current prior-art search in concept erasure, debiasing, causal representation learning, model self-correction, concept-bottleneck and nonverbal world models before proposing a publishable uniqueness claim.
+
+
+## Founder continuation — Projection Inversion and Explanatory Compression (2026-11-16, second statement)
+
+The founder clarified a sharper target: conventional learning inherits human **projections** of a partly observed world, including provisional scientific approximations and context-dependent classifications. A future AI should critically distinguish relatively robust mathematics/physics/experimentally grounded relations from contingent interpretations, hypotheses, social conventions, and false model certainty. It should infer deeper structures from multiple limited views rather than just restating the most common linguistic description.
+
+Founder predicts a **subtractive strategy** might be more efficient, faster, lower-compute and easier to validate than simply scaling knowledge, while yielding stronger generalization or scientific breakthroughs. These are **testable hypotheses, not findings**.
+
+Crucial refinement: *subtraction does not mean deleting useful observations, negation, distinctions or mathematics*. A defensible operational interpretation is to **reduce unsupported assumptions, inherited evaluative framings, spurious correlations, redundant model complexity, and unjustified certainty**, while **retaining necessary measurable distinctions, evidence, causal structure and predictive power**.
+
+Related scientific concepts to investigate (not originality claims): minimum description length, Occam's razor, Bayesian model selection, information bottleneck, algorithmic complexity, causal representation learning, invariance, system identification, model discovery, scientific foundation models, world models, scientific machine learning and concept unlearning. None of these is new by itself.
+
+### Proposed falsifiable endpoint — before any new model training
+
+A successful proof-of-concept must outperform **matched** baseline systems on held-out physical-world tasks involving (1) noisy/projection-limited observations, (2) discovery of latent causal variables and invariants, (3) generalization to unseen sensor orientations, conditions or interventions, (4) model simplicity at equivalent held-out predictive accuracy, and (5) compute/time efficiency. Judge by predictions and experimental interventions, not by style or conformity with founder's preferred philosophical account. Explicit negative controls should test where removed categories contain necessary information and where simple compression loses causal detail.
+
+Prompt-only Subtractive Agent does **not** erase pretrained conceptual representations; authentic corpus ablation or non-language-first foundation model experiments require distinct training/access. Treat the founder's claim about actual phenomenal consciousness as **separate and unresolved**; no reduction in language-bias or improvements in physics prediction prove consciousness.
+
+The founder is continuing to explain their thinking. Do not prematurely choose an experiment or paper title.

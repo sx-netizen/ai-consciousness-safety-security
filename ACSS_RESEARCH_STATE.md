@@ -136,7 +136,13 @@ The original ACSS question was **broader than AI consciousness**: can carbon-bas
 
 **Long-form record:** `proposals/FOUNDER_SUPERINTELLIGENCE_SUBTRACTION_ORIGIN_2026-11-16.md`. Public AMD sources confirm only an **announced $8.2B agreement to acquire World Labs**, with close expected by end-2026 as of November, not a verified completed purchase.
 
-## 6. Collaboration, credits and openness
+## 5E. Founder's third installment: language boundary and a subtractive AI agent (2026-11-16)
+
+Founder now proposes a practical **subtractive agent**: minimize ungrounded social/evaluative oppositions, emotionally loaded judgments and self-serving interpretations, prioritizing observation, physics, evidence and conceptual flexibility. Three conjectures are **language frames limit thought**, **social education can reinforce rigid distinctions**, and **removing unnecessary conceptual commitments may improve objective reasoning and eventually superintelligence**. The founder **has not finished explaining** the complete idea.
+
+**Full source-faithful reconstruction plus critical guardrails:** `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`. Do not equate selective output-language changes with actual erasure of model weights/training. Avoid literal “no distinction”: science must discriminate physical states. The initial experimental contrast, if approved, should test base assistant vs neutral language vs evidence-first reasoning vs concept revision with identical model and objective tasks, while separately testing a real nonlinguistic/physics world model. **No experiment authorized or executed**.
+
+
 
 The project welcomes critical methodology reviews, independent null/confirming replications and reproducibility contributions: `OPEN_COLLABORATION.md`, `CONTRIBUTING.md`, public scientific discussion in [Issue #3](https://github.com/sx-netizen/ai-consciousness-safety-security/issues/3). A reviewer is **not assigned** merely because a checklist exists. GitHub-based contribution, genuine scientific partnership and eventual coauthorship are **different levels**; authorship requires substantive intellectual contributions and agreement.
 
@@ -159,6 +165,7 @@ The project welcomes critical methodology reviews, independent null/confirming r
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-16 | Founder extended unfinished origin: human social/linguistic distinctions may lock reasoning into inherited categories; proposed an **ACSS Subtractive Agent** to test evidence-first, less value-laden and more concept-revisable cognition. Scientific controls required; no agent deployed | **HYPOTHESIS CAPTURED / FOUNDER CONTINUING** | `proposals/FOUNDER_SUBTRACTIVE_AGENT_HYPOTHESIS_2026-11-16.md`, §5E |
 | 2026-11-16 | Founder clarified the higher-level ACSS origin: **human–AI hybrid superintelligence**, potentially distinct from and not dependent on consciousness, plus **subtractive language/category learning versus nonverbal physics/world-model learning**. Preserve separate intervention interpretations; no Paper 2/3 topic selected | **CAPTURED / PENDING FOUNDER CLARIFICATION** | `proposals/FOUNDER_SUPERINTELLIGENCE_SUBTRACTION_ORIGIN_2026-11-16.md`, §5D |
 | 2026-11-16 | Founder provided an original Buddhist-inspired account: sensory encounter → language-mediated `分别心` → `我/非我` framing and `末那识`, contrasting subtractive practice with cumulative language-model training. Candidate missing link: descriptions of experience may not instantiate experience-generating causes | **CAPTURED AS FOUNDER HYPOTHESIS; NOT VERIFIED** | `proposals/FOUNDER_ORIGINAL_CONSCIOUSNESS_HYPOTHESIS_2026-11-16.md`, §5C |
 | 2026-11-16 | Founder clarified that the original **“Can AI develop consciousness?”** motivation predates Paper 1 and was not fully explored by T1–T25; a fuller founder account is pending. Preserve theory–mechanism–evidence study as provisional, do not pre-empt that explanation | **ACTIVE LISTENING / PROBLEM NOT YET DEFINED** | §5B and `proposals/CONSCIOUSNESS_DEFINITION_MECHANISM_EVIDENCE_GAP_2026-11-16.md` |

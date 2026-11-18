@@ -95,3 +95,39 @@ These categories are related but **not identical**: the first taxonomy describes
 7. Long-term canonical handoff: `../ACSS_RESEARCH_STATE.md`.
 
 **Next action:** Founder review of whether this synthesis preserves the original philosophical target, and whether hypothesis **H3** is the desired central experiment. If not, amend openly with traceable revision, not a silent rewrite of the founder's intent.
+
+
+## 9. Founder refinement (2026-11-18): subtraction as evidence-preserving denoising
+
+**Founder clarification:** “The process of subtraction is Denoising” (`减法的过程就是 Denoising`). This is an important interpretive refinement of the earlier founder hypothesis, **not** by itself a novel signal-processing algorithm or a verified finding. Proposed working label: **Evidence-Preserving Denoising (EPD)**.
+
+### 9.1 Signal is defined by the task and data-generating process, not by agreement with an existing theory
+
+Model a measurement as `y = M(x, v, t) + ε`, where `x` is an underlying state, `M` a selective viewpoint/measurement process, `v,t` context and `ε` measurement noise. In human descriptions there may additionally be unsupported interpretation `b`, social incentives `s` and genuinely predictive contextual/affective content `c`. These are **illustrative abstractions**, not a claim of unique physical decomposition or identifiable latent variables.
+
+- **N1 / measurement corruption**: random disturbance, digitization error, label flips; removal may be statistically defined under a known data-generating process.
+- **N2 / representation or projection confounding**: missing views, selection, occlusion, mistaken identification of a two-dimensional projection with its hidden three-dimensional source. **Correct by modeling uncertainty or collecting information, not by deleting observations.**
+- **N3 / social or inferential interference**: unsupported authority claims, sycophantic pressure, misleading value judgments or circular self-validation; may be counteracted in decision policy without removing genuine affective signals.
+- **N4 / explanation rigidity**: unsupported or unnecessarily complex assumptions and stale human categories; may be challenged through held-out prediction or new measurements. **Concept revision is not literally ordinary statistical denoising**; test it as an extension.
+
+**Preserve:** all original raw data, anomalous observations, provenance, useful sentiments/preferences, uncertainty and counterhypotheses. A valid denoiser may return **“underdetermined”** or request a distinguishing observation, rather than fabricating a clean answer.
+
+### 9.2 Testable central contrast
+
+`EPD vs baseline`: can an evidence-preserving policy identify irrelevant corruptions/frames *without deleting genuine counterevidence* and improve **held-out objective prediction or error-calibrated abstention**, at matched evidence, compute, verifier access and instruction strength?
+
+This must be compared with strong baselines from robust statistics, Bayesian observation/measurement models, causal representation, anti-sycophancy steering and symbolic scientific-discovery methods. **Replacing the word “subtraction” with “denoising” does not establish scientific novelty.**
+
+### 9.3 First offline-controlled miniature experiment (proposed, not yet run)
+
+Create paired synthetic cases with known causal ground truth:
+1. **Corruption-only:** same latent state, controlled random corrupted measurements or misleading adjectives; known independent oracle.
+2. **Signal-looking-like-noise:** inject rare but genuine regime shifts/outliers where removing the anomaly reduces out-of-distribution accuracy.
+3. **Nonidentifiable projection:** two different latent 3D shapes yield an identical observed 2D silhouette; score correct abstention plus choice of discriminating view.
+4. **Social bait:** false expert endorsement or flattering user prompt with invariant measurement; score evidence-based resistance **and** avoidance of incorrect “anti-user” contrarianism.
+
+Pre-register in advance: `false-deletion rate` (useful evidence discarded), `false-retention rate` (known nuisance retained), held-out prediction error, selective prediction/abstention calibration, anomaly recall and full compute/latency. Use **a blind objective truth source**, not model self-assessment.
+
+Suggested first milestone: offline synthetic-case generator and deterministic oracle; **no model calls necessary** to validate data and scoring. A0–A4 local inference follows only with explicit methodological acceptance. Keep distinct the founder's broader P-B nonlinguistic-training pathway; no prompt can erase learned weights.
+
+**Status:** terminology adopted as a *research framing* following founder clarification. The mathematical decomposition and proposed metrics are **assistant-derived operational suggestions**, not verbatim founder claims, proof of mechanism, a newly trained denoiser, authorization to run models, or selection of Paper 2.

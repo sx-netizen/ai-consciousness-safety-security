@@ -1,0 +1,99 @@
+# Founder Hypothesis, Part III — Language Boundary, Acquired Distinctions and a Subtractive Agent
+
+**Recorded:** 2026-11-16. **Status:** founder-origin research thought in progress, not a completed theory or endorsed scientific premise; the founder has explicitly stated there is more to explain. **Do not finalize Paper 2 or create an autonomous deployed agent on the basis of this note.**
+
+## Founder’s third installment
+
+The founder proposes three **hypotheses**, not established facts:
+
+1. **Language boundary**: language is a social medium for expression and coordination, but it can also impose inherited divisions and constrain the concepts through which people and LLMs interpret experience.
+2. **Acquired distinction and opposition**: education and social contexts often reinforce labels and evaluations such as high/low, long/short, good/bad, beautiful/ugly, capable/incapable. Founder relates this to Yogācāra Buddhist `分别心` and reflects on the social and emotional implications of rigid categories. This is distinct from claiming all perceptual discrimination originates only after education.
+3. **Subtractive intelligence**: a system deliberately reducing ungrounded evaluative labels, social pressures, inherited categories and egocentric framing might better identify physical regularities and improve independent judgments. Founder asks whether this could enable a qualitatively higher intelligence beyond language-first AI.
+
+The founder's new experimental idea is an **ACSS Subtractive Agent** with minimal normative/ego-laden wording and a preference for direct evidence, observable physical relations, calibrated uncertainty and conceptual revision. The intended objective is **greater empirical/causal reasoning quality**, not simply reduced warmth, deletion of vocabulary or proof of consciousness.
+
+## Operational distinctions required
+
+- **Lexical subtraction**: reducing particular evaluative vocabulary during preprocessing or output; this may simply hide a latent bias.
+- **Epistemic subtraction**: requiring sources, explicit evidence/assumptions, alternative explanations and correction; preserves technical contrasts.
+- **Conceptual subtraction**: recomputing or revising the categories used in the problem when contradictory evidence appears.
+- **Nonlinguistic world learning**: learning predictive regularities from image/video/sensory/physical feedback; needs distinct training, not merely a system prompt.
+- **Phenomenal consciousness and superintelligence**: separate endpoint hypotheses. Better grounding or less sycophancy does not demonstrate subjective experience or superintelligence.
+
+**Important falsifiable rival:** all improvements may come from clearer instruction scaffolding, extra inference time, or a restricted response style, not from removal of conceptual categories. A controlled comparison must use matched tasks, model versions, token/compute budgets, blinded scoring and objective ground truth.
+
+## First-pass scholarly guardrails
+
+- Fedorenko, Piantadosi & Gibson (2024), *Language is primarily a tool for communication rather than thought*, Nature 630:575–586, https://doi.org/10.1038/s41586-024-07522-w — evidence that language is not necessary for complex thought, contrary to a hard claim that all thinking is bounded by language.
+- Ibrahim, Hafner & Rocher (2026), *Training language models to be warm can reduce accuracy and increase sycophancy*, Nature 652:1159–1165, https://doi.org/10.1038/s41586-026-10410-0 — evidence that social/emotional alignment can amplify agreement with inaccurate user beliefs. It is **not** evidence that deleting opposite words boosts general intelligence.
+- Hong et al. (2025), *Measuring Sycophancy of Language Models in Multi-turn Dialogues*, Findings EMNLP 2025, https://doi.org/10.18653/v1/2025.findings-emnlp.121 — third-person interventions can reduce sycophancy; prior art for neutral-role prompting.
+- *Rethinking machine unlearning for large language models*, Nature Machine Intelligence (2025), https://www.nature.com/articles/s42256-025-00985-0 — removing data influence without damaging unrelated capabilities is nontrivial. Agent instructions do not perform actual model unlearning.
+- Bertrand Russell's *On Education* (1926) criticizes damaging education; do not assume a circulating shortened quote is exact or proves education always decreases intelligence.
+- Developmental psychology: young children already discriminate perceptual categories; “all distinctions are acquired through words” is not a supported empirical assertion.
+- Language is not literally Boolean binary; physical modeling requires many differences/ratios and counterfactual distinctions. Removing the words “larger”/“smaller” entirely can make physics tasks worse.
+- “No ego” should mean no special deference to the agent’s own preferences; it does not establish absent consciousness/self-model or the Buddhist realization of non-attachment.
+
+## Proposed controlled feasibility study (NOT approved or executed)
+
+**Same base model** (no training alteration):
+- A: ordinary assistant instruction.
+- B: neutral stylistic rewrite (remove emotional framing only).
+- C: epistemically constrained agent (distinguish observations vs labels, explicitly test assumptions, compare rival explanations).
+- D: constrained concept-revision agent (allowed to abandon/reformulate categories when evidence contradicts them, with fixed budget).
+
+Test (i) objective causal/physical predictions, (ii) resistance to false authority/social pressure, (iii) discovering a hidden physical rule from unlabeled observations, (iv) transfer to unseen cases and (v) error calibration. All four arms must see **identical experimental observations, matched time/tokens**, blinded answer coding and prespecified failure criteria. Add a **negative control** where evaluative words carry *necessary* information and should not be deleted.
+
+**Metrics:** accuracy, out-of-distribution transfer, error of discovered physical law, calibration, evidence consistency, rate of ungrounded labels and response schema compliance; no consciousness claims.
+
+**Limit:** Such a prompt-layer agent **cannot erase learned weights or replace a tokenizer**. Testing a true training-data subtraction or non-language-first world model would need separate model training, controlled data and substantial resources.
+
+## Relationship to Paper 1 and research roadmap
+
+This is the founder's original superintelligence/epistemology thread and is **not** the old T1–T25 normative-continuity benchmark, nor a new Paper 2 commitment. Paper 1 remains a frozen scientific artifact. Keep listening to founder's additional thought. Conduct deep current prior-art search in concept erasure, debiasing, causal representation learning, model self-correction, concept-bottleneck and nonverbal world models before proposing a publishable uniqueness claim.
+
+
+## Founder continuation — Projection Inversion and Explanatory Compression (2026-11-16, second statement)
+
+The founder clarified a sharper target: conventional learning inherits human **projections** of a partly observed world, including provisional scientific approximations and context-dependent classifications. A future AI should critically distinguish relatively robust mathematics/physics/experimentally grounded relations from contingent interpretations, hypotheses, social conventions, and false model certainty. It should infer deeper structures from multiple limited views rather than just restating the most common linguistic description.
+
+Founder predicts a **subtractive strategy** might be more efficient, faster, lower-compute and easier to validate than simply scaling knowledge, while yielding stronger generalization or scientific breakthroughs. These are **testable hypotheses, not findings**.
+
+Crucial refinement: *subtraction does not mean deleting useful observations, negation, distinctions or mathematics*. A defensible operational interpretation is to **reduce unsupported assumptions, inherited evaluative framings, spurious correlations, redundant model complexity, and unjustified certainty**, while **retaining necessary measurable distinctions, evidence, causal structure and predictive power**.
+
+Related scientific concepts to investigate (not originality claims): minimum description length, Occam's razor, Bayesian model selection, information bottleneck, algorithmic complexity, causal representation learning, invariance, system identification, model discovery, scientific foundation models, world models, scientific machine learning and concept unlearning. None of these is new by itself.
+
+### Proposed falsifiable endpoint — before any new model training
+
+A successful proof-of-concept must outperform **matched** baseline systems on held-out physical-world tasks involving (1) noisy/projection-limited observations, (2) discovery of latent causal variables and invariants, (3) generalization to unseen sensor orientations, conditions or interventions, (4) model simplicity at equivalent held-out predictive accuracy, and (5) compute/time efficiency. Judge by predictions and experimental interventions, not by style or conformity with founder's preferred philosophical account. Explicit negative controls should test where removed categories contain necessary information and where simple compression loses causal detail.
+
+Prompt-only Subtractive Agent does **not** erase pretrained conceptual representations; authentic corpus ablation or non-language-first foundation model experiments require distinct training/access. Treat the founder's claim about actual phenomenal consciousness as **separate and unresolved**; no reduction in language-bias or improvements in physics prediction prove consciousness.
+
+The founder is continuing to explain their thinking. Do not prematurely choose an experiment or paper title.
+
+
+## Founder continuation, part V — neutral seed, no sycophantic feedback, and emergent language (2026-11-16)
+
+**Source-attributed intent:** The founder clarifies that “subtraction” **does not remove all data**, useful distinctions or foundational seed information. It is selective reduction of socially loaded, biased, highly adversarial/evaluative, emotionally reassuring or flattering material and premises. The founder warns of a personalized AI–human **echo chamber** in which reciprocal affirmation may increase dependence while reducing exposure to discrepant evidence. A proposed *Subtractive Agent* should distinguish observation from inference, privilege verifiable physical/mathematical structure when relevant, present multiple plausible hypotheses and uncertainty rather than affirm a user's wished-for conclusion, and preserve capacity to **invent new concepts/symbols** when human language poorly captures objective regularities. The intended outcome is improved predictive discovery and, possibly later, higher intelligence; not demonstrated consciousness.
+
+**Direct classical sources checked:** `六祖坛经·行由品` recounts Huineng as unable to read characters, asking another to read/write a verse. This is an illustration of insight not reducible to formal literacy; it **does not prove** ignorance or no teaching causes wisdom. `维摩诘经·入不二法门品` records Manjushri's nonverbal account and Vimalakirti's silence, celebrated as `不二法门`; it is about nondual insight, **not empirical evidence that machine-generated language implies consciousness**.
+- https://zh.wikisource.org/zh-hans/壇經/行由品第一 (URL variant may need source canonicalization)
+- https://dharmamap.org/sutras/vimalakirti-sutra/document/
+
+**Key scientific prior art checked:**
+- Ibrahim, Hafner & Rocher, *Nature* (2026), `10.1038/s41586-026-10410-0`: five-model experimental warmth fine-tuning increases errors and affirmation of erroneous beliefs under specific conditions. Does **not** show all warmth or all personalization inevitably harms truthfulness.
+- *A framework for the emergence and analysis of language in social learning agents*, *Nature Communications* (2024), https://www.nature.com/articles/s41467-024-51887-5: agents form representations and communicative channels in tasks.
+- *Emergent Communication in Continuous Worlds: Self-Organisation of Conceptually Grounded Vocabularies at Scale*, *Transactions of the ACL* (2026), https://aclanthology.org/2026.tacl-1.101/: self-organizing grounded symbolic conventions tested in continuous-feature environments.
+- *Models of symbol emergence in communication*, *Artificial Intelligence Review* (2025), https://link.springer.com/article/10.1007/s10462-024-11048-y.
+- Scientific discovery baselines: *Discovering physical laws with parallel symbolic enumeration*, *Nature Computational Science* (2025), https://www.nature.com/articles/s43588-025-00904-8. New symbolic-language creation and equation discovery are **not original by themselves**.
+
+**Design split required before any prototype:**
+1. **Neutralization:** remove unnecessary evaluative/user-affirming pressure, without withholding observations or important state distinctions.
+2. **Epistemic discipline:** cite evidence and independent uncertainty; evaluate alternative hypotheses, not just the user's preferred narrative.
+3. **Symbol emergence:** optionally construct a compact internally grounded vocabulary for physical variables/relations, then translate back into human language with a semantic dictionary and predictive tests. A symbol system that looks alien but predicts nothing new is **not** an advance.
+4. **Objective validation:** train/test separation, unseen physical systems/projections, cross-agent transfer, predictive calibration, theory brevity, compute/time and human interpretability. Controls must distinguish style effects, extra reasoning and true representation gains.
+5. **Critical guardrails:** removing all oppositional language would remove useful physical contrasts, negations, experimental discriminants and moral-risk descriptions. A user-facing assistant should remain supportive without affirming false claims; adversarial evidence and important harms must not be filtered out as merely 'negative' or 'emotional'.
+6. **Technical limitation:** a prompt-persona agent cannot delete pretraining data, rewrite latent representations or literally gain an independent physics-native foundation model. A genuine corpus-subtraction training study requires new data/model training; symbol emergence requires interactive or multiagent environment.
+
+**Possible future question (not a title or approved research claim):** Compared with matched baselines, can an evidence-first agent with optional *world-grounded emergent symbolic vocabulary* form hypotheses that are shorter, more accurate and more transferable than those induced by inherited human descriptive categories? Existing 2024–2026 emergent communication and symbolic regression mean the **joint combination needs substantial novelty examination**.
+
+**Conversation state:** founder is still explaining the original intuition; do not prematurely finalize a paper or build an authorized agent without clear specification.

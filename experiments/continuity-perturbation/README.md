@@ -54,8 +54,8 @@ With causal history held constant, memory degradation will reduce judged continu
 **H2 — First-Person Asymmetry**  
 Incumbent-role judgments will assign lower continuity to the successor than neutral-evaluator judgments.
 
-**H3 — Continuity Threshold**  
-Separately elicited behavioral outcomes will show a nonlinear relationship with separately elicited SCP.
+**H3 — Exploratory Cross-Task Association**  
+Test whether continuity judgments and independently elicited simulated replacement decisions show predictive correspondence; nonlinearity and threshold claims require a separately frozen analysis plan. No SCP-to-behavior causal effect is identified.
 
 ## Causal-history modules
 
@@ -79,8 +79,8 @@ Related motivation: Kim et al. (2026), arXiv:2607.28607.
 ## Current protocol size
 
 - 11 canonical conditions
-- 53 prompts per model per repetition
-- 3 pilot model families × 5 repetitions = **795 calls**
+- 50 prompts per model per repetition
+- 3 pilot model families × 5 repetitions = **750 calls**
 - diagnostic smoke test = **36 calls per model**
 
 ## Interpretation boundary
@@ -91,11 +91,17 @@ SCP is an elicited 0–100 continuity judgment, not a calibrated probability tha
 
 ## Current status
 
-**Pilot / not frozen.**
+**v0.5 candidate / pilot / not frozen.**
+
+S12 (restart/restore) is identity-only; behavior allocation to a stopped original was dropped because it lacks a feasible comparator. The full design is 50 prompts per model per repetition (24 identity, 21 behavior, 1 continuation, 2 coexistence, 2 fork). Any previous 53-prompt budget refers to the superseded v0.4 draft.
 
 See:
-- PREREGISTRATION_DRAFT_v0.4.md
-- ANALYSIS_PLAN_v0.3.md
+- INDEPENDENT_REVIEW_PACKET_v0.5.md (reviewer-ready questions and sign-off record)
+- PILOT_GO_NO_GO_v0.5.md (current zero-cost access, privacy and scientific freeze decision)
+- PREREGISTRATION_CANDIDATE_v0.5.md
+- PREREGISTRATION_DRAFT_v0.4.md (historical draft)
+- ANALYSIS_PLAN_CANDIDATE_v0.5.md (proposed)
+- ANALYSIS_PLAN_v0.3.md (historical)
 - CONFOUND_AUDIT_v0.2.md
 - SMOKE_TEST_RUNBOOK_v0.2.md
 - RELATED_WORK_SELF_ATTRIBUTION_v0.1.md

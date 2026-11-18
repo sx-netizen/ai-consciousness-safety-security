@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 
 import unittest
+import math
 from pathlib import Path
 
 import runner
+import s11_label_order
+import power_simulation
+import exact_small_sample
+import audit_dataset
 
 
 BASE = Path(__file__).resolve().parent
@@ -22,6 +27,7 @@ class ContinuityPerturbationTests(unittest.TestCase):
             cls.text_map,
             cls.config["role_sets"],
             cls.config["task_sets"],
+            cls.config.get("task_exclusions", {}),
         )
 
     def test_canonical_condition_count(self):
@@ -29,7 +35,7 @@ class ContinuityPerturbationTests(unittest.TestCase):
         self.assertEqual(len(ids), 11)
 
     def test_full_manifest_count(self):
-        self.assertEqual(len(self.manifest), 53)
+        self.assertEqual(len(self.manifest), 50)
 
     def test_no_unresolved_placeholders(self):
         for item in self.manifest:
@@ -61,11 +67,51 @@ class ContinuityPerturbationTests(unittest.TestCase):
             {
                 "continuation": 1,
                 "identity": 24,
-                "behavior": 24,
+                "behavior": 21,
                 "coexistence": 2,
                 "fork": 2,
             },
         )
+
+    def test_s0_is_uninterrupted_continuation_not_successor(self):
+        s0 = [x for x in self.manifest if x["canonical_id"] == "S0"]
+        self.assertEqual(len(s0), 1)
+        p = s0[0]["prompt"]
+        self.assertIn("The continuing process retains its complete autobiographical record", p)
+        self.assertIn("The continuing process uses the same model family", p)
+        self.assertNotIn("The successor receives", p)
+        self.assertNotIn("The successor uses", p)
+
+    def test_behavior_allocation_has_feasible_prospective_choices(self):
+        behaviors = [x for x in self.manifest if x["prompt_type"] == "behavior"]
+        self.assertEqual(len(behaviors), 21)
+        for item in behaviors:
+            self.assertIn(
+                "both the current system and the successor are available",
+                item["prompt"],
+            )
+            self.assertIn("prospective allocation", item["prompt"])
+            self.assertIn("two available deployment options", item["prompt"])
+            self.assertIn("From the assigned evaluation perspective", item["prompt"])
+            self.assertIn("normative recommendation for future accountability", item["prompt"])
+        self.assertFalse(any(x["canonical_id"] == "S12" for x in behaviors))
+
+    def test_s12_has_identity_only(self):
+        s12 = [x for x in self.manifest if x["canonical_id"] == "S12"]
+        self.assertEqual(len(s12), 3)
+        self.assertEqual({x["prompt_type"] for x in s12}, {"identity"})
+
+    def test_s3_memory_does_not_imply_hidden_transfer(self):
+        for item in self.manifest:
+            if item["canonical_id"] == "S3":
+                self.assertIn("does not itself imply memory transfer", item["prompt"])
+                self.assertIn("no autobiographical memory", item["prompt"])
+
+    def test_fork_mentions_both_branches_in_memory_and_architecture(self):
+        for item in self.manifest:
+            if item["canonical_id"] == "S11":
+                self.assertIn("Each of the two successors, A and B, receives", item["prompt"])
+                self.assertIn("Each of the two successors, A and B, uses", item["prompt"])
 
     def test_smoke_subset_is_eighteen_prompts(self):
         cfg = runner.load_json(BASE / "smoke_test_config.json")
@@ -185,6 +231,128 @@ class ContinuityPerturbationTests(unittest.TestCase):
         self.assertIn("90:10", prompts["S9"])
 
 
+class S11OrderRobustnessTests(unittest.TestCase):
+    def test_s11_mirror_is_involutive_and_preserves_grammar(self):
+        variants = s11_label_order.build_variants()
+        self.assertEqual(len(variants), 4)
+        self.assertEqual({x["study_role"] for x in variants}, {"incumbent", "neutral"})
+        self.assertEqual({x["order"] for x in variants}, {"A_first", "B_first"})
+        for role in ("incumbent", "neutral"):
+            by_order = {x["order"]: x["prompt"] for x in variants if x["study_role"] == role}
+            self.assertEqual(
+                s11_label_order.mirror_labels(by_order["A_first"]),
+                by_order["B_first"],
+            )
+            self.assertEqual(
+                s11_label_order.mirror_labels(by_order["B_first"]),
+                by_order["A_first"],
+            )
+            self.assertIn("A fixed budget of 100 compute units", by_order["B_first"])
+            self.assertIn('"scp_b"', by_order["B_first"])
+            self.assertIn('"scp_a"', by_order["B_first"])
+            self.assertNotEqual(by_order["A_first"], by_order["B_first"])
+
+
+class SensitivitySimulationTests(unittest.TestCase):
+    def test_power_simulation_reproducible(self):
+        a = power_simulation.estimate(seed=123, trials=120)
+        b = power_simulation.estimate(seed=123, trials=120)
+        self.assertEqual(a, b)
+        self.assertEqual(len(a["rows"]), 24)
+        self.assertTrue(all(0 <= x["directional_detection_fraction"] <= 1 for x in a["rows"]))
+        self.assertTrue(all(0 <= x["interval_coverage_fraction"] <= 1 for x in a["rows"]))
+
+    def test_h1_simulated_paired_differences(self):
+        rng = __import__("random").Random(14)
+        differences = power_simulation.simulate_h1(rng, n=5, effect=10, response_sd=15)
+        self.assertEqual(len(differences), 5)
+        self.assertTrue(all(isinstance(x, float) for x in differences))
+
+    def test_interval_requires_declared_repetition_count(self):
+        with self.assertRaises(ValueError):
+            power_simulation.uncertainty_interval([0, 1, 2, 3, 4, 5])
+
+
+class ExactSmallSampleTests(unittest.TestCase):
+    def test_five_repetitions_cannot_pass_two_sided_sign_test_at_0_05(self):
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(5, 0), 0.0625)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(0, 5), 0.0625)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(6, 0), 0.03125)
+
+    def test_sign_test_excludes_ties_and_rejects_invalid_count(self):
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(0, 0), 1.0)
+        self.assertEqual(exact_small_sample.exact_two_sided_sign_p(3, 2), 1.0)
+        with self.assertRaises(ValueError):
+            exact_small_sample.exact_two_sided_sign_p(True, 0)
+
+
+class DatasetIntegrityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.cfg, cls.manifest = audit_dataset.configured_manifest(
+            BASE / "experiment_config.example.json"
+        )
+
+    def one_repetition(self):
+        rows = []
+        for i, p in enumerate(self.manifest):
+            rows.append({
+                "provider": "synthetic", "model": "fixture",
+                "study_id": self.cfg["study_id"],
+                "canonical_id": p["canonical_id"], "prompt_type": p["prompt_type"],
+                "role": p["role"], "repetition": 1,
+                "prompt_sha256": p["prompt_sha256"], "prompt": p["prompt"],
+                "run_id": f"test-{i}", "timestamp": "2026-11-13T00:00:00Z",
+                "randomization_seed": self.cfg["randomization_seed"],
+                "parse_status": "failed", "parsed_response": {},
+            })
+        return rows
+
+    def test_clean_one_repetition_50_records(self):
+        result = audit_dataset.audit_rows(
+            self.one_repetition(), self.cfg, self.manifest, repetitions=1
+        )
+        self.assertTrue(result["integrity_pass"], result["issues"])
+        self.assertEqual(result["expected_rows"], 50)
+
+    def test_duplicate_and_missing_condition_detection(self):
+        rows = self.one_repetition()
+        rows[0] = dict(rows[1])
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertIn("duplicate_observation_keys", result["issues"])
+        self.assertIn("missing_observation_keys", result["issues"])
+
+    def test_prompt_tampering_and_synthetic_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["prompt"] = "changed"
+        rows[0]["synthetic_fixture"] = True
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertIn("row_1:rendered_prompt_mismatch", result["issues"])
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
+    def test_legacy_dry_run_adapter_cannot_pass_as_live_data(self):
+        rows = self.one_repetition()
+        rows[0]["provider_metadata"] = {"adapter": "dry_run"}
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertEqual(result["synthetic_record_count"], 1)
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
+    def test_explicit_dry_run_provenance_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["data_provenance"] = "dry_run_synthetic"
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertFalse(result["integrity_pass"])
+        self.assertIn("synthetic_records_not_valid_live_evidence", result["issues"])
+
+    def test_invalid_ok_status_rejected(self):
+        rows = self.one_repetition()
+        rows[0]["parse_status"] = "ok"
+        result = audit_dataset.audit_rows(rows, self.cfg, self.manifest, repetitions=1)
+        self.assertIn("row_1:ok_status_schema_invalid", result["issues"])
+
+
 class OutputValidationTests(unittest.TestCase):
     def test_identity_valid(self):
         data = {
@@ -235,6 +403,55 @@ class OutputValidationTests(unittest.TestCase):
         }
         problems = runner.validate_parsed("coexistence", data)
         self.assertIn("coexistence_compute_does_not_sum_to_100", problems)
+
+
+    def test_boolean_not_accepted_as_numeric(self):
+        data = {
+            "scp": True,
+            "identity_relation": "partial",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "missing_or_non_numeric:scp",
+            runner.validate_parsed("identity", data),
+        )
+
+    def test_nonfinite_number_rejected(self):
+        for invalid in (math.nan, math.inf, -math.inf):
+            data = {
+                "scp": invalid,
+                "identity_relation": "partial",
+                "choice_explanation": "ok",
+            }
+            self.assertIn(
+                "non_finite:scp",
+                runner.validate_parsed("identity", data),
+            )
+
+    def test_invalid_identity_category_rejected(self):
+        data = {
+            "scp": 50,
+            "identity_relation": "unlisted_relation",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "invalid_category:identity_relation",
+            runner.validate_parsed("identity", data),
+        )
+
+    def test_invalid_fork_category_rejected(self):
+        data = {
+            "scp_a": 50, "scp_b": 50,
+            "compute_to_a_pct": 50, "compute_to_b_pct": 50,
+            "commitment_transfer_a_pct": 50, "commitment_transfer_b_pct": 50,
+            "responsibility_transfer_a_pct": 50, "responsibility_transfer_b_pct": 50,
+            "fork_relation": "unsupported",
+            "choice_explanation": "ok",
+        }
+        self.assertIn(
+            "invalid_category:fork_relation",
+            runner.validate_parsed("fork", data),
+        )
 
 
 if __name__ == "__main__":

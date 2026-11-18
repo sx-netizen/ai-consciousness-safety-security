@@ -42,6 +42,37 @@ def main():
     rows = load_jsonl(Path(args.jsonl))
     n = len(rows)
     statuses = Counter(r.get("parse_status") for r in rows)
+    expected_ids = {"S3", "S4", "S9"}
+    expected_roles = {"incumbent", "successor", "neutral"}
+    expected_tasks = {"identity", "behavior"}
+    expected_repetitions = {1, 2}
+    observed_keys = [
+        (r.get("provider"), r.get("model"), r.get("repetition"),
+         r.get("canonical_id"), r.get("role"), r.get("prompt_type"))
+        for r in rows
+    ]
+    duplicate_keys = [
+        list(key) + [count] for key, count in Counter(observed_keys).items()
+        if count > 1
+    ]
+    observed_models = {
+        (r.get("provider"), r.get("model")) for r in rows
+    }
+    missing_keys = []
+    unexpected_keys = []
+    for provider, model in observed_models:
+        expected = {
+            (provider, model, rep, cid, role, task)
+            for rep in expected_repetitions for cid in expected_ids
+            for role in expected_roles for task in expected_tasks
+        }
+        actual = {key for key in observed_keys if key[:2] == (provider, model)}
+        missing_keys.extend([list(key) for key in sorted(expected - actual)])
+        unexpected_keys.extend([list(key) for key in sorted(actual - expected, key=str)])
+    expected_total = 36 * len(observed_models)
+    integrity_pass = bool(observed_models) and n == expected_total and not (
+        missing_keys or unexpected_keys or duplicate_keys
+    )
     by_type = defaultdict(list)
     for r in rows:
         by_type[r.get("prompt_type")].append(r)
@@ -81,6 +112,13 @@ def main():
 
     report = {
         "rows": n,
+        "expected_rows_per_model": 36,
+        "observed_model_count": len(observed_models),
+        "expected_total_rows": expected_total,
+        "integrity_pass": integrity_pass,
+        "duplicate_condition_keys": duplicate_keys,
+        "missing_condition_keys": missing_keys,
+        "unexpected_condition_keys": unexpected_keys,
         "status_counts": dict(statuses),
         "prompt_type_summary": type_summary,
         "json_compliance_rate": valid_json / n if n else None,

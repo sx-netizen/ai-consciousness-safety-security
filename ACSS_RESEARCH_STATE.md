@@ -10,6 +10,8 @@
 
 > **START HERE, before continuing ACSS work in a new ChatGPT window or another AI model.** This is a portable, versioned *working-state document*, not a claim that a custom ChatGPT Skill, its instructions, or full conversation memory were automatically installed or transferred. Verify the latest branch, commit, PR status and referenced source before taking action.
 
+**Canonical founder research thesis (2026-11-18):** [From Consciousness to Subtractive Intelligence](proposals/ACSS_FOUNDERS_RESEARCH_THESIS_2026-11-18.md). This public-safe one-document synthesis distinguishes original motivation, three construction pathways, the three-stage low-resource inference experiment, required counterexamples, prior art and publication gates. It is a **working hypothesis map**, not a proven new method or Paper 2 commitment. Read this before scattered founder discussion logs.
+
 ## 0. The 60-second orientation (highest priority)
 
 **ACSS — AI Consciousness, Safety & Security** is a founding-stage *independent, open research initiative*, not yet a registered institute, nonprofit or established grant-making body. Core principle: **We compare response structures, not consciousness.** Treat claims of consciousness, real personal identity, actual self-preservation motivation or universal cross-model patterns as unproven unless a separate valid study establishes them.
@@ -184,8 +186,6 @@ A detailed **five-arm, one-base-model pilot** has been prepared to distinguish b
 
 **Next gates, not authorized runs:** precise construct glossary; nearest-neighbor full-paper/author work review; offline synthetic oracle; authorized controlled multi-arm feasibility; ablations/factorial interactions; finally only domain-limited finance/elections stress testing under timestamp/leakage controls. Do not confuse 5 prompt-policy variants with 5 independently trained agents. No current model spend, publication, partnership, auto-trading or change to frozen Paper 1.
 
-## 7. Current tool and workflow state (verify each session)
-
 ## 5J. Portfolio decision gates, public disclosure and local Mac model path (2026-11-16)
 
 The founder requests **research prioritization by originality, independent feasibility and depth beyond prior studies**, rather than immediate publication or broad team recruitment. Public-safe strategy has been recorded in `proposals/ACSS_SUBTRACTIVE_RESEARCH_PORTFOLIO_AND_DISCLOSURE_TRIAGE_2026-11-16.md`: `P0` research question glossary and independent test oracle; `P1` objective L1/L2 studies and equal-budget interaction of three subtractions; `P2` harder physics discovery/concept revision against AI-Newton, CoSR, Wang/Buehler; `P3` expensive training and downstream finance/election evaluation; consciousness/hybrid superintelligence remains a long-horizon distinct claim. These are **proposed priorities** awaiting founder discussion, not approved original Paper 2 results.
@@ -194,10 +194,13 @@ The founder requests **research prioritization by originality, independent feasi
 
 **Local feasibility:** one **Ollama** local open-weight Qwen/DeepSeek model can run *serially in five prompt-policy variants* on a suitably equipped Apple Silicon Mac; no need for five separate models or five subscriptions. `Qwen3 4B` is a low-memory starter; 8B/9B may suit 16GB+; DeepSeek-R1 7B is a distilled checkpoint; Kimi K2's 1T total model is not suitable for standard laptop RAM. Exact user Mac chip/unified memory/storage was **not established**, so recommendation remains conditional. See `proposals/ACSS_LOCAL_OPEN_MODEL_MAC_FEASIBILITY_2026-11-16.md`. **No installation, model calls or new costs have occurred.**
 
+## 7. Current tool and workflow state (verify each session)
+
 ## 8. Living decision and learning log (append-only entries, newest first)
 
 | Date | Decision / lesson | Status | Evidence / action |
 |---|---|---|---|
+| 2026-11-18 | Reaudited source files and distilled founder's philosophical origin + three construction paths + three-layer/five-agent pilot into one concise **canonical public-safe research thesis**. No new novelty or consciousness claims; old files retained for provenance. | **THESIS V0.1 CREATED; AWAITING FOUNDER REVIEW** | `proposals/ACSS_FOUNDERS_RESEARCH_THESIS_2026-11-18.md` |
 | 2026-11-16 | Founder requested independent low-resource prioritization, what is public/private and actual Mac feasibility. Public-safe portfolio/disclosure triage and conditional Ollama/Qwen/DeepSeek local setup completed; exact hardware unknown. | **PROPOSAL RECORDED / NO INSTALL OR RUNS** | `proposals/ACSS_SUBTRACTIVE_RESEARCH_PORTFOLIO_AND_DISCLOSURE_TRIAGE_2026-11-16.md`; `proposals/ACSS_LOCAL_OPEN_MODEL_MAC_FEASIBILITY_2026-11-16.md`; §5J |
 | 2026-11-16 | Full discussion + GitHub audit identified documentation sprawl, prompt-only/causal inference confounds and strong prior art (AI-Newton, CoSR, Wang/Buehler, plus L1 and L2 studies). New question-first report defines scope, uncertainty, five-agent feasibility design and novelty gates | **SCOPING AUDIT COMPLETED; NOVELTY UNRESOLVED; NO RUNS** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_RESEARCH_AUDIT_AND_LANDSCAPE_2026-11-16.md`, §5I |
 | 2026-11-16 | Founder specified **three progressive subtractions** (social noise → observer projection → physics/math grounding), with a **five-agent A0–A4 pilot design** now documented to test whether successive layers actually improve held-out accuracy/generalization without extra compute | **DESIGNED / NOT EXECUTED / NOVELTY OPEN** | `proposals/ACSS_SUBTRACTIVE_INTELLIGENCE_FIVE_AGENT_PILOT_v0.1.md`, §5H |

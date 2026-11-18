@@ -12,6 +12,8 @@
 
 **Canonical founder research thesis (2026-11-18):** [From Consciousness to Subtractive Intelligence](proposals/ACSS_FOUNDERS_RESEARCH_THESIS_2026-11-18.md). This public-safe one-document synthesis distinguishes original motivation, three construction pathways, the three-stage low-resource inference experiment, required counterexamples, prior art and publication gates. It is a **working hypothesis map**, not a proven new method or Paper 2 commitment. Read this before scattered founder discussion logs.
 
+**Denoising Experiment 001 offline fixtures (2026-11-18):** [offline reproducible synthetic oracle](experiments/denoising-exp001/README.md), 32 fixed cases across measurement corruption, corroborated true anomalies, ambiguous projections and false authority. Pure Python generator and separate oracle; local generator passed three structural/determinism tests. **Zero model calls, no performance claim**. Eight variants per template are not independent scenarios; current fixtures intentionally expose diagnostic cues. Blinded held-out benchmark and scoring require further work.
+
 ## 0. The 60-second orientation (highest priority)
 
 **ACSS — AI Consciousness, Safety & Security** is a founding-stage *independent, open research initiative*, not yet a registered institute, nonprofit or established grant-making body. Core principle: **We compare response structures, not consciousness.** Treat claims of consciousness, real personal identity, actual self-preservation motivation or universal cross-model patterns as unproven unless a separate valid study establishes them.
